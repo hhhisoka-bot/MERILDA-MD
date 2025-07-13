@@ -5,7 +5,7 @@ import { fileURLToPath } from "url"
 import { dirname } from "path"
 import os from "os"
 import fs from "fs"
-import { printStartupBanner } from "./lib/myfunctions.js"
+import { printStartupBanner } from "./lib/myfunction.js"
 
 
 console.log(chalk.red.bold(`
