@@ -1,6 +1,6 @@
 const linkRegex = /chat\.whatsapp\.com\/([0-9A-Za-z]{20,24})/i;
 
-const handler = async (m, { conn, isAdmin, isBotAdmin }) => {
+export async function before(m, { conn, isAdmin, isBotAdmin }) {
   if (m.isBaileys && m.fromMe) {
     return true;
   }
@@ -60,12 +60,3 @@ const handler = async (m, { conn, isAdmin, isBotAdmin }) => {
 
   return true;
 }
-
-handler.help = ['antilink']
-handler.tags = ['group']
-handler.command = []
-handler.before = handler
-
-export default handler
-
-export { handler as before }

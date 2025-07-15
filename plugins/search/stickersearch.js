@@ -1,5 +1,5 @@
 
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+import fetch from 'node-fetch';
 
 const handler = async (m, { conn, text, args }) => {
   try {

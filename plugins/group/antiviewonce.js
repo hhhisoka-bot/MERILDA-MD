@@ -1,7 +1,7 @@
 
-const { downloadContentFromMessage } = await import("@whiskeysockets/baileys");
+const { downloadContentFromMessage } = await import("baileys");
 
-const handler = async (m, { conn, isAdmin, isBotAdmin }) => {
+export async function before(m, { conn, isAdmin, isBotAdmin }) {
   if (/^[.~#/\$,](read)?viewonce/.test(m.text)) return;
   
   // Vérifier si l'anti-viewonce est activé
@@ -41,12 +41,3 @@ const handler = async (m, { conn, isAdmin, isBotAdmin }) => {
     }
   }
 }
-
-handler.help = ['antiviewonce']
-handler.tags = ['group'] 
-handler.command = []
-handler.before = handler
-
-export default handler
-
-export { handler as before }

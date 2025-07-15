@@ -1,44 +1,735 @@
 [
   {
-    "id": "flamelet",
-    "nom": "Petit Flamme",
+    "id": "flamezoid",
+    "nom": "Flamezoid",
+    "tier": "A",
+    "element": "feu",
+    "prix": 3000,
+    "competences": [
+      { "nom": "Griffe de Feu", "degats": 25 },
+      { "nom": "Coup de Pied Ardent", "degats": 30 },
+      { "nom": "Rayon Infernal", "degats": 40 }
+    ]
+  },
+  {
+    "id": "aquarex",
+    "nom": "AquaRex",
+    "tier": "B",
+    "element": "eau",
+    "prix": 2000,
+    "competences": [
+      { "nom": "Raz de Marée", "degats": 20 },
+      { "nom": "Tranche d'Eau", "degats": 15 },
+      { "nom": "Barrage de Bulles", "degats": 25 }
+    ]
+  },
+  {
+    "id": "stormbringer",
+    "nom": "Porteur d'Orage",
+    "tier": "S",
+    "element": "electrique",
+    "prix": 10000,
+    "competences": [
+      { "nom": "Jugement du Tonnerre", "degats": 60 },
+      { "nom": "Nova Électrique", "degats": 75 },
+      { "nom": "Tempête de Plasma", "degats": 90 }
+    ]
+  },
+  {
+    "id": "volcanix",
+    "nom": "Volcanix",
+    "tier": "S",
+    "element": "feu",
+    "prix": 9500,
+    "competences": [
+      { "nom": "Éruption de Magma", "degats": 65 },
+      { "nom": "Éruption Solaire", "degats": 70 },
+      { "nom": "Cœur Infernal", "degats": 85 }
+    ]
+  },
+  {
+    "id": "titanor",
+    "nom": "Titanor",
+    "tier": "S",
+    "element": "terre",
+    "prix": 9000,
+    "competences": [
+      { "nom": "Fracas Tectonique", "degats": 55 },
+      { "nom": "Broyeur de Montagnes", "degats": 80 },
+      { "nom": "Fureur Sismique", "degats": 70 }
+    ]
+  },
+  {
+    "id": "glacialis",
+    "nom": "Glacialis",
+    "tier": "S",
+    "element": "glace",
+    "prix": 9200,
+    "competences": [
+      { "nom": "Blizzard Éternel", "degats": 70 },
+      { "nom": "Prison de Glace", "degats": 65 },
+      { "nom": "Avalanche Absolue", "degats": 85 }
+    ]
+  },
+  {
+    "id": "shadowlord",
+    "nom": "Seigneur des Ombres",
+    "tier": "S",
+    "element": "tenebres",
+    "prix": 11000,
+    "competences": [
+      { "nom": "Void Noir", "degats": 80 },
+      { "nom": "Lames d'Ombre", "degats": 75 },
+      { "nom": "Néant Absolu", "degats": 95 }
+    ]
+  },
+  {
+    "id": "luminaris",
+    "nom": "Luminaris",
+    "tier": "S",
+    "element": "lumiere",
+    "prix": 10500,
+    "competences": [
+      { "nom": "Rayon Divin", "degats": 75 },
+      { "nom": "Purification", "degats": 65 },
+      { "nom": "Jugement Céleste", "degats": 90 }
+    ]
+  },
+  {
+    "id": "tempestas",
+    "nom": "Tempestas",
+    "tier": "S",
+    "element": "vent",
+    "prix": 9800,
+    "competences": [
+      { "nom": "Cyclone Dévastateur", "degats": 70 },
+      { "nom": "Lames de Vent", "degats": 65 },
+      { "nom": "Tornade Ultime", "degats": 88 }
+    ]
+  },
+  {
+    "id": "crystallux",
+    "nom": "Crystallux",
+    "tier": "S",
+    "element": "cristal",
+    "prix": 9300,
+    "competences": [
+      { "nom": "Explosion Cristalline", "degats": 68 },
+      { "nom": "Prisme Réfléchissant", "degats": 72 },
+      { "nom": "Shatter Storm", "degats": 82 }
+    ]
+  },
+  {
+    "id": "thundercub",
+    "nom": "Petit Tonnerre",
+    "tier": "A",
+    "element": "electrique",
+    "prix": 3200,
+    "competences": [
+      { "nom": "Charge Électrique", "degats": 30 },
+      { "nom": "Attaque Voltage", "degats": 35 },
+      { "nom": "Croc Tonnerre", "degats": 45 }
+    ]
+  },
+  {
+    "id": "marinara",
+    "nom": "Marinara",
+    "tier": "A",
+    "element": "eau",
+    "prix": 3100,
+    "competences": [
+      { "nom": "Jet d'Eau", "degats": 25 },
+      { "nom": "Cutter Hydro", "degats": 40 },
+      { "nom": "Crash Tsunami", "degats": 35 }
+    ]
+  },
+  {
+    "id": "terramaw",
+    "nom": "Terramaw",
+    "tier": "A",
+    "element": "terre",
+    "prix": 2900,
+    "competences": [
+      { "nom": "Lancer de Roche", "degats": 20 },
+      { "nom": "Tombeau de Sable", "degats": 35 },
+      { "nom": "Poing Séisme", "degats": 45 }
+    ]
+  },
+  {
+    "id": "frostclaw",
+    "nom": "Griffe de Givre",
+    "tier": "A",
+    "element": "glace",
+    "prix": 3250,
+    "competences": [
+      { "nom": "Griffes Glacées", "degats": 30 },
+      { "nom": "Souffle Polaire", "degats": 35 },
+      { "nom": "Charge Glaciale", "degats": 45 }
+    ]
+  },
+  {
+    "id": "shadowbeast",
+    "nom": "Bête d'Ombre",
+    "tier": "A",
+    "element": "tenebres",
+    "prix": 3400,
+    "competences": [
+      { "nom": "Morsure Obscure", "degats": 35 },
+      { "nom": "Invisibilité", "degats": 20 },
+      { "nom": "Frappe Fantôme", "degats": 50 }
+    ]
+  },
+  {
+    "id": "lightbringer",
+    "nom": "Porteur de Lumière",
+    "tier": "A",
+    "element": "lumiere",
+    "prix": 3300,
+    "competences": [
+      { "nom": "Éclat Aveuglant", "degats": 25 },
+      { "nom": "Rayon Purificateur", "degats": 40 },
+      { "nom": "Explosion Lumineuse", "degats": 45 }
+    ]
+  },
+  {
+    "id": "windcutter",
+    "nom": "Tranche-Vent",
+    "tier": "A",
+    "element": "vent",
+    "prix": 3150,
+    "competences": [
+      { "nom": "Lame de Vent", "degats": 30 },
+      { "nom": "Bourrasque", "degats": 25 },
+      { "nom": "Cyclone Miniature", "degats": 40 }
+    ]
+  },
+  {
+    "id": "gemcrusher",
+    "nom": "Broyeur de Gemmes",
+    "tier": "A",
+    "element": "cristal",
+    "prix": 3200,
+    "competences": [
+      { "nom": "Éclat de Cristal", "degats": 35 },
+      { "nom": "Barrière Minérale", "degats": 20 },
+      { "nom": "Explosion Gemme", "degats": 45 }
+    ]
+  },
+  {
+    "id": "steelclaw",
+    "nom": "Griffe d'Acier",
+    "tier": "A",
+    "element": "metal",
+    "prix": 3100,
+    "competences": [
+      { "nom": "Griffes Métalliques", "degats": 40 },
+      { "nom": "Armure Renforcée", "degats": 15 },
+      { "nom": "Charge Blindée", "degats": 50 }
+    ]
+  },
+  {
+    "id": "venomfang",
+    "nom": "Croc Venimeux",
+    "tier": "A",
+    "element": "poison",
+    "prix": 3000,
+    "competences": [
+      { "nom": "Morsure Toxique", "degats": 30 },
+      { "nom": "Nuage Poison", "degats": 25 },
+      { "nom": "Injection Mortelle", "degats": 45 }
+    ]
+  },
+  {
+    "id": "mysticorb",
+    "nom": "Orbe Mystique",
+    "tier": "A",
+    "element": "psychique",
+    "prix": 3350,
+    "competences": [
+      { "nom": "Confusion Mentale", "degats": 25 },
+      { "nom": "Explosion Psychique", "degats": 40 },
+      { "nom": "Contrôle Mental", "degats": 35 }
+    ]
+  },
+  {
+    "id": "pyroclaw",
+    "nom": "Pyrograffe",
+    "tier": "A",
+    "element": "feu",
+    "prix": 3300,
+    "competences": [
+      { "nom": "Balayage Flamboyant", "degats": 30 },
+      { "nom": "Vague de Chaleur", "degats": 25 },
+      { "nom": "Charge Ardente", "degats": 50 }
+    ]
+  },
+  {
+    "id": "voltwing",
+    "nom": "Aile Voltage",
+    "tier": "A",
+    "element": "electrique",
+    "prix": 3150,
+    "competences": [
+      { "nom": "Aile Électrique", "degats": 25 },
+      { "nom": "Plongée Plasma", "degats": 40 },
+      { "nom": "Tempête Statique", "degats": 35 }
+    ]
+  },
+  {
+    "id": "coralith",
+    "nom": "Corallite",
+    "tier": "A",
+    "element": "eau",
+    "prix": 3050,
+    "competences": [
+      { "nom": "Explosion de Bulles", "degats": 20 },
+      { "nom": "Tranche de Marée", "degats": 45 },
+      { "nom": "Colère Océanique", "degats": 30 }
+    ]
+  },
+  {
+    "id": "boulderon",
+    "nom": "Rocheton",
+    "tier": "A",
+    "element": "terre",
+    "prix": 2950,
+    "competences": [
+      { "nom": "Lame de Pierre", "degats": 40 },
+      { "nom": "Tir de Boue", "degats": 25 },
+      { "nom": "Glissement de Terrain", "degats": 35 }
+    ]
+  },
+  {
+    "id": "emberon",
+    "nom": "Embrasier",
+    "tier": "A",
+    "element": "feu",
+    "prix": 3250,
+    "competences": [
+      { "nom": "Écran de Fumée", "degats": 15 },
+      { "nom": "Roue de Feu", "degats": 35 },
+      { "nom": "Ruée Infernale", "degats": 45 }
+    ]
+  },
+  {
+    "id": "stormclaw",
+    "nom": "Griffe Tempête",
+    "tier": "A",
+    "element": "electrique",
+    "prix": 3100,
+    "competences": [
+      { "nom": "Griffe Électrique", "degats": 30 },
+      { "nom": "Bond Foudroyant", "degats": 40 },
+      { "nom": "Rugissement Tonnerre", "degats": 35 }
+    ]
+  },
+  {
+    "id": "tidefang",
+    "nom": "Croc de Marée",
+    "tier": "A",
+    "element": "eau",
+    "prix": 3000,
+    "competences": [
+      { "nom": "Croc Aquatique", "degats": 35 },
+      { "nom": "Tourbillon", "degats": 25 },
+      { "nom": "Morsure Torrentielle", "degats": 45 }
+    ]
+  },
+  {
+    "id": "frostbite",
+    "nom": "Morsure Glacée",
+    "tier": "A",
+    "element": "glace",
+    "prix": 3100,
+    "competences": [
+      { "nom": "Crocs Gelés", "degats": 30 },
+      { "nom": "Haleine Glaciale", "degats": 35 },
+      { "nom": "Blizzard Personnel", "degats": 40 }
+    ]
+  },
+  {
+    "id": "nightstalker",
+    "nom": "Traqueur Nocturne",
+    "tier": "A",
+    "element": "tenebres",
+    "prix": 3200,
+    "competences": [
+      { "nom": "Chasse Silencieuse", "degats": 35 },
+      { "nom": "Griffes d'Ombre", "degats": 30 },
+      { "nom": "Embuscade Noire", "degats": 45 }
+    ]
+  },
+  {
+    "id": "sparkitt",
+    "nom": "Étincelle",
+    "tier": "B",
+    "element": "electrique",
+    "prix": 2200,
+    "competences": [
+      { "nom": "Choc Statique", "degats": 15 },
+      { "nom": "Zap Rapide", "degats": 20 },
+      { "nom": "Boule Électrique", "degats": 25 }
+    ]
+  },
+  {
+    "id": "mudshell",
+    "nom": "Carapace Boueuse",
+    "tier": "B",
+    "element": "terre",
+    "prix": 1800,
+    "competences": [
+      { "nom": "Claque de Boue", "degats": 10 },
+      { "nom": "Rotation Carapace", "degats": 20 },
+      { "nom": "Jet de Terre", "degats": 15 }
+    ]
+  },
+  {
+    "id": "flarepup",
+    "nom": "Petit Embrasement",
+    "tier": "B",
+    "element": "feu",
+    "prix": 2300,
+    "competences": [
+      { "nom": "Braise", "degats": 15 },
+      { "nom": "Spirale de Feu", "degats": 20 },
+      { "nom": "Queue Flamboyante", "degats": 25 }
+    ]
+  },
+  {
+    "id": "rippler",
+    "nom": "Onduleur",
+    "tier": "B",
+    "element": "eau",
+    "prix": 2100,
+    "competences": [
+      { "nom": "Pistolet à Eau", "degats": 10 },
+      { "nom": "Queue Aquatique", "degats": 20 },
+      { "nom": "Rayon Bulles", "degats": 15 }
+    ]
+  },
+  {
+    "id": "frostling",
+    "nom": "Petit Givre",
+    "tier": "B",
+    "element": "glace",
+    "prix": 2150,
+    "competences": [
+      { "nom": "Souffle Froid", "degats": 15 },
+      { "nom": "Boule de Neige", "degats": 18 },
+      { "nom": "Gelée Soudaine", "degats": 22 }
+    ]
+  },
+  {
+    "id": "shadowpup",
+    "nom": "Petit Ombre",
+    "tier": "B",
+    "element": "tenebres",
+    "prix": 2250,
+    "competences": [
+      { "nom": "Morsure Sombre", "degats": 18 },
+      { "nom": "Camouflage", "degats": 10 },
+      { "nom": "Attaque Surprise", "degats": 25 }
+    ]
+  },
+  {
+    "id": "glowbug",
+    "nom": "Luciole",
+    "tier": "B",
+    "element": "lumiere",
+    "prix": 2100,
+    "competences": [
+      { "nom": "Flash Lumineux", "degats": 15 },
+      { "nom": "Rayon Doux", "degats": 20 },
+      { "nom": "Éclat Brillant", "degats": 18 }
+    ]
+  },
+  {
+    "id": "breezer",
+    "nom": "Petit Vent",
+    "tier": "B",
+    "element": "vent",
+    "prix": 2000,
+    "competences": [
+      { "nom": "Bourrasque Légère", "degats": 12 },
+      { "nom": "Tourbillon Mineur", "degats": 20 },
+      { "nom": "Rafale", "degats": 18 }
+    ]
+  },
+  {
+    "id": "gemling",
+    "nom": "Petite Gemme",
+    "tier": "B",
+    "element": "cristal",
+    "prix": 2050,
+    "competences": [
+      { "nom": "Éclat Cristallin", "degats": 15 },
+      { "nom": "Reflet Aveuglant", "degats": 12 },
+      { "nom": "Explosion Minérale", "degats": 22 }
+    ]
+  },
+  {
+    "id": "ironpup",
+    "nom": "Petit Fer",
+    "tier": "B",
+    "element": "metal",
+    "prix": 2200,
+    "competences": [
+      { "nom": "Morsure Métallique", "degats": 20 },
+      { "nom": "Défense Renforcée", "degats": 8 },
+      { "nom": "Charge Lourde", "degats": 25 }
+    ]
+  },
+  {
+    "id": "venomite",
+    "nom": "Petit Venin",
+    "tier": "B",
+    "element": "poison",
+    "prix": 2150,
+    "competences": [
+      { "nom": "Piqûre Toxique", "degats": 18 },
+      { "nom": "Crachat Acide", "degats": 15 },
+      { "nom": "Brouillard Poison", "degats": 20 }
+    ]
+  },
+  {
+    "id": "mindlet",
+    "nom": "Petit Esprit",
+    "tier": "B",
+    "element": "psychique",
+    "prix": 2300,
+    "competences": [
+      { "nom": "Onde Mentale", "degats": 15 },
+      { "nom": "Confusion Légère", "degats": 12 },
+      { "nom": "Télékinésie", "degats": 22 }
+    ]
+  },
+  {
+    "id": "voltick",
+    "nom": "Voltique",
+    "tier": "B",
+    "element": "electrique",
+    "prix": 2150,
+    "competences": [
+      { "nom": "Zap", "degats": 15 },
+      { "nom": "Charge", "degats": 10 },
+      { "nom": "Étincelle", "degats": 20 }
+    ]
+  },
+  {
+    "id": "pebbleon",
+    "nom": "Caillon",
+    "tier": "B",
+    "element": "terre",
+    "prix": 1900,
+    "competences": [
+      { "nom": "Lancer de Roche", "degats": 15 },
+      { "nom": "Durcissement", "degats": 5 },
+      { "nom": "Roulement", "degats": 25 }
+    ]
+  },
+  {
+    "id": "smolder",
+    "nom": "Combustion",
+    "tier": "B",
+    "element": "feu",
+    "prix": 2250,
+    "competences": [
+      { "nom": "Écran de Fumée", "degats": 5 },
+      { "nom": "Explosion Flamboyante", "degats": 20 },
+      { "nom": "Souffle Chaud", "degats": 15 }
+    ]
+  },
+  {
+    "id": "splashling",
+    "nom": "Éclaboussure",
+    "tier": "B",
+    "element": "eau",
+    "prix": 2050,
+    "competences": [
+      { "nom": "Éclaboussure d'Eau", "degats": 10 },
+      { "nom": "Danse de Pluie", "degats": 5 },
+      { "nom": "Anneau Aquatique", "degats": 15 }
+    ]
+  },
+  {
+    "id": "joltle",
+    "nom": "Secousse",
+    "tier": "B",
+    "element": "electrique",
+    "prix": 2100,
+    "competences": [
+      { "nom": "Choc Électrique", "degats": 15 },
+      { "nom": "Attaque Rapide", "degats": 10 },
+      { "nom": "Toile Électrique", "degats": 20 }
+    ]
+  },
+  {
+    "id": "sandip",
+    "nom": "Sablier",
+    "tier": "B",
+    "element": "terre",
+    "prix": 1950,
+    "competences": [
+      { "nom": "Attaque Sable", "degats": 5 },
+      { "nom": "Creusement", "degats": 20 },
+      { "nom": "Tombeau de Sable", "degats": 15 }
+    ]
+  },
+  {
+    "id": "flicker",
+    "nom": "Vacillant",
     "tier": "C",
     "element": "feu",
     "prix": 1500,
     "competences": [
-      {
-        "nom": "Étincelle",
-        "degats": 8
-      },
-      {
-        "nom": "Souffle Tiède",
-        "degats": 5
-      },
-      {
-        "nom": "Flamme Légère",
-        "degats": 12
-      }
+      { "nom": "Réchauffement", "degats": 5 },
+      { "nom": "Petite Flamme", "degats": 10 },
+      { "nom": "Bouffée de Fumée", "degats": 8 }
     ]
   },
   {
-    "id": "droplet",
-    "nom": "Gouttelette",
+    "id": "drizzle",
+    "nom": "Bruine",
     "tier": "C",
     "element": "eau",
+    "prix": 1400,
+    "competences": [
+      { "nom": "Goutte", "degats": 5 },
+      { "nom": "Brume", "degats": 3 },
+      { "nom": "Petite Vague", "degats": 10 }
+    ]
+  },
+  {
+    "id": "pebblit",
+    "nom": "Caillou",
+    "tier": "C",
+    "element": "terre",
+    "prix": 1300,
+    "competences": [
+      { "nom": "Lancer de Caillou", "degats": 8 },
+      { "nom": "Durcissement", "degats": 0 },
+      { "nom": "Micro Séisme", "degats": 10 }
+    ]
+  },
+  {
+    "id": "chillbit",
+    "nom": "Petit Froid",
+    "tier": "C",
+    "element": "glace",
+    "prix": 1450,
+    "competences": [
+      { "nom": "Souffle Glacé", "degats": 8 },
+      { "nom": "Flocon", "degats": 5 },
+      { "nom": "Gelée Légère", "degats": 10 }
+    ]
+  },
+  {
+    "id": "shadowmite",
+    "nom": "Micro Ombre",
+    "tier": "C",
+    "element": "tenebres",
+    "prix": 1550,
+    "competences": [
+      { "nom": "Pincement Noir", "degats": 8 },
+      { "nom": "Camouflage Léger", "degats": 3 },
+      { "nom": "Morsure Sombre", "degats": 10 }
+    ]
+  },
+  {
+    "id": "gleamlet",
+    "nom": "Petit Éclat",
+    "tier": "C",
+    "element": "lumiere",
+    "prix": 1400,
+    "competences": [
+      { "nom": "Lueur", "degats": 5 },
+      { "nom": "Rayon Doux", "degats": 8 },
+      { "nom": "Éclat Mineur", "degats": 10 }
+    ]
+  },
+  {
+    "id": "wisplet",
+    "nom": "Petit Souffle",
+    "tier": "C",
+    "element": "vent",
+    "prix": 1350,
+    "competences": [
+      { "nom": "Brise Légère", "degats": 5 },
+      { "nom": "Tourbillon Nano", "degats": 8 },
+      { "nom": "Rafale Mineure", "degats": 10 }
+    ]
+  },
+  {
+    "id": "shardlet",
+    "nom": "Petit Éclat",
+    "tier": "C",
+    "element": "cristal",
+    "prix": 1400,
+    "competences": [
+      { "nom": "Fragment", "degats": 8 },
+      { "nom": "Scintillement", "degats": 5 },
+      { "nom": "Éclat Cristallin", "degats": 10 }
+    ]
+  },
+  {
+    "id": "rustlet",
+    "nom": "Petit Rouille",
+    "tier": "C",
+    "element": "metal",
     "prix": 1500,
     "competences": [
-      {
-        "nom": "Jet d'Eau",
-        "degats": 8
-      },
-      {
-        "nom": "Bulle",
-        "degats": 5
-      },
-      {
-        "nom": "Vague Mineure",
-        "degats": 12
-      }
+      { "nom": "Grattage Métallique", "degats": 8 },
+      { "nom": "Durcissement", "degats": 3 },
+      { "nom": "Choc Métallique", "degats": 10 }
+    ]
+  },
+  {
+    "id": "toxlet",
+    "nom": "Petit Toxique",
+    "tier": "C",
+    "element": "poison",
+    "prix": 1450,
+    "competences": [
+      { "nom": "Piqûre Légère", "degats": 8 },
+      { "nom": "Suintement", "degats": 5 },
+      { "nom": "Goutte Acide", "degats": 10 }
+    ]
+  },
+  {
+    "id": "psylet",
+    "nom": "Petit Psy",
+    "tier": "C",
+    "element": "psychique",
+    "prix": 1550,
+    "competences": [
+      { "nom": "Onde Faible", "degats": 8 },
+      { "nom": "Murmure Mental", "degats": 5 },
+      { "nom": "Poussée Psychique", "degats": 10 }
+    ]
+  },
+  {
+    "id": "statick",
+    "nom": "Statique",
+    "tier": "C",
+    "element": "electrique",
+    "prix": 1450,
+    "competences": [
+      { "nom": "Picotement", "degats": 5 },
+      { "nom": "Statique", "degats": 3 },
+      { "nom": "Mini Zap", "degats": 8 }
+    ]
+  },
+  {
+    "id": "glowlet",
+    "nom": "Lueur",
+    "tier": "C",
+    "element": "feu",
+    "prix": 1550,
+    "competences": [
+      { "nom": "Brillance", "degats": 3 },
+      { "nom": "Toucher Chaud", "degats": 8 },
+      { "nom": "Petite Étincelle", "degats": 10 }
     ]
   }
+  
 ]

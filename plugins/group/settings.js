@@ -3,20 +3,8 @@ const handler = async (m, { conn, args, isAdmin, isBotAdmin }) => {
   if (!m.isGroup) return m.reply("❌ Cette commande ne fonctionne que dans les groupes !")
   if (!isAdmin) return m.reply("❌ Seuls les administrateurs peuvent modifier les paramètres !")
 
-  if (!global.db.data.chats[m.chat]) {
-    global.db.data.chats[m.chat] = {}
-  }
-  
-  const group = global.db.data.chats[m.chat]
-  if (!group.settings) {
-    group.settings = {
-      welcome: false,
-      antilink: false,
-      antiviewonce: false,
-      antispam: false,
-      language: 'fr'
-    }
-  }
+  const db = (await import('../../lib/database/database.js')).default
+  const group = db.getGroup(m.chat)
 
   if (!args[0]) {
     // Afficher les paramètres actuels
@@ -62,7 +50,7 @@ const handler = async (m, { conn, args, isAdmin, isBotAdmin }) => {
       }
       
       const newValue = value === 'on'
-      group.settings[setting] = newValue
+      db.updateGroupSetting(m.chat, setting, newValue)
       m.reply(`✅ ${setting} ${newValue ? 'activé' : 'désactivé'} avec succès !`)
       break
 
@@ -72,7 +60,7 @@ const handler = async (m, { conn, args, isAdmin, isBotAdmin }) => {
         return m.reply(`❌ Langue non supportée. Utilisez: fr ou en`)
       }
       
-      group.settings.language = value
+      db.updateGroupSetting(m.chat, 'language', value)
       m.reply(`✅ Langue changée en ${value === 'fr' ? 'Français' : 'English'} !`)
       break
 

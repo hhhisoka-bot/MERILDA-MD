@@ -1,13 +1,12 @@
-
 /**
- * Plugin Info Monstres
- * Affiche des informations détaillées sur les monstres
+ * Monster Info Plugin
+ * Shows detailed information about monsters
  *
  * @plugin
  * @name monster-info
  * @category rpg
- * @description Voir des informations détaillées sur les monstres
- * @usage .infomonstre <id>
+ * @description View detailed information about monsters
+ * @usage .monsterinfo <id>
  */
 
 import fs from "fs"
@@ -19,55 +18,55 @@ import moment from "moment-timezone"
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-// Chemin de la base de données
+// Database path
 const MONSTER_DB = path.join(__dirname, "../../lib/database/monster.json")
 
-// Obtenir l'heure actuelle pour les logs
+// Get current time for logging
 const getTime = () => {
   return moment().format("HH:mm:ss")
 }
 
-// Obtenir l'emoji et le nom de l'élément
+// Get element emoji and name
 const getElementInfo = (element) => {
   switch (element) {
-    case "feu":
-      return { emoji: "🔥", nom: "Feu" }
-    case "eau":
-      return { emoji: "💧", nom: "Eau" }
-    case "terre":
-      return { emoji: "🌍", nom: "Terre" }
-    case "electricite":
-      return { emoji: "⚡", nom: "Électricité" }
+    case "api":
+      return { emoji: "🔥", name: "Api" }
+    case "air":
+      return { emoji: "💧", name: "Air" }
+    case "tanah":
+      return { emoji: "🌍", name: "Tanah" }
+    case "listrik":
+      return { emoji: "⚡", name: "Listrik" }
     default:
-      return { emoji: "❓", nom: "Inconnu" }
+      return { emoji: "❓", name: "Unknown" }
   }
 }
 
-// Obtenir la couleur et la description du niveau
+// Get tier color and description
 const getTierInfo = (tier) => {
   switch (tier) {
     case "S":
-      return { emoji: "🔴", nom: "S", desc: "Super Rare" }
+      return { emoji: "🔴", name: "S", desc: "Super Rare" }
     case "A":
-      return { emoji: "🟠", nom: "A", desc: "Rare" }
+      return { emoji: "🟠", name: "A", desc: "Rare" }
     case "B":
-      return { emoji: "🟡", nom: "B", desc: "Peu Commun" }
+      return { emoji: "🟡", name: "B", desc: "Uncommon" }
     case "C":
-      return { emoji: "🟢", nom: "C", desc: "Commun" }
+      return { emoji: "🟢", name: "C", desc: "Common" }
     case "D":
-      return { emoji: "🔵", nom: "D", desc: "Basique" }
+      return { emoji: "🔵", name: "D", desc: "Basic" }
     default:
-      return { emoji: "⚪", nom: "?", desc: "Inconnu" }
+      return { emoji: "⚪", name: "?", desc: "Unknown" }
   }
 }
 
-// Charger la liste des monstres
+// Load daftar monster
 const getMonsters = () => {
   try {
     if (!fs.existsSync(MONSTER_DB)) return []
     return JSON.parse(fs.readFileSync(MONSTER_DB))
   } catch (error) {
-    console.error(chalk.red(`[${getTime()}] Erreur lors du chargement des données monstres:`), error)
+    console.error(chalk.red(`[${getTime()}] Error loading monster data:`), error)
     return []
   }
 }
@@ -76,15 +75,15 @@ const handler = async (m, { conn, args, command }) => {
   const monsters = getMonsters()
 
   if (!monsters.length) {
-    return m.reply("❌ La liste des monstres est vide !")
+    return m.reply("❌ Daftar monster kosong!")
   }
 
-  // Si aucun ID fourni, afficher la liste des monstres
+  // If no ID provided, show list of monsters
   if (!args[0]) {
-    let teks = "📚 *LISTE DES MONSTRES*\n\n"
-    teks += "Utilisez .infomonstre <id> pour voir les détails d'un monstre\n\n"
+    let teks = "📚 *DAFTAR MONSTER*\n\n"
+    teks += "Gunakan .monsterinfo <id> untuk melihat detail monster\n\n"
 
-    // Grouper les monstres par niveau
+    // Group monsters by tier
     const monstersByTier = {}
     for (const monster of monsters) {
       if (!monstersByTier[monster.tier]) {
@@ -93,18 +92,18 @@ const handler = async (m, { conn, args, command }) => {
       monstersByTier[monster.tier].push(monster)
     }
 
-    // Trier les niveaux dans l'ordre : S, A, B, C, D
+    // Sort tiers in order: S, A, B, C, D
     const tierOrder = ["S", "A", "B", "C", "D"]
 
-    // Afficher les monstres par niveau
+    // Display monsters by tier
     for (const tier of tierOrder) {
       if (monstersByTier[tier] && monstersByTier[tier].length > 0) {
         const tierInfo = getTierInfo(tier)
-        teks += `${tierInfo.emoji} *NIVEAU ${tier} (${tierInfo.desc})*\n`
+        teks += `${tierInfo.emoji} *TIER ${tier} (${tierInfo.desc})*\n`
 
         for (const mon of monstersByTier[tier]) {
-          const elementInfo = getElementInfo(mon.element)
-          teks += `• ${mon.nom} ${elementInfo.emoji} - ID: ${mon.id}\n`
+          const elementInfo = getElementInfo(mon.elemen)
+          teks += `• ${mon.nama} ${elementInfo.emoji} - ID: ${mon.id}\n`
         }
 
         teks += "\n"
@@ -114,54 +113,54 @@ const handler = async (m, { conn, args, command }) => {
     return m.reply(teks)
   }
 
-  // Trouver le monstre par ID
+  // Find monster by ID
   const id = args[0].toLowerCase()
   const monster = monsters.find((m) => m.id.toLowerCase() === id)
 
   if (!monster) {
-    return m.reply("❌ Monstre introuvable. Utilisez .infomonstre sans argument pour voir la liste des monstres.")
+    return m.reply("❌ Monster tidak ditemukan. Gunakan .monsterinfo tanpa argumen untuk melihat daftar monster.")
   }
 
-  // Obtenir les infos d'élément et de niveau
-  const elementInfo = getElementInfo(monster.element)
+  // Get element and tier info
+  const elementInfo = getElementInfo(monster.elemen)
   const tierInfo = getTierInfo(monster.tier)
 
-  // Créer les infos détaillées du monstre
-  let teks = `🔍 *DÉTAILS DU MONSTRE*\n\n`
-  teks += `📋 *Informations Générales*\n`
-  teks += `• Nom: ${monster.nom}\n`
+  // Create detailed monster info
+  let teks = `🔍 *DETAIL MONSTER*\n\n`
+  teks += `📋 *Informasi Umum*\n`
+  teks += `• Nama: ${monster.nama}\n`
   teks += `• ID: ${monster.id}\n`
-  teks += `• Niveau: ${tierInfo.emoji} ${tierInfo.nom} (${tierInfo.desc})\n`
-  teks += `• Élément: ${elementInfo.emoji} ${elementInfo.nom}\n`
-  teks += `• Prix: €${monster.prix.toLocaleString()}\n\n`
+  teks += `• Tier: ${tierInfo.emoji} ${tierInfo.name} (${tierInfo.desc})\n`
+  teks += `• Elemen: ${elementInfo.emoji} ${elementInfo.name}\n`
+  teks += `• Harga: Rp${monster.harga.toLocaleString()}\n\n`
 
-  teks += `⚔️ *Compétences*\n`
-  for (let i = 0; i < monster.competences.length; i++) {
-    const skill = monster.competences[i]
-    teks += `• Compétence ${i + 1}: ${skill.nom} (${skill.degats} DMG)\n`
+  teks += `⚔️ *Skill*\n`
+  for (let i = 0; i < monster.skill.length; i++) {
+    const skill = monster.skill[i]
+    teks += `• Skill ${i + 1}: ${skill.nama} (${skill.damage} DMG)\n`
   }
 
-  teks += `\n📊 *Efficacité des Éléments*\n`
+  teks += `\n📊 *Efektivitas Elemen*\n`
 
-  // Ajouter les informations d'efficacité des éléments
-  const efficacite = {
-    feu: { fort: "terre", faible: "eau" },
-    eau: { fort: "feu", faible: "electricite" },
-    terre: { fort: "electricite", faible: "feu" },
-    electricite: { fort: "eau", faible: "terre" },
+  // Add element effectiveness information
+  const effectiveness = {
+    api: { kuat: "tanah", lemah: "air" },
+    air: { kuat: "api", lemah: "listrik" },
+    tanah: { kuat: "listrik", lemah: "api" },
+    listrik: { kuat: "air", lemah: "tanah" },
   }
 
-  const fortContre = getElementInfo(efficacite[monster.element]?.fort || "")
-  const faibleContre = getElementInfo(efficacite[monster.element]?.faible || "")
+  const strongAgainst = getElementInfo(effectiveness[monster.elemen]?.kuat || "")
+  const weakAgainst = getElementInfo(effectiveness[monster.elemen]?.lemah || "")
 
-  teks += `• Fort contre: ${fortContre.emoji} ${fortContre.nom}\n`
-  teks += `• Faible contre: ${faibleContre.emoji} ${faibleContre.nom}\n`
+  teks += `• Kuat melawan: ${strongAgainst.emoji} ${strongAgainst.name}\n`
+  teks += `• Lemah terhadap: ${weakAgainst.emoji} ${weakAgainst.name}\n`
 
   return m.reply(teks)
 }
 
-handler.help = ["infomonstre <id>"]
+handler.help = ["monsterinfo <id>"]
 handler.tags = ["rpg"]
-handler.command = ["infomonstre", "infomon"]
+handler.command = ["monsterinfo", "minfo"]
 
 export default handler

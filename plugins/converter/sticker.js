@@ -1,12 +1,4 @@
 
-import sharp from 'sharp';
-import { exec } from 'child_process';
-import { promisify } from 'util';
-import fs from 'fs';
-import { fileTypeFromBuffer } from 'file-type';
-
-const execAsync = promisify(exec);
-
 const handler = async (m, { conn, args, text, quoted }) => {
   try {
     let stiker = false;
@@ -25,85 +17,28 @@ const handler = async (m, { conn, args, text, quoted }) => {
       }
 
       try {
+        // Créer le sticker avec les métadonnées du bot
+        const packname = global.botName || "MERILDA";
+        const author = global.ownerName || "hhhisoka";
+        
+        // Simulation de création de sticker (vous devrez implémenter la logique de sticker)
         await m.reply("*Création du sticker en cours...*");
         
-        // Détecter le type de fichier
-        const fileType = await fileTypeFromBuffer(img);
-        
-        let stickerBuffer;
-        
-        if (fileType && fileType.mime.startsWith('image/')) {
-          // Traitement d'image avec Sharp
-          stickerBuffer = await sharp(img)
-            .resize(512, 512, {
-              fit: 'contain',
-              background: { r: 0, g: 0, b: 0, alpha: 0 }
-            })
-            .webp({
-              quality: 100,
-              effort: 6
-            })
-            .toBuffer();
-        } else if (fileType && fileType.mime.startsWith('video/')) {
-          // Pour les vidéos, nous devons les convertir en WebP animé
-          const tempInput = `./tmp/input_${Date.now()}.${fileType.ext}`;
-          const tempOutput = `./tmp/output_${Date.now()}.webp`;
-          
-          // Écrire le fichier temporaire
-          fs.writeFileSync(tempInput, img);
-          
-          try {
-            // Convertir avec ffmpeg
-            await execAsync(`ffmpeg -i ${tempInput} -vf "scale=512:512:force_original_aspect_ratio=decrease,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=black@0" -c:v libwebp -quality 100 -preset default -loop 0 -t 6 ${tempOutput}`);
-            
-            stickerBuffer = fs.readFileSync(tempOutput);
-            
-            // Nettoyer les fichiers temporaires
-            fs.unlinkSync(tempInput);
-            fs.unlinkSync(tempOutput);
-          } catch (error) {
-            // Nettoyer en cas d'erreur
-            if (fs.existsSync(tempInput)) fs.unlinkSync(tempInput);
-            if (fs.existsSync(tempOutput)) fs.unlinkSync(tempOutput);
-            throw error;
-          }
-        } else {
-          return m.reply("*Format de fichier non supporté*");
-        }
-        
-        // Envoyer le sticker
+        // Ici vous devrez implémenter la conversion en sticker selon votre librairie
         await conn.sendMessage(m.chat, {
-          sticker: stickerBuffer,
+          sticker: img,
+          // Ajoutez ici les métadonnées nécessaires
         }, { quoted: m });
         
       } catch (error) {
         console.error('Erreur lors de la création du sticker:', error);
-        return m.reply("*Erreur lors de la création du sticker. Veuillez réessayer avec un fichier plus petit.*");
+        return m.reply("*Erreur lors de la création du sticker*");
       }
     } else if (args[0] && isUrl(args[0])) {
       try {
         await m.reply("*Téléchargement et création du sticker en cours...*");
-        
-        const response = await fetch(args[0]);
-        const buffer = await response.arrayBuffer();
-        const img = Buffer.from(buffer);
-        
-        // Traitement similaire pour les URLs
-        const stickerBuffer = await sharp(img)
-          .resize(512, 512, {
-            fit: 'contain',
-            background: { r: 0, g: 0, b: 0, alpha: 0 }
-          })
-          .webp({
-            quality: 100,
-            effort: 6
-          })
-          .toBuffer();
-        
-        await conn.sendMessage(m.chat, {
-          sticker: stickerBuffer,
-        }, { quoted: m });
-        
+        // Logique pour créer un sticker à partir d'une URL
+        // Vous devrez implémenter cette partie selon votre librairie
       } catch (error) {
         return m.reply("*Erreur: L'URL fournie n'est pas valide ou accessible*");
       }
