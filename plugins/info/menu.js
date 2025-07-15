@@ -35,7 +35,7 @@ const handler = async (m, { conn, prefix, pushname }) => {
     });
 
     // Construire le message du menu
-    let menuText = `╭─❍「 *${global.botName || 'MERILDA'}* 」❍\n`;
+    let menuText = `╭─❍「 *${global.botName || 'MERILDA-MD'}* 」❍\n`;
     menuText += `├❍ *Utilisateur:* ${pushname}\n`;
     menuText += `├❍ *Préfixe:* ${prefix}\n`;
     menuText += `├❍ *Total commandes:* ${Object.keys(commands).length}\n`;
