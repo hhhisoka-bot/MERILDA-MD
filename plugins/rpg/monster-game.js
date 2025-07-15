@@ -1,12 +1,13 @@
+
 /**
- * Monster Game Plugin
- * Allows users to collect and manage monsters
+ * Plugin Jeu de Monstres
+ * Permet aux utilisateurs de collectionner et gérer des monstres
  *
  * @plugin
  * @name monster-game
  * @category rpg
- * @description Collect and manage monsters in an RPG game
- * @usage .saldo, .topup, .toko, .beli, .koleksi
+ * @description Collectionnez et gérez des monstres dans un jeu RPG
+ * @usage .solde, .recharge, .boutique, .acheter, .collection
  */
 
 import fs from "fs"
@@ -18,49 +19,49 @@ import moment from "moment-timezone"
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-// Database paths
+// Chemins des bases de données
 const USER_DB = path.join(__dirname, "../../lib/database/user.json")
 const MONSTER_DB = path.join(__dirname, "../../lib/database/monster.json")
 
-// Get current time for logging
+// Obtenir l'heure actuelle pour les logs
 const getTime = () => {
   return moment().format("HH:mm:ss")
 }
 
-// Load data pengguna
+// Charger les données utilisateur
 const loadUserData = () => {
   try {
     if (!fs.existsSync(USER_DB)) fs.writeFileSync(USER_DB, "{}")
     return JSON.parse(fs.readFileSync(USER_DB))
   } catch (error) {
-    console.error(chalk.red(`[${getTime()}] Error loading user data:`), error)
+    console.error(chalk.red(`[${getTime()}] Erreur lors du chargement des données utilisateur:`), error)
     return {}
   }
 }
 
-// Simpan data pengguna
+// Sauvegarder les données utilisateur
 const saveUserData = (data) => {
   try {
     fs.writeFileSync(USER_DB, JSON.stringify(data, null, 2))
     return true
   } catch (error) {
-    console.error(chalk.red(`[${getTime()}] Error saving user data:`), error)
+    console.error(chalk.red(`[${getTime()}] Erreur lors de la sauvegarde des données utilisateur:`), error)
     return false
   }
 }
 
-// Load daftar monster
+// Charger la liste des monstres
 const getMonsters = () => {
   try {
     if (!fs.existsSync(MONSTER_DB)) return []
     return JSON.parse(fs.readFileSync(MONSTER_DB))
   } catch (error) {
-    console.error(chalk.red(`[${getTime()}] Error loading monster data:`), error)
+    console.error(chalk.red(`[${getTime()}] Erreur lors du chargement des données monstres:`), error)
     return []
   }
 }
 
-// Get monster tier emoji
+// Obtenir l'emoji du niveau
 const getTierEmoji = (tier) => {
   switch (tier) {
     case "S":
@@ -78,16 +79,16 @@ const getTierEmoji = (tier) => {
   }
 }
 
-// Get element emoji
+// Obtenir l'emoji de l'élément
 const getElementEmoji = (element) => {
   switch (element) {
-    case "api":
+    case "feu":
       return "🔥"
-    case "air":
+    case "eau":
       return "💧"
-    case "tanah":
+    case "terre":
       return "🌍"
-    case "listrik":
+    case "electricite":
       return "⚡"
     default:
       return "❓"
@@ -99,39 +100,39 @@ const handler = async (m, { conn, command, args, isOwner }) => {
   const users = loadUserData()
   const monsters = getMonsters()
 
-  // Initialize user data if not exists
-  if (!users[userId]) users[userId] = { saldo: 0, koleksi: [] }
+  // Initialiser les données utilisateur si elles n'existent pas
+  if (!users[userId]) users[userId] = { solde: 0, collection: [] }
 
-  // .saldo - Check user balance
-  if (command === "saldo") {
-    m.reply(`💰 *Saldo Kamu*\nRp${users[userId].saldo.toLocaleString()}`)
+  // .solde - Vérifier le solde de l'utilisateur
+  if (command === "solde") {
+    m.reply(`💰 *Votre Solde*\n€${users[userId].solde.toLocaleString()}`)
   }
 
-  // .topup <jumlah> - Add balance
-  else if (command === "topup") {
-    const jml = Number.parseInt(args[0])
-    if (!jml || jml < 0) return m.reply("❌ Masukkan jumlah topup yang benar!\nContoh: .topup 1000")
+  // .recharge <montant> - Ajouter du solde
+  else if (command === "recharge") {
+    const montant = Number.parseInt(args[0])
+    if (!montant || montant < 0) return m.reply("❌ Entrez un montant de recharge valide !\nExemple: .recharge 1000")
 
-    // Limit topup amount for non-owners
-    if (!isOwner && jml > 100000) {
-      return m.reply("❌ Maksimal topup untuk pengguna biasa adalah Rp100,000")
+    // Limiter le montant de recharge pour les non-propriétaires
+    if (!isOwner && montant > 100000) {
+      return m.reply("❌ Le montant maximum de recharge pour les utilisateurs normaux est de €100,000")
     }
 
-    users[userId].saldo += jml
+    users[userId].solde += montant
     if (saveUserData(users)) {
       m.reply(
-        `✅ *Topup Berhasil!*\n\nJumlah: Rp${jml.toLocaleString()}\nSaldo sekarang: Rp${users[userId].saldo.toLocaleString()}`,
+        `✅ *Recharge Réussie !*\n\nMontant: €${montant.toLocaleString()}\nSolde actuel: €${users[userId].solde.toLocaleString()}`,
       )
     } else {
-      m.reply("❌ Terjadi kesalahan saat menyimpan data")
+      m.reply("❌ Une erreur s'est produite lors de la sauvegarde des données")
     }
   }
 
-  // .toko - Show monster shop
-  else if (command === "toko") {
-    if (!monsters.length) return m.reply("❌ Daftar monster kosong!")
+  // .boutique - Afficher la boutique de monstres
+  else if (command === "boutique") {
+    if (!monsters.length) return m.reply("❌ La liste des monstres est vide !")
 
-    // Group monsters by tier
+    // Grouper les monstres par niveau
     const monstersByTier = {}
     for (const monster of monsters) {
       if (!monstersByTier[monster.tier]) {
@@ -140,25 +141,25 @@ const handler = async (m, { conn, command, args, isOwner }) => {
       monstersByTier[monster.tier].push(monster)
     }
 
-    // Sort tiers in order: S, A, B, C, D
+    // Trier les niveaux dans l'ordre : S, A, B, C, D
     const tierOrder = ["S", "A", "B", "C", "D"]
 
-    let teks = "🏪 *TOKO MONSTER*\n\n"
+    let teks = "🏪 *BOUTIQUE DE MONSTRES*\n\n"
 
-    // Display monsters by tier
+    // Afficher les monstres par niveau
     for (const tier of tierOrder) {
       if (monstersByTier[tier] && monstersByTier[tier].length > 0) {
-        teks += `${getTierEmoji(tier)} *TIER ${tier}*\n`
+        teks += `${getTierEmoji(tier)} *NIVEAU ${tier}*\n`
 
         for (const mon of monstersByTier[tier]) {
           teks += `┌─────────────────\n`
           teks += `│ ID: ${mon.id}\n`
-          teks += `│ Nama: ${mon.nama} ${getElementEmoji(mon.elemen)}\n`
-          teks += `│ Harga: Rp${mon.harga.toLocaleString()}\n`
-          teks += `│ Skill:\n`
+          teks += `│ Nom: ${mon.nom} ${getElementEmoji(mon.element)}\n`
+          teks += `│ Prix: €${mon.prix.toLocaleString()}\n`
+          teks += `│ Compétences:\n`
 
-          for (const skill of mon.skill) {
-            teks += `│   • ${skill.nama} (${skill.damage} DMG)\n`
+          for (const skill of mon.competences) {
+            teks += `│   • ${skill.nom} (${skill.degats} DMG)\n`
           }
 
           teks += `└─────────────────\n\n`
@@ -166,47 +167,47 @@ const handler = async (m, { conn, command, args, isOwner }) => {
       }
     }
 
-    teks += `Untuk membeli: .beli <id>\nContoh: .beli flamezoid`
+    teks += `Pour acheter: .acheter <id>\nExemple: .acheter flamezoid`
 
     m.reply(teks)
   }
 
-  // .beli <id> - Buy a monster
-  else if (command === "beli") {
+  // .acheter <id> - Acheter un monstre
+  else if (command === "acheter") {
     const id = args[0]?.toLowerCase()
-    if (!id) return m.reply("❌ Masukkan ID monster!\nContoh: .beli flamezoid")
+    if (!id) return m.reply("❌ Entrez l'ID du monstre !\nExemple: .acheter flamezoid")
 
     const mon = monsters.find((m) => m.id.toLowerCase() === id)
-    if (!mon) return m.reply("❌ Monster tidak ditemukan. Cek daftar monster dengan .toko")
+    if (!mon) return m.reply("❌ Monstre introuvable. Vérifiez la liste des monstres avec .boutique")
 
-    // Check if user has enough balance
-    if (users[userId].saldo < mon.harga) {
+    // Vérifier si l'utilisateur a suffisamment de solde
+    if (users[userId].solde < mon.prix) {
       return m.reply(
-        `❌ Saldo tidak cukup!\nHarga monster: Rp${mon.harga.toLocaleString()}\nSaldo kamu: Rp${users[userId].saldo.toLocaleString()}`,
+        `❌ Solde insuffisant !\nPrix du monstre: €${mon.prix.toLocaleString()}\nVotre solde: €${users[userId].solde.toLocaleString()}`,
       )
     }
 
-    // Deduct balance and add monster to collection
-    users[userId].saldo -= mon.harga
-    users[userId].koleksi.push(mon)
+    // Déduire le solde et ajouter le monstre à la collection
+    users[userId].solde -= mon.prix
+    users[userId].collection.push(mon)
 
     if (saveUserData(users)) {
       m.reply(
-        `🎉 *Pembelian Berhasil!*\n\nKamu telah membeli monster: ${mon.nama} ${getElementEmoji(mon.elemen)}\nHarga: Rp${mon.harga.toLocaleString()}\nSisa saldo: Rp${users[userId].saldo.toLocaleString()}\n\nGunakan .koleksi untuk melihat monster kamu`,
+        `🎉 *Achat Réussi !*\n\nVous avez acheté le monstre: ${mon.nom} ${getElementEmoji(mon.element)}\nPrix: €${mon.prix.toLocaleString()}\nSolde restant: €${users[userId].solde.toLocaleString()}\n\nUtilisez .collection pour voir vos monstres`,
       )
     } else {
-      m.reply("❌ Terjadi kesalahan saat menyimpan data")
+      m.reply("❌ Une erreur s'est produite lors de la sauvegarde des données")
     }
   }
 
-  // .koleksi - Show user's monster collection
-  else if (command === "koleksi") {
-    const punya = users[userId].koleksi
-    if (!punya || !punya.length) return m.reply("❌ Kamu belum punya monster. Beli monster dengan .beli <id>")
+  // .collection - Afficher la collection de monstres de l'utilisateur
+  else if (command === "collection") {
+    const punya = users[userId].collection
+    if (!punya || !punya.length) return m.reply("❌ Vous n'avez pas encore de monstre. Achetez un monstre avec .acheter <id>")
 
-    let teks = "🎮 *KOLEKSI MONSTER KAMU*\n\n"
+    let teks = "🎮 *VOTRE COLLECTION DE MONSTRES*\n\n"
 
-    // Group monsters by tier
+    // Grouper les monstres par niveau
     const monstersByTier = {}
     for (const monster of punya) {
       if (!monstersByTier[monster.tier]) {
@@ -215,21 +216,21 @@ const handler = async (m, { conn, command, args, isOwner }) => {
       monstersByTier[monster.tier].push(monster)
     }
 
-    // Sort tiers in order: S, A, B, C, D
+    // Trier les niveaux dans l'ordre : S, A, B, C, D
     const tierOrder = ["S", "A", "B", "C", "D"]
 
-    // Display monsters by tier
+    // Afficher les monstres par niveau
     for (const tier of tierOrder) {
       if (monstersByTier[tier] && monstersByTier[tier].length > 0) {
-        teks += `${getTierEmoji(tier)} *TIER ${tier}*\n`
+        teks += `${getTierEmoji(tier)} *NIVEAU ${tier}*\n`
 
         for (const mon of monstersByTier[tier]) {
           teks += `┌─────────────────\n`
-          teks += `│ Nama: ${mon.nama} ${getElementEmoji(mon.elemen)}\n`
-          teks += `│ Skill:\n`
+          teks += `│ Nom: ${mon.nom} ${getElementEmoji(mon.element)}\n`
+          teks += `│ Compétences:\n`
 
-          for (const skill of mon.skill) {
-            teks += `│   • ${skill.nama} (${skill.damage} DMG)\n`
+          for (const skill of mon.competences) {
+            teks += `│   • ${skill.nom} (${skill.degats} DMG)\n`
           }
 
           teks += `└─────────────────\n\n`
@@ -237,14 +238,14 @@ const handler = async (m, { conn, command, args, isOwner }) => {
       }
     }
 
-    teks += `Total monster: ${punya.length}`
+    teks += `Total monstres: ${punya.length}`
 
     m.reply(teks)
   }
 }
 
-handler.help = ["saldo", "topup <jumlah>", "toko", "beli <id>", "koleksi"]
+handler.help = ["solde", "recharge <montant>", "boutique", "acheter <id>", "collection"]
 handler.tags = ["rpg"]
-handler.command = ["saldo", "topup", "toko", "beli", "koleksi"]
+handler.command = ["solde", "recharge", "boutique", "acheter", "collection"]
 
 export default handler

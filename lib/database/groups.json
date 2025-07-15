@@ -1,0 +1,19 @@
+{
+  "120363403604703244@g.us": {
+    "id": "120363403604703244@g.us",
+    "name": "",
+    "settings": {
+      "welcome": false,
+      "antilink": false,
+      "antiviewonce": false,
+      "antispam": false,
+      "language": "fr"
+    },
+    "stats": {
+      "messages": 0,
+      "commands": 0
+    },
+    "createdAt": 1752574671460,
+    "lastActivity": 1752574671460
+  }
+}

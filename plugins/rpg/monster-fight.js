@@ -1,12 +1,13 @@
+
 /**
- * Monster Fight Plugin
- * Allows users to battle their monsters against other players
+ * Plugin Combat de Monstres
+ * Permet aux utilisateurs de faire combattre leurs monstres contre d'autres joueurs
  *
  * @plugin
  * @name monster-fight
  * @category rpg
- * @description Battle your monsters against other players
- * @usage .fight @tag, .skill 1/2/3, .y, .n
+ * @description Faites combattre vos monstres contre d'autres joueurs
+ * @usage .combat @tag, .competence 1/2/3, .o, .n
  */
 
 import fs from "fs"
@@ -18,277 +19,277 @@ import moment from "moment-timezone"
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-// Database paths
+// Chemins des bases de données
 const USER_DB = path.join(__dirname, "../../lib/database/user.json")
 const BATTLE_DB = path.join(__dirname, "../../lib/database/battles.json")
 
-// Get current time for logging
+// Obtenir l'heure actuelle pour les logs
 const getTime = () => {
   return moment().format("HH:mm:ss")
 }
 
-// Store pending battles in memory
-const pendingBattles = {} // Untuk menyimpan tantangan sementara
+// Stocker les combats en attente en mémoire
+const pendingBattles = {} // Pour stocker les défis temporaires
 
-// Get element emoji
+// Obtenir l'emoji de l'élément
 const getElementEmoji = (element) => {
   switch (element) {
-    case "api":
+    case "feu":
       return "🔥"
-    case "air":
+    case "eau":
       return "💧"
-    case "tanah":
+    case "terre":
       return "🌍"
-    case "listrik":
+    case "electricite":
       return "⚡"
     default:
       return "❓"
   }
 }
 
-// Load data pengguna
+// Charger les données utilisateur
 const loadUserData = () => {
   try {
     if (!fs.existsSync(USER_DB)) fs.writeFileSync(USER_DB, "{}")
     return JSON.parse(fs.readFileSync(USER_DB))
   } catch (error) {
-    console.error(chalk.red(`[${getTime()}] Error loading user data:`), error)
+    console.error(chalk.red(`[${getTime()}] Erreur lors du chargement des données utilisateur:`), error)
     return {}
   }
 }
 
-// Load data pertarungan
+// Charger les données de combat
 const loadBattleData = () => {
   try {
     if (!fs.existsSync(BATTLE_DB)) fs.writeFileSync(BATTLE_DB, "{}")
     return JSON.parse(fs.readFileSync(BATTLE_DB))
   } catch (error) {
-    console.error(chalk.red(`[${getTime()}] Error loading battle data:`), error)
+    console.error(chalk.red(`[${getTime()}] Erreur lors du chargement des données de combat:`), error)
     return {}
   }
 }
 
-// Simpan data pertarungan
+// Sauvegarder les données de combat
 const saveBattleData = (data) => {
   try {
     fs.writeFileSync(BATTLE_DB, JSON.stringify(data, null, 2))
     return true
   } catch (error) {
-    console.error(chalk.red(`[${getTime()}] Error saving battle data:`), error)
+    console.error(chalk.red(`[${getTime()}] Erreur lors de la sauvegarde des données de combat:`), error)
     return false
   }
 }
 
-// Calculate damage based on element effectiveness
-function hitungDamage(dmg, atkElem, defElem) {
+// Calculer les dégâts basés sur l'efficacité des éléments
+function calculerDegats(dmg, elemAttaque, elemDefense) {
   const counter = {
-    api: { lemah: "air", kuat: "tanah" },
-    air: { lemah: "listrik", kuat: "api" },
-    tanah: { lemah: "api", kuat: "listrik" },
-    listrik: { lemah: "tanah", kuat: "air" },
+    feu: { faible: "eau", fort: "terre" },
+    eau: { faible: "electricite", fort: "feu" },
+    terre: { faible: "feu", fort: "electricite" },
+    electricite: { faible: "terre", fort: "eau" },
   }
 
-  let effectiveness = "normal"
+  let efficacite = "normal"
 
-  if (counter[atkElem]?.kuat === defElem) {
-    effectiveness = "strong"
-    return { damage: Math.floor(dmg * 1.2), effectiveness }
+  if (counter[elemAttaque]?.fort === elemDefense) {
+    efficacite = "fort"
+    return { degats: Math.floor(dmg * 1.2), efficacite }
   }
-  if (counter[atkElem]?.lemah === defElem) {
-    effectiveness = "weak"
-    return { damage: Math.floor(dmg * 0.8), effectiveness }
+  if (counter[elemAttaque]?.faible === elemDefense) {
+    efficacite = "faible"
+    return { degats: Math.floor(dmg * 0.8), efficacite }
   }
-  return { damage: dmg, effectiveness }
+  return { degats: dmg, efficacite }
 }
 
 const handler = async (m, { conn, args, command }) => {
-  // Clean up sender ID to ensure consistency
+  // Nettoyer l'ID de l'expéditeur pour assurer la cohérence
   const sender = m.sender.split("@")[0]
   const users = loadUserData()
   const battles = loadBattleData()
 
-  // .fight @tag - Challenge another player to a battle
-  if (command === "fight") {
+  // .combat @tag - Défier un autre joueur à un combat
+  if (command === "combat") {
     const opponent = m.mentionedJid[0]
     if (!opponent) {
-      return m.reply("❌ Tag lawanmu! Contoh: .fight @target")
+      return m.reply("❌ Mentionnez votre adversaire ! Exemple: .combat @cible")
     }
 
-    // Clean up opponent ID
+    // Nettoyer l'ID de l'adversaire
     const opponentId = opponent.split("@")[0]
 
-    // Check if both players have monsters
-    if (!users[sender]?.koleksi?.length) {
-      return m.reply("❌ Kamu belum punya monster. Beli monster dengan .beli <id>")
+    // Vérifier si les deux joueurs ont des monstres
+    if (!users[sender]?.collection?.length) {
+      return m.reply("❌ Vous n'avez pas encore de monstre. Achetez un monstre avec .acheter <id>")
     }
 
-    if (!users[opponentId]?.koleksi?.length) {
-      return m.reply("❌ Lawan belum punya monster. Suruh dia beli monster dulu.")
+    if (!users[opponentId]?.collection?.length) {
+      return m.reply("❌ L'adversaire n'a pas encore de monstre. Dites-lui d'acheter un monstre d'abord.")
     }
 
-    // Check if either player is already in a battle
+    // Vérifier si l'un des joueurs est déjà dans un combat
     if (battles[sender] || battles[opponentId]) {
-      return m.reply("❌ Salah satu pemain sedang dalam pertarungan.")
+      return m.reply("❌ L'un des joueurs est déjà en combat.")
     }
 
-    // Store the challenge temporarily
+    // Stocker le défi temporairement
     pendingBattles[opponentId] = {
       challenger: sender,
       timestamp: Date.now(),
     }
 
-    // Send challenge notification
+    // Envoyer la notification de défi
     await m.reply(
-      `⚔️ @${opponentId} ditantang bertarung oleh @${sender}!\n\nBalas dengan .y untuk menerima atau .n untuk menolak.`,
+      `⚔️ @${opponentId} est défié en combat par @${sender}!\n\nRépondez avec .o pour accepter ou .n pour refuser.`,
       {
         mentions: [opponent, m.sender],
       },
     )
   }
 
-  // .y/.n - Accept or reject a battle challenge
-  else if (command === "y" || command === "n") {
+  // .o/.n - Accepter ou refuser un défi de combat
+  else if (command === "o" || command === "n") {
     const challenge = pendingBattles[sender]
     if (!challenge) {
-      return m.reply("❌ Tidak ada tantangan yang menunggumu.")
+      return m.reply("❌ Aucun défi ne vous attend.")
     }
 
-    // Remove the challenge after response
+    // Supprimer le défi après la réponse
     delete pendingBattles[sender]
 
-    // If rejected
+    // Si refusé
     if (command === "n") {
-      return m.reply(`❌ @${sender} menolak tantangan.`, {
+      return m.reply(`❌ @${sender} refuse le défi.`, {
         mentions: [`${challenge.challenger}@s.whatsapp.net`],
       })
     }
 
-    // If accepted
+    // Si accepté
     const opponent = challenge.challenger
 
-    // Double-check if either player is already in a battle
+    // Double vérification si l'un des joueurs est déjà en combat
     if (battles[opponent] || battles[sender]) {
-      return m.reply("❌ Salah satu pemain sudah dalam pertarungan lain.")
+      return m.reply("❌ L'un des joueurs est déjà dans un autre combat.")
     }
 
-    // Get the first monster from each player's collection
-    const myMon = users[sender].koleksi[0]
-    const opMon = users[opponent].koleksi[0]
+    // Obtenir le premier monstre de la collection de chaque joueur
+    const myMon = users[sender].collection[0]
+    const opMon = users[opponent].collection[0]
 
-    // Create battle data
+    // Créer les données de combat
     const battle = {
-      player1: opponent,
-      player2: sender,
+      joueur1: opponent,
+      joueur2: sender,
       mon1: opMon,
       mon2: myMon,
-      hp1: 100,
-      hp2: 100,
-      turn: opponent, // Challenger goes first
+      pv1: 100,
+      pv2: 100,
+      tour: opponent, // Le challenger commence
       log: [],
     }
 
-    // Store battle data for both players
+    // Stocker les données de combat pour les deux joueurs
     battles[opponent] = battle
     battles[sender] = battle
     saveBattleData(battles)
 
-    // Send battle start notification
+    // Envoyer la notification de début de combat
     await m.reply(
-      `⚔️ *PERTARUNGAN DIMULAI!*\n\n${getElementEmoji(opMon.elemen)} ${opMon.nama} vs ${myMon.nama} ${getElementEmoji(myMon.elemen)}\n\n@${opponent} silakan gunakan .skill 1/2/3`,
+      `⚔️ *COMBAT COMMENCÉ !*\n\n${getElementEmoji(opMon.element)} ${opMon.nom} vs ${myMon.nom} ${getElementEmoji(myMon.element)}\n\n@${opponent} veuillez utiliser .competence 1/2/3`,
       {
         mentions: [`${opponent}@s.whatsapp.net`],
       },
     )
   }
 
-  // .skill <angka> - Use a skill in battle
-  else if (command === "skill") {
+  // .competence <numéro> - Utiliser une compétence en combat
+  else if (command === "competence") {
     const skillIndex = Number.parseInt(args[0]) - 1
     if (isNaN(skillIndex) || skillIndex < 0 || skillIndex > 2) {
-      return m.reply("❌ Gunakan .skill 1, 2, atau 3")
+      return m.reply("❌ Utilisez .competence 1, 2, ou 3")
     }
 
-    // Check if player is in a battle
+    // Vérifier si le joueur est en combat
     const battle = battles[sender]
     if (!battle) {
-      return m.reply("❌ Kamu tidak sedang dalam pertarungan.")
+      return m.reply("❌ Vous n'êtes pas en combat.")
     }
 
-    // Check if it's player's turn
-    if (battle.turn !== sender) {
-      return m.reply("❌ Bukan giliran kamu!")
+    // Vérifier si c'est le tour du joueur
+    if (battle.tour !== sender) {
+      return m.reply("❌ Ce n'est pas votre tour !")
     }
 
-    // Determine which monster belongs to the player
-    const isPlayer1 = battle.player1 === sender
+    // Déterminer quel monstre appartient au joueur
+    const isPlayer1 = battle.joueur1 === sender
     const myMon = isPlayer1 ? battle.mon1 : battle.mon2
     const opMon = isPlayer1 ? battle.mon2 : battle.mon1
-    const myHP = isPlayer1 ? "hp1" : "hp2"
-    const opHP = isPlayer1 ? "hp2" : "hp1"
+    const myHP = isPlayer1 ? "pv1" : "pv2"
+    const opHP = isPlayer1 ? "pv2" : "pv1"
 
-    // Get the selected skill
-    const skill = myMon.skill[skillIndex]
+    // Obtenir la compétence sélectionnée
+    const skill = myMon.competences[skillIndex]
     if (!skill) {
-      return m.reply("❌ Skill tidak ditemukan!")
+      return m.reply("❌ Compétence introuvable !")
     }
 
-    // Calculate damage based on element effectiveness
-    const rawDmg = skill.damage
-    const { damage: dmg, effectiveness } = hitungDamage(rawDmg, myMon.elemen, opMon.elemen)
+    // Calculer les dégâts basés sur l'efficacité des éléments
+    const rawDmg = skill.degats
+    const { degats: dmg, efficacite } = calculerDegats(rawDmg, myMon.element, opMon.element)
 
-    // Apply damage
+    // Appliquer les dégâts
     battle[opHP] -= dmg
     if (battle[opHP] < 0) battle[opHP] = 0
 
-    // Add effectiveness indicator
-    let effectivenessMsg = ""
-    let effectivenessEmoji = ""
-    if (effectiveness === "strong") {
-      effectivenessMsg = " (EFEKTIF!)"
-      effectivenessEmoji = "⚡"
-    } else if (effectiveness === "weak") {
-      effectivenessMsg = " (KURANG EFEKTIF)"
-      effectivenessEmoji = "🕳️"
+    // Ajouter l'indicateur d'efficacité
+    let efficaciteMsg = ""
+    let efficaciteEmoji = ""
+    if (efficacite === "fort") {
+      efficaciteMsg = " (EFFICACE !)"
+      efficaciteEmoji = "⚡"
+    } else if (efficacite === "faible") {
+      efficaciteMsg = " (PEU EFFICACE)"
+      efficaciteEmoji = "🕳️"
     }
 
-    // Add to battle log
-    battle.log.push(`@${sender} pakai *${skill.nama}* → -${dmg} HP${effectivenessMsg}`)
+    // Ajouter au log de combat
+    battle.log.push(`@${sender} utilise *${skill.nom}* → -${dmg} PV${efficaciteMsg}`)
 
-    // Check for victory
-    if (battle.hp1 <= 0 || battle.hp2 <= 0) {
-      const winner = battle.hp1 > 0 ? battle.player1 : battle.player2
-      const loser = battle.hp1 > 0 ? battle.player2 : battle.player1
-      const monWin = battle.hp1 > 0 ? battle.mon1.nama : battle.mon2.nama
+    // Vérifier la victoire
+    if (battle.pv1 <= 0 || battle.pv2 <= 0) {
+      const winner = battle.pv1 > 0 ? battle.joueur1 : battle.joueur2
+      const loser = battle.pv1 > 0 ? battle.joueur2 : battle.joueur1
+      const monWin = battle.pv1 > 0 ? battle.mon1.nom : battle.mon2.nom
 
-      // Create battle summary
-      let battleSummary = `🏆 *PERTARUNGAN SELESAI!*\n\n`
-      battleSummary += `Pemenang: @${winner}\nMonster: ${monWin}\n\n`
-      battleSummary += `*Log Pertarungan:*\n${battle.log.join("\n")}`
+      // Créer le résumé du combat
+      let battleSummary = `🏆 *COMBAT TERMINÉ !*\n\n`
+      battleSummary += `Vainqueur: @${winner}\nMonstre: ${monWin}\n\n`
+      battleSummary += `*Log du Combat:*\n${battle.log.join("\n")}`
 
-      // Send battle results
+      // Envoyer les résultats du combat
       await m.reply(battleSummary, {
         mentions: [`${winner}@s.whatsapp.net`, `${loser}@s.whatsapp.net`],
       })
 
-      // Remove battle data
-      delete battles[battle.player1]
-      delete battles[battle.player2]
+      // Supprimer les données de combat
+      delete battles[battle.joueur1]
+      delete battles[battle.joueur2]
       saveBattleData(battles)
       return
     }
 
-    // Switch turns
-    const nextTurn = battle.player1 === sender ? battle.player2 : battle.player1
-    battle.turn = nextTurn
+    // Changer de tour
+    const nextTurn = battle.joueur1 === sender ? battle.joueur2 : battle.joueur1
+    battle.tour = nextTurn
 
-    // Update battle data for both players
-    battles[battle.player1] = battle
-    battles[battle.player2] = battle
+    // Mettre à jour les données de combat pour les deux joueurs
+    battles[battle.joueur1] = battle
+    battles[battle.joueur2] = battle
     saveBattleData(battles)
 
-    // Send battle update
+    // Envoyer la mise à jour du combat
     await m.reply(
-      `${getElementEmoji(myMon.elemen)} @${sender} menyerang dengan *${skill.nama}*! ${effectivenessEmoji}\n\n@${nextTurn} giliranmu. Gunakan .skill 1/2/3\n\n*Status HP:*\n${battle.mon1.nama}: ${battle.hp1} HP\n${battle.mon2.nama}: ${battle.hp2} HP`,
+      `${getElementEmoji(myMon.element)} @${sender} attaque avec *${skill.nom}* ! ${efficaciteEmoji}\n\n@${nextTurn} c'est votre tour. Utilisez .competence 1/2/3\n\n*État des PV:*\n${battle.mon1.nom}: ${battle.pv1} PV\n${battle.mon2.nom}: ${battle.pv2} PV`,
       {
         mentions: [`${sender}@s.whatsapp.net`, `${nextTurn}@s.whatsapp.net`],
       },
@@ -296,8 +297,8 @@ const handler = async (m, { conn, args, command }) => {
   }
 }
 
-handler.help = ["fight @tag", "skill 1/2/3", "y", "n"]
+handler.help = ["combat @tag", "competence 1/2/3", "o", "n"]
 handler.tags = ["rpg"]
-handler.command = ["fight", "skill", "y", "n"]
+handler.command = ["combat", "competence", "o", "n"]
 
 export default handler
