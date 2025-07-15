@@ -7,7 +7,7 @@
  * MERILDA-MD WhatsApp BoT BASE 
  * Version: 1.0.0
  * Created by hhhisoka
- * GitHub: https://github.com/hhhisoka-bot/MERILDA-MD
+ * GitHub: https://github.com/hhhisoka-bot
  */
 
 // Node.js version check

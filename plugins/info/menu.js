@@ -78,7 +78,7 @@ const handler = async (m, { conn, prefix, pushname }) => {
     // Footer
     menuText += `╭─❍「 *INFORMATIONS* 」\n`;
     menuText += `├❍ 👑 = Commande owner uniquement\n`;
-    menuText += `├❍ 💎 = Commande premium\n`;
+    
     menuText += `├❍ 👥 = Commande groupe uniquement\n`;
     menuText += `├❍ 👮 = Commande admin groupe\n`;
     menuText += `╰─❍\n\n`;
