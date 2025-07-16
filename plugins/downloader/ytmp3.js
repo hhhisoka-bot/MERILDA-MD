@@ -4,13 +4,13 @@ import yts from 'yt-search';
 
 let downloading = false;
 
-const handler = async (m, { conn, text, args, command, prefix }) => {
+const handler = async (m, { conn, text, args, command, prefix, reply }) => {
   if (!args[0]) {
-    return m.reply(`*Utilisez: ${prefix + command} <lien YouTube ou terme de recherche>*`);
+    return reply(`*Utilisez: ${prefix + command} <lien YouTube ou terme de recherche>*`);
   }
 
   if (downloading) {
-    return m.reply("*Un téléchargement est déjà en cours. Veuillez patienter...*");
+    return reply("*Un téléchargement est déjà en cours. Veuillez patienter...*");
   }
 
   downloading = true;
@@ -23,31 +23,26 @@ const handler = async (m, { conn, text, args, command, prefix }) => {
       const searchResults = await yts(youtubeLink);
       if (!searchResults.videos.length) {
         downloading = false;
-        return m.reply("*Aucune vidéo trouvée pour votre recherche*");
+        return reply("*Aucune vidéo trouvée pour votre recherche*");
       }
       youtubeLink = searchResults.videos[0].url;
     }
 
-    await m.reply("*🎵 Téléchargement de l'audio en cours...*");
+    await reply("*🎵 Téléchargement de l'audio en cours...*");
 
-    // Ici vous devrez implémenter votre logique de téléchargement
-    // En utilisant votre API ou service préféré
+    // Pour l'instant, on retourne juste les informations
+    // Vous devrez implémenter votre API de téléchargement préférée
+    const videoInfo = await yts({ videoId: youtubeLink.split('v=')[1]?.split('&')[0] || youtubeLink.split('/').pop() });
     
-    // Exemple de structure:
-    const audioData = {
-      title: "Titre de la vidéo",
-      url: youtubeLink,
-      // autres métadonnées
-    };
-
-    // Simuler le téléchargement (remplacez par votre logique)
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    await m.reply(`✅ *Audio téléchargé avec succès!*\n📱 *Titre:* ${audioData.title}`);
+    if (videoInfo) {
+      await reply(`✅ *Audio trouvé!*\n📱 *Titre:* ${videoInfo.title}\n👤 *Auteur:* ${videoInfo.author.name}\n⏱️ *Durée:* ${videoInfo.timestamp}\n\n_Note: Implémentez votre API de téléchargement préférée dans ce plugin_`);
+    } else {
+      await reply("❌ *Impossible de récupérer les informations de la vidéo*");
+    }
 
   } catch (error) {
     console.error('Erreur lors du téléchargement audio:', error);
-    await m.reply("*❌ Erreur lors du téléchargement. Veuillez réessayer.*");
+    await reply("*❌ Erreur lors du téléchargement. Veuillez réessayer.*");
   } finally {
     downloading = false;
   }

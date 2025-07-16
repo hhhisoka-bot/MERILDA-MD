@@ -107,11 +107,11 @@ const handler = async (m, { conn, args, command }) => {
   const users = loadUserData()
   const battles = loadBattleData()
 
-  // .fight @tag - Challenge another player to a battle
-  if (command === "fight") {
+  // .combat @tag - Challenge another player to a battle
+  if (command === "combat") {
     const opponent = m.mentionedJid[0]
     if (!opponent) {
-      return m.reply("❌ Tag lawanmu! Contoh: .fight @target")
+      return m.reply("❌ Mentionnez votre adversaire! Exemple: .combat @target")
     }
 
     // Clean up opponent ID
@@ -119,16 +119,16 @@ const handler = async (m, { conn, args, command }) => {
 
     // Check if both players have monsters
     if (!users[sender]?.koleksi?.length) {
-      return m.reply("❌ Kamu belum punya monster. Beli monster dengan .beli <id>")
+      return m.reply("❌ Vous n'avez pas de monstres. Achetez un monstre avec .acheter <id>")
     }
 
     if (!users[opponentId]?.koleksi?.length) {
-      return m.reply("❌ Lawan belum punya monster. Suruh dia beli monster dulu.")
+      return m.reply("❌ L'adversaire n'a pas de monstres. Il doit acheter un monstre d'abord.")
     }
 
     // Check if either player is already in a battle
     if (battles[sender] || battles[opponentId]) {
-      return m.reply("❌ Salah satu pemain sedang dalam pertarungan.")
+      return m.reply("❌ Un des joueurs est déjà en combat.")
     }
 
     // Store the challenge temporarily
@@ -139,18 +139,18 @@ const handler = async (m, { conn, args, command }) => {
 
     // Send challenge notification
     await m.reply(
-      `⚔️ @${opponentId} ditantang bertarung oleh @${sender}!\n\nBalas dengan .y untuk menerima atau .n untuk menolak.`,
+      `⚔️ @${opponentId} est défié au combat par @${sender}!\n\nRépondez avec .o pour accepter ou .n pour refuser.`,
       {
         mentions: [opponent, m.sender],
       },
     )
   }
 
-  // .y/.n - Accept or reject a battle challenge
-  else if (command === "y" || command === "n") {
+  // .o/.n - Accept or reject a battle challenge
+  else if (command === "o" || command === "n") {
     const challenge = pendingBattles[sender]
     if (!challenge) {
-      return m.reply("❌ Tidak ada tantangan yang menunggumu.")
+      return m.reply("❌ Aucun défi en attente.")
     }
 
     // Remove the challenge after response
@@ -158,7 +158,7 @@ const handler = async (m, { conn, args, command }) => {
 
     // If rejected
     if (command === "n") {
-      return m.reply(`❌ @${sender} menolak tantangan.`, {
+      return m.reply(`❌ @${sender} refuse le défi.`, {
         mentions: [`${challenge.challenger}@s.whatsapp.net`],
       })
     }
@@ -168,7 +168,7 @@ const handler = async (m, { conn, args, command }) => {
 
     // Double-check if either player is already in a battle
     if (battles[opponent] || battles[sender]) {
-      return m.reply("❌ Salah satu pemain sudah dalam pertarungan lain.")
+      return m.reply("❌ Un des joueurs est déjà dans un autre combat.")
     }
 
     // Get the first monster from each player's collection
@@ -194,29 +194,29 @@ const handler = async (m, { conn, args, command }) => {
 
     // Send battle start notification
     await m.reply(
-      `⚔️ *PERTARUNGAN DIMULAI!*\n\n${getElementEmoji(opMon.elemen)} ${opMon.nama} vs ${myMon.nama} ${getElementEmoji(myMon.elemen)}\n\n@${opponent} silakan gunakan .skill 1/2/3`,
+      `⚔️ *COMBAT COMMENCE!*\n\n${getElementEmoji(opMon.elemen)} ${opMon.nama} vs ${myMon.nama} ${getElementEmoji(myMon.elemen)}\n\n@${opponent} utilisez .attaque 1/2/3`,
       {
         mentions: [`${opponent}@s.whatsapp.net`],
       },
     )
   }
 
-  // .skill <angka> - Use a skill in battle
-  else if (command === "skill") {
+  // .attaque <numero> - Use a skill in battle
+  else if (command === "attaque") {
     const skillIndex = Number.parseInt(args[0]) - 1
     if (isNaN(skillIndex) || skillIndex < 0 || skillIndex > 2) {
-      return m.reply("❌ Gunakan .skill 1, 2, atau 3")
+      return m.reply("❌ Utilisez .attaque 1, 2, ou 3")
     }
 
     // Check if player is in a battle
     const battle = battles[sender]
     if (!battle) {
-      return m.reply("❌ Kamu tidak sedang dalam pertarungan.")
+      return m.reply("❌ Vous n'êtes pas en combat.")
     }
 
     // Check if it's player's turn
     if (battle.turn !== sender) {
-      return m.reply("❌ Bukan giliran kamu!")
+      return m.reply("❌ Ce n'est pas votre tour!")
     }
 
     // Determine which monster belongs to the player
@@ -252,7 +252,7 @@ const handler = async (m, { conn, args, command }) => {
     }
 
     // Add to battle log
-    battle.log.push(`@${sender} pakai *${skill.nama}* → -${dmg} HP${effectivenessMsg}`)
+    battle.log.push(`@${sender} utilise *${skill.nama}* → -${dmg} HP${effectivenessMsg}`)
 
     // Check for victory
     if (battle.hp1 <= 0 || battle.hp2 <= 0) {
@@ -261,9 +261,9 @@ const handler = async (m, { conn, args, command }) => {
       const monWin = battle.hp1 > 0 ? battle.mon1.nama : battle.mon2.nama
 
       // Create battle summary
-      let battleSummary = `🏆 *PERTARUNGAN SELESAI!*\n\n`
-      battleSummary += `Pemenang: @${winner}\nMonster: ${monWin}\n\n`
-      battleSummary += `*Log Pertarungan:*\n${battle.log.join("\n")}`
+      let battleSummary = `🏆 *COMBAT TERMINÉ!*\n\n`
+      battleSummary += `Vainqueur: @${winner}\nMonstre: ${monWin}\n\n`
+      battleSummary += `*Journal du Combat:*\n${battle.log.join("\n")}`
 
       // Send battle results
       await m.reply(battleSummary, {
@@ -288,7 +288,7 @@ const handler = async (m, { conn, args, command }) => {
 
     // Send battle update
     await m.reply(
-      `${getElementEmoji(myMon.elemen)} @${sender} menyerang dengan *${skill.nama}*! ${effectivenessEmoji}\n\n@${nextTurn} giliranmu. Gunakan .skill 1/2/3\n\n*Status HP:*\n${battle.mon1.nama}: ${battle.hp1} HP\n${battle.mon2.nama}: ${battle.hp2} HP`,
+      `${getElementEmoji(myMon.elemen)} @${sender} attaque avec *${skill.nama}*! ${effectivenessEmoji}\n\n@${nextTurn} à votre tour. Utilisez .attaque 1/2/3\n\n*Statut HP:*\n${battle.mon1.nama}: ${battle.hp1} HP\n${battle.mon2.nama}: ${battle.hp2} HP`,
       {
         mentions: [`${sender}@s.whatsapp.net`, `${nextTurn}@s.whatsapp.net`],
       },
@@ -296,8 +296,8 @@ const handler = async (m, { conn, args, command }) => {
   }
 }
 
-handler.help = ["fight @tag", "skill 1/2/3", "y", "n"]
+handler.help = ["combat @tag", "attaque 1/2/3", "o", "n"]
 handler.tags = ["rpg"]
-handler.command = ["fight", "skill", "y", "n"]
+handler.command = ["combat", "attaque", "o", "n"]
 
 export default handler

@@ -1,10 +1,18 @@
-
 {
   "botSettings": {
     "autoRead": false,
     "autoTyping": false,
     "maxFileSize": 50,
-    "allowedFormats": ["jpg", "jpeg", "png", "gif", "webp", "mp4", "mp3", "pdf"],
+    "allowedFormats": [
+      "jpg",
+      "jpeg",
+      "png",
+      "gif",
+      "webp",
+      "mp4",
+      "mp3",
+      "pdf"
+    ],
     "defaultLanguage": "fr",
     "maintenanceMode": false,
     "maintenanceMessage": "🔧 Bot en maintenance, veuillez réessayer plus tard."
@@ -22,5 +30,12 @@
     "maxMessages": 5,
     "timeWindow": 10000,
     "punishment": "warn"
+  },
+  "undefined": {
+    "fakeTyping": true,
+    "fakeRecording": false,
+    "autoReadBroadcast": true,
+    "broadcastReply": false,
+    "broadcastReplyMessage": "Message automatique du bot"
   }
 }

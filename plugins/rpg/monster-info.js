@@ -80,8 +80,8 @@ const handler = async (m, { conn, args, command }) => {
 
   // If no ID provided, show list of monsters
   if (!args[0]) {
-    let teks = "📚 *DAFTAR MONSTER*\n\n"
-    teks += "Gunakan .monsterinfo <id> untuk melihat detail monster\n\n"
+    let teks = "📚 *LISTE DES MONSTRES*\n\n"
+    teks += "Utilisez .infomonster <id> pour voir les détails d'un monstre\n\n"
 
     // Group monsters by tier
     const monstersByTier = {}
@@ -99,7 +99,7 @@ const handler = async (m, { conn, args, command }) => {
     for (const tier of tierOrder) {
       if (monstersByTier[tier] && monstersByTier[tier].length > 0) {
         const tierInfo = getTierInfo(tier)
-        teks += `${tierInfo.emoji} *TIER ${tier} (${tierInfo.desc})*\n`
+        teks += `${tierInfo.emoji} *NIVEAU ${tier} (${tierInfo.desc})*\n`
 
         for (const mon of monstersByTier[tier]) {
           const elementInfo = getElementInfo(mon.elemen)
@@ -118,7 +118,7 @@ const handler = async (m, { conn, args, command }) => {
   const monster = monsters.find((m) => m.id.toLowerCase() === id)
 
   if (!monster) {
-    return m.reply("❌ Monster tidak ditemukan. Gunakan .monsterinfo tanpa argumen untuk melihat daftar monster.")
+    return m.reply("❌ Monstre introuvable. Utilisez .infomonster sans argument pour voir la liste des monstres.")
   }
 
   // Get element and tier info
@@ -126,21 +126,21 @@ const handler = async (m, { conn, args, command }) => {
   const tierInfo = getTierInfo(monster.tier)
 
   // Create detailed monster info
-  let teks = `🔍 *DETAIL MONSTER*\n\n`
-  teks += `📋 *Informasi Umum*\n`
-  teks += `• Nama: ${monster.nama}\n`
+  let teks = `🔍 *DÉTAILS DU MONSTRE*\n\n`
+  teks += `📋 *Informations Générales*\n`
+  teks += `• Nom: ${monster.nama}\n`
   teks += `• ID: ${monster.id}\n`
-  teks += `• Tier: ${tierInfo.emoji} ${tierInfo.name} (${tierInfo.desc})\n`
-  teks += `• Elemen: ${elementInfo.emoji} ${elementInfo.name}\n`
-  teks += `• Harga: Rp${monster.harga.toLocaleString()}\n\n`
+  teks += `• Niveau: ${tierInfo.emoji} ${tierInfo.name} (${tierInfo.desc})\n`
+  teks += `• Élément: ${elementInfo.emoji} ${elementInfo.name}\n`
+  teks += `• Prix: ${monster.harga.toLocaleString()} FCFA\n\n`
 
-  teks += `⚔️ *Skill*\n`
+  teks += `⚔️ *Compétences*\n`
   for (let i = 0; i < monster.skill.length; i++) {
     const skill = monster.skill[i]
-    teks += `• Skill ${i + 1}: ${skill.nama} (${skill.damage} DMG)\n`
+    teks += `• Compétence ${i + 1}: ${skill.nama} (${skill.damage} DMG)\n`
   }
 
-  teks += `\n📊 *Efektivitas Elemen*\n`
+  teks += `\n📊 *Efficacité des Éléments*\n`
 
   // Add element effectiveness information
   const effectiveness = {
@@ -153,14 +153,14 @@ const handler = async (m, { conn, args, command }) => {
   const strongAgainst = getElementInfo(effectiveness[monster.elemen]?.kuat || "")
   const weakAgainst = getElementInfo(effectiveness[monster.elemen]?.lemah || "")
 
-  teks += `• Kuat melawan: ${strongAgainst.emoji} ${strongAgainst.name}\n`
-  teks += `• Lemah terhadap: ${weakAgainst.emoji} ${weakAgainst.name}\n`
+  teks += `• Fort contre: ${strongAgainst.emoji} ${strongAgainst.name}\n`
+  teks += `• Faible contre: ${weakAgainst.emoji} ${weakAgainst.name}\n`
 
   return m.reply(teks)
 }
 
-handler.help = ["monsterinfo <id>"]
+handler.help = ["infomonster <id>"]
 handler.tags = ["rpg"]
-handler.command = ["monsterinfo", "minfo"]
+handler.command = ["infomonster", "infom"]
 
 export default handler

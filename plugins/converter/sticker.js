@@ -1,63 +1,46 @@
+import { writeExif } from "../../lib/exif.js"
 
-const handler = async (m, { conn, args, text, quoted }) => {
-  try {
-    let stiker = false;
-    
-    if (!quoted && !args[0]) {
-      return m.reply("*Répondez à une image/vidéo ou fournissez un lien d'image pour créer un sticker*");
-    }
+const handler = async (m, { conn, args, text, command, prefix, quoted, mime, reply }) => {
+  if (!quoted) return reply(`Répondez à une image ou vidéo avec la commande *${prefix + command}*`)
 
-    const q = quoted || m;
-    const mime = (q.msg || q).mimetype || q.mediaType || '';
-
-    if (/webp|image|video/g.test(mime)) {
-      const img = await q.download?.();
-      if (!img) {
-        return m.reply("*Impossible de télécharger le média. Veuillez réessayer.*");
-      }
-
-      try {
-        // Créer le sticker avec les métadonnées du bot
-        const packname = global.botName || "MERILDA";
-        const author = global.ownerName || "hhhisoka";
-        
-        // Simulation de création de sticker (vous devrez implémenter la logique de sticker)
-        await m.reply("*Création du sticker en cours...*");
-        
-        // Ici vous devrez implémenter la conversion en sticker selon votre librairie
-        await conn.sendMessage(m.chat, {
-          sticker: img,
-          // Ajoutez ici les métadonnées nécessaires
-        }, { quoted: m });
-        
-      } catch (error) {
-        console.error('Erreur lors de la création du sticker:', error);
-        return m.reply("*Erreur lors de la création du sticker*");
-      }
-    } else if (args[0] && isUrl(args[0])) {
-      try {
-        await m.reply("*Téléchargement et création du sticker en cours...*");
-        // Logique pour créer un sticker à partir d'une URL
-        // Vous devrez implémenter cette partie selon votre librairie
-      } catch (error) {
-        return m.reply("*Erreur: L'URL fournie n'est pas valide ou accessible*");
-      }
-    } else {
-      return m.reply("*Format non supporté. Utilisez une image, vidéo ou URL d'image*");
-    }
-
-  } catch (error) {
-    console.error('Erreur générale dans le plugin sticker:', error);
-    m.reply("*Une erreur s'est produite lors de la création du sticker*");
+  if (!/image|video/.test(mime)) {
+    return reply(`Répondez à une image ou vidéo avec la commande *${prefix + command}*`)
   }
-};
 
-handler.help = ["sticker", "s"];
-handler.tags = ["converter"];
-handler.command = /^s(tic?ker)?(gif)?(wm)?$/i;
+  reply("Traitement en cours... Veuillez patienter")
 
-export default handler;
+  try {
+    const media = await quoted.download()
 
-const isUrl = (text) => {
-  return text.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)(jpe?g|gif|png)/, 'gi'));
-};
+    if (/video/.test(mime)) {
+      if ((quoted.msg || quoted).seconds > 10) {
+        return reply("Maximum 10 secondes!")
+      }
+    }
+
+    // Parse packname and author from args
+    let [packname, ...author] = args.join(' ').split('|')
+    author = (author || []).join('|')
+
+    const sticker = await writeExif(media, {
+      packname: packname || global.packname || "MERILDA-MD",
+      author: author || global.author || "hhhisoka",
+    })
+
+    await conn.sendMessage(m.chat, { sticker: { url: sticker } }, { quoted: m })
+
+    // Clean up temporary file if it exists
+    if (fs.existsSync(sticker)) {
+      fs.unlinkSync(sticker)
+    }
+  } catch (error) {
+    console.error(`Erreur lors de la création du sticker: ${error}`)
+    reply(`Erreur lors de la création du sticker: ${error.message}`)
+  }
+}
+
+handler.help = ["sticker", "s"]
+handler.tags = ["converter"]
+handler.command = /^s(tic?ker)?(gif)?(wm)?$/i
+
+export default handler

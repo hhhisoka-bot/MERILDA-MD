@@ -1,1 +1,28 @@
-{}
+{
+  "2250161010233@s.whatsapp.net": {
+    "saldo": null,
+    "koleksi": [
+      {
+        "id": "volcanix",
+        "nom": "Volcanix",
+        "tier": "S",
+        "element": "feu",
+        "prix": 9500,
+        "competences": [
+          {
+            "nom": "Éruption de Magma",
+            "degats": 65
+          },
+          {
+            "nom": "Éruption Solaire",
+            "degats": 70
+          },
+          {
+            "nom": "Cœur Infernal",
+            "degats": 85
+          }
+        ]
+      }
+    ]
+  }
+}

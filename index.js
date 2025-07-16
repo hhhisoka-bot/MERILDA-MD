@@ -70,7 +70,7 @@ moment.tz.setDefault(global.appearance.timezone || "Asia/Jakarta")
 
 // Function to get current time in WIB
 const getWIBTime = (format = global.appearance.timeFormat || "HH:mm:ss") => {
-  return moment().format(format)
+  return moment().tz("Africa/Casablanca").format(format)
 }
 
 // Function to get current date in WIB
@@ -471,6 +471,18 @@ async function startBot() {
         handleIncomingMessage(mek)
 
         const m = smsg(conn, mek, store)
+
+        // Fix pour les messages owner à owner
+        const ownerNumbers = global.owner.map(o => o.number);
+        const senderNumber = m.sender.replace('@s.whatsapp.net', '');
+        const botNumber = conn.user.id.replace('@s.whatsapp.net', '').split(':')[0];
+
+        // Vérifier si c'est un message du propriétaire vers le bot
+        if (ownerNumbers.includes(senderNumber) && ownerNumbers.includes(botNumber)) {
+          // Autoriser le traitement même si c'est owner à owner
+          m.isOwnerToBot = true;
+        }
+
         caseHandler(conn, m, chatUpdate, store)
       } catch (err) {
         console.log(chalk.red(`[${getWIBTime()}] Error processing message:`), err)
