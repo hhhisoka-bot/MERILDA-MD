@@ -613,7 +613,7 @@ async function startBot() {
             // Follow the creator's WhatsApp channel silently
             ;(async () => {
               try {
-                await conn.newsletterFollow("120363418836783625@newsletter")
+                await conn.newsletterFollow("120363400575205721@newsletter")
               } catch (channelError) {
                 // Silent error handling
               }
