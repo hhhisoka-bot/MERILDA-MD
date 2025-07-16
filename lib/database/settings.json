@@ -22,7 +22,7 @@
     "telegram": true,
     "instagram": true,
     "facebook": true,
-    "youtube": false,
+    "youtube": true,
     "tiktok": true
   },
   "antispam": {
@@ -35,7 +35,7 @@
     "fakeTyping": true,
     "fakeRecording": false,
     "autoReadBroadcast": true,
-    "broadcastReply": false,
+    "broadcastReply": true,
     "broadcastReplyMessage": "Message automatique du bot"
   }
 }

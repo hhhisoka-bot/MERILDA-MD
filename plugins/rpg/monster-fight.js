@@ -33,13 +33,13 @@ const pendingBattles = {} // Untuk menyimpan tantangan sementara
 // Get element emoji
 const getElementEmoji = (element) => {
   switch (element) {
-    case "api":
+    case "feu":
       return "🔥"
     case "air":
       return "💧"
-    case "tanah":
+    case "terre":
       return "🌍"
-    case "listrik":
+    case "électricité":
       return "⚡"
     default:
       return "❓"
@@ -79,27 +79,14 @@ const saveBattleData = (data) => {
   }
 }
 
-// Calculate damage based on element effectiveness
-function hitungDamage(dmg, atkElem, defElem) {
-  const counter = {
-    api: { lemah: "air", kuat: "tanah" },
-    air: { lemah: "listrik", kuat: "api" },
-    tanah: { lemah: "api", kuat: "listrik" },
-    listrik: { lemah: "tanah", kuat: "air" },
-  }
-
-  let effectiveness = "normal"
-
-  if (counter[atkElem]?.kuat === defElem) {
-    effectiveness = "strong"
-    return { damage: Math.floor(dmg * 1.2), effectiveness }
-  }
-  if (counter[atkElem]?.lemah === defElem) {
-    effectiveness = "weak"
-    return { damage: Math.floor(dmg * 0.8), effectiveness }
-  }
-  return { damage: dmg, effectiveness }
-}
+/// Fonction pour calculer les dégâts en fonction des éléments attaquant et défenseur
+function calculerDegats(dmg, elementAttaque, elementDefense) {
+  const contre = {
+    feu: { faibleContre: "eau", fortContre: "terre" },
+    eau: { faibleContre: "électricité", fortContre: "feu" },
+    terre: { faibleContre: "feu", fortContre: "électricité" },
+    électricité: { faibleContre: "terre", fortContre: "eau" },
+  }}
 
 const handler = async (m, { conn, args, command }) => {
   // Clean up sender ID to ensure consistency
@@ -117,12 +104,12 @@ const handler = async (m, { conn, args, command }) => {
     // Clean up opponent ID
     const opponentId = opponent.split("@")[0]
 
-    // Check if both players have monsters
-    if (!users[sender]?.koleksi?.length) {
+    // Check if both players have monsters.
+    if (!users[sender]?.collection?.length) {
       return m.reply("❌ Vous n'avez pas de monstres. Achetez un monstre avec .acheter <id>")
     }
 
-    if (!users[opponentId]?.koleksi?.length) {
+    if (!users[opponentId]?.collection?.length) {
       return m.reply("❌ L'adversaire n'a pas de monstres. Il doit acheter un monstre d'abord.")
     }
 
@@ -172,8 +159,8 @@ const handler = async (m, { conn, args, command }) => {
     }
 
     // Get the first monster from each player's collection
-    const myMon = users[sender].koleksi[0]
-    const opMon = users[opponent].koleksi[0]
+    const myMon = users[sender].collection [0]
+    const opMon = users[opponent].collection [0]
 
     // Create battle data
     const battle = {
