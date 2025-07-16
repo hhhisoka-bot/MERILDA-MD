@@ -45,4 +45,4 @@ handler.group = true
 handler.admin = true
 handler.botAdmin = true
 
-export default handlert handler
+export default  handler
