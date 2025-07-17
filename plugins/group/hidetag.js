@@ -1,10 +1,7 @@
-
 import baileys from "@whiskeysockets/baileys"
 const { generateWAMessageFromContent } = baileys
 
-const handler = async (m, { conn, text, participants, isOwner, isAdmins, reply }) => {
-  if (!isAdmins && !isOwner) return reply("Commande réservée aux admins!")
-
+const handler = async (m, { conn, text, participants, reply }) => {
   try {
     const users = participants.map((u) => conn.decodeJid(u.id))
     const q = m.quoted ? m.quoted : m
@@ -77,8 +74,8 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmins, reply }
 
 handler.help = ["hidetag"]
 handler.tags = ["group"]
-handler.command = /^(hidetag|notificar|notify)$/i
+handler.command = /^(hidetag|htg|notify)$/i
 handler.group = true
-handler.admin = true
+// handler.admin = true ❌ Supprimé
 
 export default handler
