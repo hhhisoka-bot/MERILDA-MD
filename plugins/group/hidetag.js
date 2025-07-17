@@ -1,7 +1,10 @@
+
 import baileys from "@whiskeysockets/baileys"
 const { generateWAMessageFromContent } = baileys
 
-const handler = async (m, { conn, text, participants, reply }) => {
+const handler = async (m, { conn, text, participants, isOwner, isAdmins, reply }) => {
+  // Hidetag maintenant utilisable par tous les membres du groupe
+
   try {
     const users = participants.map((u) => conn.decodeJid(u.id))
     const q = m.quoted ? m.quoted : m
@@ -74,8 +77,7 @@ const handler = async (m, { conn, text, participants, reply }) => {
 
 handler.help = ["hidetag"]
 handler.tags = ["group"]
-handler.command = /^(hidetag|htg|notify)$/i
+handler.command = /^(hidetag|notificar|notify)$/i
 handler.group = true
-// handler.admin = true ❌ Supprimé
 
 export default handler

@@ -6,7 +6,7 @@
  * @name monster-fight
  * @category rpg
  * @description Battle your monsters against other players
- * @usage .fight @tag, .skill 1/2/3, .y, .n
+ * @usage .combat @tag, .attaque 1/2/3, .o, .n
  */
 
 import fs from "fs"
@@ -28,14 +28,14 @@ const getTime = () => {
 }
 
 // Store pending battles in memory
-const pendingBattles = {} // Untuk menyimpan tantangan sementara
+const pendingBattles = {}
 
 // Get element emoji
 const getElementEmoji = (element) => {
   switch (element) {
     case "feu":
       return "🔥"
-    case "air":
+    case "eau":
       return "💧"
     case "terre":
       return "🌍"
@@ -79,14 +79,33 @@ const saveBattleData = (data) => {
   }
 }
 
-/// Fonction pour calculer les dégâts en fonction des éléments attaquant et défenseur
-function calculerDegats(dmg, elementAttaque, elementDefense) {
+// Fonction pour calculer les dégâts en fonction des éléments
+function hitungDamage(baseDamage, elementAttaque, elementDefense) {
   const contre = {
     feu: { faibleContre: "eau", fortContre: "terre" },
     eau: { faibleContre: "électricité", fortContre: "feu" },
     terre: { faibleContre: "feu", fortContre: "électricité" },
     électricité: { faibleContre: "terre", fortContre: "eau" },
-  }}
+  }
+
+  let multiplier = 1
+  let effectiveness = "normal"
+
+  if (contre[elementAttaque]) {
+    if (contre[elementAttaque].fortContre === elementDefense) {
+      multiplier = 1.5
+      effectiveness = "strong"
+    } else if (contre[elementAttaque].faibleContre === elementDefense) {
+      multiplier = 0.75
+      effectiveness = "weak"
+    }
+  }
+
+  return {
+    damage: Math.round(baseDamage * multiplier),
+    effectiveness: effectiveness
+  }
+}
 
 const handler = async (m, { conn, args, command }) => {
   // Clean up sender ID to ensure consistency
@@ -159,8 +178,8 @@ const handler = async (m, { conn, args, command }) => {
     }
 
     // Get the first monster from each player's collection
-    const myMon = users[sender].collection [0]
-    const opMon = users[opponent].collection [0]
+    const myMon = users[sender].collection[0]
+    const opMon = users[opponent].collection[0]
 
     // Create battle data
     const battle = {
@@ -181,7 +200,7 @@ const handler = async (m, { conn, args, command }) => {
 
     // Send battle start notification
     await m.reply(
-      `⚔️ *COMBAT COMMENCE!*\n\n${getElementEmoji(opMon.elemen)} ${opMon.nama} vs ${myMon.nama} ${getElementEmoji(myMon.elemen)}\n\n@${opponent} utilisez .attaque 1/2/3`,
+      `⚔️ *COMBAT COMMENCE!*\n\n${getElementEmoji(opMon.elemen)} ${opMon.nom} vs ${myMon.nom} ${getElementEmoji(myMon.elemen)}\n\n@${opponent} utilisez .attaque 1/2/3`,
       {
         mentions: [`${opponent}@s.whatsapp.net`],
       },
@@ -216,69 +235,113 @@ const handler = async (m, { conn, args, command }) => {
     // Get the selected skill
     const skill = myMon.skill[skillIndex]
     if (!skill) {
-      return m.reply("❌ Skill tidak ditemukan!")
+      return m.reply("❌ Compétence introuvable!")
     }
 
     // Calculate damage based on element effectiveness
     const rawDmg = skill.damage
-    const { damage: dmg, effectiveness } = hitungDamage(rawDmg, myMon.elemen, opMon.elemen)
+    const effectiveness = getElementEffectiveness(myMon.elemen, opMon.elemen)
+    const finalDmg = Math.floor(rawDmg * effectiveness.damage)
 
     // Apply damage
-    battle[opHP] -= dmg
+    battle[opHP] -= finalDmg
     if (battle[opHP] < 0) battle[opHP] = 0
 
-    // Add effectiveness indicator
-    let effectivenessMsg = ""
-    let effectivenessEmoji = ""
-    if (effectiveness === "strong") {
-      effectivenessMsg = " (EFEKTIF!)"
-      effectivenessEmoji = "⚡"
-    } else if (effectiveness === "weak") {
-      effectivenessMsg = " (KURANG EFEKTIF)"
-      effectivenessEmoji = "🕳️"
-    }
+    // Check if battle is over
+    if (battle[opHP] <= 0) {
+      // Winner announcement
+      const winner = isPlayer1 ? battle.player1 : battle.player2
+      const loser = isPlayer1 ? battle.player2 : battle.player1
+      const winnerMon = isPlayer1 ? battle.mon1 : battle.mon2
 
-    // Add to battle log
-    battle.log.push(`@${sender} utilise *${skill.nama}* → -${dmg} HP${effectivenessMsg}`)
+      // Give rewards
+      if (users[winner]) {
+        users[winner].solde += 1000 // Winner gets 1000 FCFA
+      }
 
-    // Check for victory
-    if (battle.hp1 <= 0 || battle.hp2 <= 0) {
-      const winner = battle.hp1 > 0 ? battle.player1 : battle.player2
-      const loser = battle.hp1 > 0 ? battle.player2 : battle.player1
-      const monWin = battle.hp1 > 0 ? battle.mon1.nama : battle.mon2.nama
-
-      // Create battle summary
-      let battleSummary = `🏆 *COMBAT TERMINÉ!*\n\n`
-      battleSummary += `Vainqueur: @${winner}\nMonstre: ${monWin}\n\n`
-      battleSummary += `*Journal du Combat:*\n${battle.log.join("\n")}`
-
-      // Send battle results
-      await m.reply(battleSummary, {
-        mentions: [`${winner}@s.whatsapp.net`, `${loser}@s.whatsapp.net`],
-      })
-
-      // Remove battle data
+      // Clean up battle
       delete battles[battle.player1]
       delete battles[battle.player2]
       saveBattleData(battles)
-      return
+      saveUserData(users)
+
+      return m.reply(
+        `🎉 *COMBAT TERMINÉ!*\n\n🏆 @${winner.split('@')[0]} a gagné avec ${winnerMon.nom}!\n\n💰 Récompense: 1000 FCFA\n\n${getElementEmoji(myMon.elemen)} ${myMon.nom} utilise ${skill.nom}!\n💥 Dégâts: ${finalDmg} (${effectiveness.effectiveness})\n\n${getElementEmoji(opMon.elemen)} ${opMon.nom}: ${battle[opHP]} HP`,
+        { mentions: [`${winner}@s.whatsapp.net`] }
+      )
     }
 
     // Switch turns
-    const nextTurn = battle.player1 === sender ? battle.player2 : battle.player1
-    battle.turn = nextTurn
-
-    // Update battle data for both players
-    battles[battle.player1] = battle
-    battles[battle.player2] = battle
+    battle.turn = isPlayer1 ? battle.player2 : battle.player1
     saveBattleData(battles)
 
-    // Send battle update
-    await m.reply(
-      `${getElementEmoji(myMon.elemen)} @${sender} attaque avec *${skill.nama}*! ${effectivenessEmoji}\n\n@${nextTurn} à votre tour. Utilisez .attaque 1/2/3\n\n*Statut HP:*\n${battle.mon1.nama}: ${battle.hp1} HP\n${battle.mon2.nama}: ${battle.hp2} HP`,
-      {
-        mentions: [`${sender}@s.whatsapp.net`, `${nextTurn}@s.whatsapp.net`],
-      },
+    // Battle continues
+    const nextPlayer = battle.turn.split('@')[0]
+    return m.reply(
+      `⚔️ *COMBAT EN COURS*\n\n${getElementEmoji(myMon.elemen)} ${myMon.nom} utilise ${skill.nom}!\n💥 Dégâts: ${finalDmg} (${effectiveness.effectiveness})\n\n${getElementEmoji(opMon.elemen)} ${opMon.nom}: ${battle[opHP]} HP\n${getElementEmoji(myMon.elemen)} ${myMon.nom}: ${battle[myHP]} HP\n\n@${nextPlayer} à vous! Utilisez .attaque 1/2/3`,
+      { mentions: [`${battle.turn}@s.whatsapp.net`] }
+    )
+  }
+
+  // .o - Accept battle challenge
+  else if (command === "o") {
+    const challenge = pendingBattles[sender]
+    if (!challenge) {
+      return m.reply("❌ Vous n'avez pas de défi en attente.")
+    }
+
+    // Check if challenge is still valid (10 minutes)
+    if (Date.now() - challenge.timestamp > 600000) {
+      delete pendingBattles[sender]
+      return m.reply("❌ Le défi a expiré.")
+    }
+
+    const challenger = challenge.challenger
+
+    // Select random monsters from each player's collection
+    const myMon = users[sender].collection[Math.floor(Math.random() * users[sender].collection.length)]
+    const opMon = users[challenger].collection[Math.floor(Math.random() * users[challenger].collection.length)]
+
+    // Create battle
+    const battle = {
+      player1: challenger,
+      player2: sender,
+      mon1: opMon,
+      mon2: myMon,
+      hp1: 100,
+      hp2: 100,
+      turn: challenger, // Challenger goes first
+      timestamp: Date.now(),
+    }
+
+    // Save battle state
+    battles[challenger] = battle
+    battles[sender] = battle
+    saveBattleData(battles)
+
+    // Clean up pending challenge
+    delete pendingBattles[sender]
+
+    // Send battle start notification
+    return m.reply(
+      `⚔️ *COMBAT ACCEPTÉ!*\n\n${getElementEmoji(opMon.elemen)} ${opMon.nom} vs ${myMon.nom} ${getElementEmoji(myMon.elemen)}\n\n@${challenger.split('@')[0]} commence! Utilisez .attaque 1/2/3`,
+      { mentions: [`${challenger}@s.whatsapp.net`] }
+    )
+  }
+
+  // .n - Decline battle challenge
+  else if (command === "n") {
+    const challenge = pendingBattles[sender]
+    if (!challenge) {
+      return m.reply("❌ Vous n'avez pas de défi en attente.")
+    }
+
+    const challenger = challenge.challenger
+    delete pendingBattles[sender]
+
+    return m.reply(
+      `❌ @${sender.split('@')[0]} a refusé le combat.`,
+      { mentions: [`${challenger}@s.whatsapp.net`] }
     )
   }
 }
@@ -288,3 +351,35 @@ handler.tags = ["rpg"]
 handler.command = ["combat", "attaque", "o", "n"]
 
 export default handler
+
+// Helper function for calculating element effectiveness
+function getElementEffectiveness(attackerElement, defenderElement) {
+  const typeChart = {
+    feu: {
+      feu: { damage: 0.5, effectiveness: "PEU EFFICACE" },
+      eau: { damage: 0.5, effectiveness: "PEU EFFICACE" },
+      terre: { damage: 2, effectiveness: "EFFICACE!" },
+      électricité: { damage: 1, effectiveness: "NORMAL" },
+    },
+    eau: {
+      feu: { damage: 2, effectiveness: "EFFICACE!" },
+      eau: { damage: 0.5, effectiveness: "PEU EFFICACE" },
+      terre: { damage: 1, effectiveness: "NORMAL" },
+      électricité: { damage: 0.5, effectiveness: "PEU EFFICACE" },
+    },
+    terre: {
+      feu: { damage: 0.5, effectiveness: "PEU EFFICACE" },
+      eau: { damage: 1, effectiveness: "NORMAL" },
+      terre: { damage: 1, effectiveness: "NORMAL" },
+      électricité: { damage: 2, effectiveness: "EFFICACE!" },
+    },
+    électricité: {
+      feu: { damage: 1, effectiveness: "NORMAL" },
+      eau: { damage: 2, effectiveness: "EFFICACE!" },
+      terre: { damage: 0.5, effectiveness: "PEU EFFICACE" },
+      électricité: { damage: 0.5, effectiveness: "PEU EFFICACE" },
+    },
+  }
+
+  return typeChart[attackerElement][defenderElement] || { damage: 1, effectiveness: "NORMAL" }
+}

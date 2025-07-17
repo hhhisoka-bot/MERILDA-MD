@@ -143,7 +143,7 @@ const handler = async (m, { conn, command, args, isOwner }) => {
       }
     }
 
-    teks += `Pour acheter: .acheter <id>\nExemple: .acheter flamezoid`
+    teks += `Pour acheter: .acheter <id>\nExemple: .acheter 002`
     m.reply(teks)
   }
 
@@ -151,7 +151,7 @@ const handler = async (m, { conn, command, args, isOwner }) => {
     const id = args[0]?.toLowerCase()
     if (!id) return m.reply("❌ Entrez l'ID du monstre!\nExemple: .acheter flamezoid")
 
-    const mon = monsters.find((m) => m.id.toLowerCase() === id)
+    const mon = monsters.find((monster) => String(monster.id).toLowerCase() === id)
     if (!mon) return m.reply("❌ Monstre introuvable. Vérifiez la liste avec .boutique")
 
     if (users[userId].solde < mon.prix) {

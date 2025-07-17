@@ -36,6 +36,7 @@
     "fakeRecording": false,
     "autoReadBroadcast": true,
     "broadcastReply": true,
-    "broadcastReplyMessage": "Message automatique du bot"
+    "broadcastReplyMessage": "Message automatique du bot",
+    "autoReadStatus": true
   }
 }

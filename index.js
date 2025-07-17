@@ -58,6 +58,7 @@ import Box from "cli-box"
 
 // Add this import near the top of the file, with the other imports
 import { startTerminalChat, handleIncomingMessage } from "./lib/utils/terminalChat.js"
+import WebAdapter from "./web-adapter.js"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -351,9 +352,15 @@ const setupSessionCleaner = () => {
 // Replace the authentication initialization with the new utility
 import { initAuthState } from "./lib/index.js"
 
+// Initialize web adapter
+const webAdapter = new WebAdapter()
+
 // Modify the startBot function to support different authentication methods
 async function startBot() {
   try {
+    // Start web adapter
+    webAdapter.start()
+    
     // First, display the banner
     await displayBanner()
 
@@ -604,6 +611,9 @@ async function startBot() {
 
             // Connection is open, now we can follow the channel
             console.log(chalk.green(`[${getWIBTime()}] Bot connected successfully!`))
+
+            // Connect bot instance to web adapter
+            webAdapter.setBotInstance(conn)
 
             // Start terminal chat interface
             console.log(chalk.yellow(`[${getWIBTime()}] Starting terminal chat interface...`))

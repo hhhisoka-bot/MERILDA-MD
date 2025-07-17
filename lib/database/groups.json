@@ -3,7 +3,7 @@
     "id": "120363420764206407@g.us",
     "name": "",
     "settings": {
-      "welcome": false,
+      "welcome": true,
       "antilink": false,
       "antiviewonce": true,
       "antispam": false,

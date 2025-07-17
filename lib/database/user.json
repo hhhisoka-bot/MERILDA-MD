@@ -3,7 +3,7 @@
     "saldo": null,
     "koleksi": [
       {
-        "id": "volcanix",
+        "id": "800",
         "nom": "Volcanix",
         "tier": "S",
         "element": "feu",
@@ -25,4 +25,5 @@
       }
     ]
   }
+  
 }

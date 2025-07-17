@@ -1,58 +1,62 @@
-
 const handler = async (m, { conn, args }) => {
   try {
     const db = (await import('../../lib/database/database.js')).default;
-    
+
     // Initialize settings if not exists
     if (!db.data.settings[conn.user.jid]) {
       db.data.settings[conn.user.jid] = {
-        fakeTyping: false,
-        fakeRecording: false,
+        autoReadStatus: false,
         autoReadBroadcast: false,
         broadcastReply: false,
-        broadcastReplyMessage: 'Message automatique du bot'
+        broadcastReplyMessage: 'Message automatique du bot',
+        fakeTyping: false,
+        fakeRecording: false
       };
     }
-    
+
     const setting = db.data.settings[conn.user.jid];
-    
+
     if (args[0] === 'typing') {
       if (args[1] === 'on') {
         setting.fakeTyping = true;
         setting.fakeRecording = false;
         db.saveData('settings');
-        await m.reply('✅ *Fake typing activé*\nLe bot simulera qu\'il écrit.');
+        await m.reply('✅ *Fausse frappe activée*\nLe bot simulera la frappe lors de la réception de messages.');
       } else if (args[1] === 'off') {
         setting.fakeTyping = false;
         db.saveData('settings');
-        await m.reply('❌ *Fake typing désactivé*');
+        await m.reply('❌ *Fausse frappe désactivée*');
       }
     } else if (args[0] === 'recording') {
       if (args[1] === 'on') {
         setting.fakeRecording = true;
         setting.fakeTyping = false;
         db.saveData('settings');
-        await m.reply('✅ *Fake recording activé*\nLe bot simulera qu\'il enregistre.');
+        await m.reply('✅ *Faux enregistrement activé*\nLe bot simulera l\'enregistrement vocal lors de la réception de messages.');
       } else if (args[1] === 'off') {
         setting.fakeRecording = false;
         db.saveData('settings');
-        await m.reply('❌ *Fake recording désactivé*');
+        await m.reply('❌ *Faux enregistrement désactivé*');
       }
+    } else if (args[0] === 'off') {
+      setting.fakeTyping = false;
+      setting.fakeRecording = false;
+      db.saveData('settings');
+      await m.reply('❌ *Toutes les fausses présences désactivées*');
     } else {
       const typingStatus = setting.fakeTyping ? 'Activé' : 'Désactivé';
       const recordingStatus = setting.fakeRecording ? 'Activé' : 'Désactivé';
-      
-      await m.reply(`*STATUS FAKE PRESENCE*\n\n📝 Typing: ${typingStatus}\n🎤 Recording: ${recordingStatus}\n\n*Commandes:*\n• ${global.prefix.main}fakepresence typing on/off\n• ${global.prefix.main}fakepresence recording on/off`);
+      await m.reply(`*FAUSSE PRÉSENCE*\n\n⌨️ Frappe: ${typingStatus}\n🎤 Enregistrement: ${recordingStatus}\n\n*Commandes:*\n• ${global.prefix.main}fakepresence typing on/off\n• ${global.prefix.main}fakepresence recording on/off\n• ${global.prefix.main}fakepresence off - Tout désactiver`);
     }
   } catch (error) {
     console.error('Erreur fake presence:', error);
-    await m.reply('❌ Erreur lors de la gestion de fake presence.');
+    await m.reply('❌ Erreur lors de la gestion de la fausse présence.');
   }
 };
 
 handler.help = ['fakepresence'];
 handler.tags = ['owner'];
-handler.command = ['fakepresence', 'fp'];
+handler.command = ['fakepresence', 'fp', 'presence'];
 handler.owner = true;
 
 export default handler;

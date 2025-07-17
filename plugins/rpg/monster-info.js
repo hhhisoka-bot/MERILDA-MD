@@ -1,3 +1,4 @@
+
 /**
  * Plugin Info Monstre
  * Affiche des informations détaillées sur les monstres
@@ -31,7 +32,7 @@ const obtenirInfoElement = (element) => {
   switch (element) {
     case "feu":
       return { emoji: "🔥", nom: "Feu" }
-    case "air":
+    case "eau":
       return { emoji: "💧", nom: "Eau" }
     case "terre":
       return { emoji: "🌍", nom: "Terre" }
@@ -115,7 +116,7 @@ const gestionnaire = async (m, { conn, args, command }) => {
   
   // Trouver le monstre par ID
   const id = args[0].toLowerCase()
-  const monstre = monstres.find((m) => m.id.toLowerCase() === id)
+  const monstre = monstres.find((mon) => String(mon.id).toLowerCase() === id)
   
   if (!monstre) {
     return m.reply("❌ Monstre introuvable. Utilisez .infomonstre sans argument pour voir la liste des monstres.")
@@ -144,14 +145,14 @@ const gestionnaire = async (m, { conn, args, command }) => {
   
   // Ajouter les informations d'efficacité des éléments
   const efficacite = {
-    feu: { fort: "terre", faible: "air" },
-    air: { fort: "api", faible: "électricité" },
+    feu: { fort: "terre", faible: "eau" },
+    eau: { fort: "feu", faible: "électricité" },
     terre: { fort: "électricité", faible: "feu" },
-    électricité : { fort: "air", faible: "terre" },
+    électricité: { fort: "eau", faible: "terre" },
   }
   
-  const fortContre = obtenirInfoElement(efficacite[monstre.element]?.fort || "")
-  const faibleContre = obtenirInfoElement(efficacite[monstre.element]?.faible || "")
+  const fortContre = obtenirInfoElement(efficacite[monstre.elemen]?.fort || "")
+  const faibleContre = obtenirInfoElement(efficacite[monstre.elemen]?.faible || "")
   
   texte += `• Fort contre: ${fortContre.emoji} ${fortContre.nom}\n`
   texte += `• Faible contre: ${faibleContre.emoji} ${faibleContre.nom}\n`

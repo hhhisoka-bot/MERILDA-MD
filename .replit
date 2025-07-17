@@ -1,4 +1,4 @@
-modules = ["nodejs-20"]
+modules = ["nodejs-20", "python-3.11"]
 run = "npm run start"
 
 [nix]
@@ -8,6 +8,7 @@ channel = "stable-24_05"
 run = ["sh", "-c", "npm run start"]
 
 [workflows]
+runButton = "Run"
 
 [[workflows.workflow]]
 name = "Start Bot"
@@ -17,3 +18,16 @@ mode = "sequential"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "node index.js"
+
+[[workflows.workflow]]
+name = "Run"
+author = 45171851
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node index.js"
+
+[[ports]]
+localPort = 5000
+externalPort = 80

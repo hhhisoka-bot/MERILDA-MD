@@ -1,18 +1,28 @@
-
 const handler = async (m, { conn, args }) => {
   try {
-    if (!global.db) global.db = { data: { settings: {} } };
-    if (!global.db.data.settings[conn.user.jid]) {
-      global.db.data.settings[conn.user.jid] = {};
+    const db = (await import('../../lib/database/database.js')).default;
+
+    // Initialize settings if not exists
+    if (!db.data.settings[conn.user.jid]) {
+      db.data.settings[conn.user.jid] = {
+        autoReadStatus: false,
+        autoReadBroadcast: false,
+        broadcastReply: false,
+        broadcastReplyMessage: 'Message automatique du bot',
+        fakeTyping: false,
+        fakeRecording: false
+      };
     }
 
-    const setting = global.db.data.settings[conn.user.jid];
-    
+    const setting = db.data.settings[conn.user.jid];
+
     if (args[0] === 'on' || args[0] === 'enable') {
       setting.autoReadStatus = true;
+      db.saveData('settings');
       await m.reply('✅ *Auto-read status activé*\nLe bot lira automatiquement tous les statuts WhatsApp.');
     } else if (args[0] === 'off' || args[0] === 'disable') {
       setting.autoReadStatus = false;
+      db.saveData('settings');
       await m.reply('❌ *Auto-read status désactivé*\nLe bot ne lira plus automatiquement les statuts.');
     } else {
       const status = setting.autoReadStatus ? 'Activé' : 'Désactivé';

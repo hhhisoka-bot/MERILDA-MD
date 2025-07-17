@@ -19,26 +19,36 @@ const handler = async (m, { conn, args, isAdmin, isBotAdmin }) => {
       await m.reply('❌ *Anti-viewonce désactivé*\nLes messages à vue unique ne seront plus sauvegardés.');
     } else {
       const status = group.settings.antiviewonce ? 'Activé' : 'Désactivé';
-      await m.reply(`*STATUS ANTI-VIEWONCE*\n\n📊 État actuel: ${status}\n\n*Commandes:*\n• ${global.prefix.main}antiviewonce on - Activer\n• ${global.prefix.main}antiviewonce off - Désactiver`);
+      await m.reply(`*STATUS ANTI-VIEWONCE*\n\n📊 État actuel: ${status}\n\n*Commandes:*\n• ${globalThis.prefix?.main || '.'}antiviewonce on - Activer\n• ${globalThis.prefix?.main || '.'}antiviewonce off - Désactiver`);
     }
     return;
   }
 
   // Traitement automatique des messages viewonce
-  if (m.mtype === 'viewOnceMessageV2' || m.mtype === 'viewOnceMessage') {
+  if (m.mtype === 'viewOnceMessageV2' || m.mtype === 'viewOnceMessage' || m.message?.viewOnceMessage || m.message?.viewOnceMessageV2) {
     try {
       const db = (await import('../../lib/database/database.js')).default;
       const group = db.getGroup(m.chat);
       
       if (!group.settings.antiviewonce) return;
 
-      const msg = m.message.viewOnceMessageV2?.message || m.message.viewOnceMessage?.message;
+      let msg = null;
+      if (m.message?.viewOnceMessageV2?.message) {
+        msg = m.message.viewOnceMessageV2.message;
+      } else if (m.message?.viewOnceMessage?.message) {
+        msg = m.message.viewOnceMessage.message;
+      } else if (m.mtype === 'viewOnceMessageV2') {
+        msg = m.message;
+      } else if (m.mtype === 'viewOnceMessage') {
+        msg = m.message;
+      }
+      
       if (!msg) return;
 
       const type = Object.keys(msg)[0];
       const mediaContent = msg[type];
       
-      if (!mediaContent) return;
+      if (!mediaContent || !['imageMessage', 'videoMessage'].includes(type)) return;
 
       const media = await downloadContentFromMessage(mediaContent, type === 'imageMessage' ? 'image' : 'video');
       
