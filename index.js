@@ -1,14 +1,4 @@
-/**
- * Copyright (C) 2025 hhhisoka
- *
- * This code is licensed under the MIT License.
- * See the LICENSE file in the repository root for full license text.
- *
- * MERILDA-MD WhatsApp BoT BASE 
- * Version: 1.0.0
- * Created by hhhisoka
- * GitHub: https://github.com/hhhisoka-bot
- */
+/** * Copyright (C) 2025 hhhisoka * * This code is licensed under the MIT License. * See the LICENSE file in the repository root for full license text. * * MERILDA-MD WhatsApp BoT BASE  * Version: 1.0.0 * Created by hhhisoka * GitHub: https://github.com/hhhisoka-bot */
 
 // Node.js version check
 const nodeVersion = process.versions.node.split(".")[0]
@@ -109,7 +99,6 @@ const getTerminalWidth = () => {
   const columns = process.stdout.columns || 80
   const minWidth = global.appearance.theme.minWidth || 60
   const maxWidth = global.appearance.theme.maxWidth || 100
-
   // Ensure width is within bounds
   return Math.max(minWidth, Math.min(columns, maxWidth))
 }
@@ -119,14 +108,11 @@ const displayBanner = () => {
   return new Promise((resolve) => {
     // Clear the terminal
     console.clear()
-
     // Get terminal width
     const termWidth = getTerminalWidth()
-
     // Create a timestamp header
     const timeHeader = `[${getWIBDateTime()}]`
     console.log(chalk.gray(timeHeader + " Starting MERILDA-MD Bot...\n"))
-
     // Create figlet text
     figlet.text(
       "MERILDA-MD",
@@ -144,14 +130,11 @@ const displayBanner = () => {
           resolve()
           return
         }
-
         // Apply gradient to figlet output
         const mainGradient = gradient(global.appearance.theme.gradient)
         console.log(mainGradient(data))
-
         // Display additional information
         const title = `${global.botName} WhatsApp Bot v${global.botVersion} | © ${global.ownerName} 2025`
-
         // Create a box for the title
         const boxConfig = {
           w: termWidth - 4,
@@ -170,13 +153,10 @@ const displayBanner = () => {
           hAlign: "center",
           vAlign: "middle",
         }
-
         const titleBox = new Box(boxConfig, title)
         console.log(mainGradient(titleBox.stringify()))
-
         // Add timestamp
         console.log(chalk.gray(`[${getWIBDateTime()}] System initialized\n`))
-
         resolve()
       },
     )
@@ -205,20 +185,15 @@ if (!fs.existsSync(SESSION_DIR)) {
   console.log(chalk.green(`[${getWIBTime()}] Created session directory: ${SESSION_DIR}`))
 }
 
-/**
- * Cleans session files while preserving creds.json
- * @returns {Object} - Result of the cleaning operation
- */
+/** * Cleans session files while preserving creds.json * @returns {Object} - Result of the cleaning operation */
 const clearSessionFiles = async () => {
   try {
     if (!fs.existsSync(SESSION_DIR)) {
       return { success: false, error: "Session directory does not exist", removedCount: 0, preservedCount: 0 }
     }
-
     const files = fs.readdirSync(SESSION_DIR)
     let removedCount = 0
     let preservedCount = 0
-
     for (const file of files) {
       const filePath = path.join(SESSION_DIR, file)
       if (fs.statSync(filePath).isDirectory()) continue
@@ -229,7 +204,6 @@ const clearSessionFiles = async () => {
       fs.unlinkSync(filePath)
       removedCount++
     }
-
     console.log(
       chalk.green(
         `[${getWIBTime()}] Session cleaned: Removed ${removedCount} files, preserved ${preservedCount} files`,
@@ -246,24 +220,19 @@ const clearSessionFiles = async () => {
 const createBox = (text, width = null, padding = 1) => {
   // Get terminal width if not specified
   width = width || getTerminalWidth() - 10
-
   const mainGradient = gradient(global.appearance.theme.gradient)
   const boxChars = global.appearance.theme.box || {
     cornerChar: "+",
     horizontalChar: "=",
     verticalChar: "|",
   }
-
   const horizontalBorder = boxChars.cornerChar + boxChars.horizontalChar.repeat(width - 2) + boxChars.cornerChar
   const emptyLine = boxChars.verticalChar + " ".repeat(width - 2) + boxChars.verticalChar
-
   let result = mainGradient(horizontalBorder) + "\n"
-
   // Add padding top
   for (let i = 0; i < padding; i++) {
     result += mainGradient(emptyLine) + "\n"
   }
-
   // Add text centered
   const paddingLeft = Math.floor((width - text.length - 2) / 2)
   const paddingRight = width - text.length - 2 - paddingLeft
@@ -274,12 +243,10 @@ const createBox = (text, width = null, padding = 1) => {
     " ".repeat(paddingRight) +
     mainGradient(boxChars.verticalChar) +
     "\n"
-
   // Add padding bottom
   for (let i = 0; i < padding; i++) {
     result += mainGradient(emptyLine) + "\n"
   }
-
   result += mainGradient(horizontalBorder)
   return result
 }
@@ -290,7 +257,6 @@ global.isPublic = true
 // Watch for plugin changes
 const watchPluginsDirectory = () => {
   const pluginsDir = path.join(__dirname, "plugins")
-
   // Create a recursive watcher for the plugins directory
   const watchPluginChanges = (dir) => {
     fs.readdir(dir, (err, files) => {
@@ -298,16 +264,13 @@ const watchPluginsDirectory = () => {
         console.error(chalk.red(`[${getWIBTime()}] Error reading directory ${dir}:`), err)
         return
       }
-
       files.forEach((file) => {
         const filePath = path.join(dir, file)
-
         fs.stat(filePath, (err, stats) => {
           if (err) {
             console.error(chalk.red(`[${getWIBTime()}] Error getting stats for ${filePath}:`), err)
             return
           }
-
           if (stats.isDirectory()) {
             // Watch subdirectories recursively
             watchPluginChanges(filePath)
@@ -316,7 +279,6 @@ const watchPluginsDirectory = () => {
             fs.watchFile(filePath, () => {
               console.log(chalk.yellow(`[${getWIBTime()}] Plugin file changed: ${filePath}`))
               console.log(chalk.yellow(`[${getWIBTime()}] Reloading plugins...`))
-
               // Reload plugins
               import("./lib/commands/case.js")
                 .then((module) => {
@@ -333,7 +295,6 @@ const watchPluginsDirectory = () => {
       })
     })
   }
-
   // Start watching the plugins directory
   watchPluginChanges(pluginsDir)
 }
@@ -342,7 +303,6 @@ const watchPluginsDirectory = () => {
 const setupSessionCleaner = () => {
   // Use the interval from config or default to 8 hours
   const interval = globalThis.sessionCleanupInterval || 8
-
   cron.schedule(`0 */${interval} * * *`, async () => {
     console.log(chalk.yellow(`[${getWIBTime()}] Running scheduled session cleanup...`))
     await clearSessionFiles()
@@ -355,12 +315,49 @@ import { initAuthState } from "./lib/index.js"
 // Initialize web adapter
 const webAdapter = new WebAdapter()
 
+// Fonction améliorée pour valider et formater le numéro de téléphone
+const validateAndFormatPhoneNumber = (phoneNumber) => {
+  try {
+    // Supprimer tous les espaces, tirets et caractères spéciaux
+    let cleanNumber = phoneNumber.replace(/[\s\-$$$$+]/g, "")
+
+    // Si le numéro commence par 0, le remplacer par le code pays approprié
+    if (cleanNumber.startsWith("0")) {
+      // Demander le code pays ou utiliser un défaut
+      console.log(chalk.yellow(`[${getWIBTime()}] Numéro détecté commençant par 0, ajout du code pays...`))
+      cleanNumber = "212" + cleanNumber.substring(1) // Code Maroc par défaut
+    }
+
+    // Vérifier que le numéro contient uniquement des chiffres
+    if (!/^\d+$/.test(cleanNumber)) {
+      throw new Error("Le numéro ne doit contenir que des chiffres")
+    }
+
+    // Vérifier la longueur minimale
+    if (cleanNumber.length < 10) {
+      throw new Error("Le numéro est trop court")
+    }
+
+    // Utiliser awesome-phonenumber pour valider
+    const phoneNumberObj = PhoneNumber("+" + cleanNumber)
+    if (!phoneNumberObj.isValid()) {
+      throw new Error("Numéro de téléphone invalide")
+    }
+
+    console.log(chalk.green(`[${getWIBTime()}] Numéro validé: ${phoneNumberObj.getNumber("international")}`))
+    return cleanNumber
+  } catch (error) {
+    console.error(chalk.red(`[${getWIBTime()}] Erreur de validation du numéro:`), error.message)
+    return null
+  }
+}
+
 // Modify the startBot function to support different authentication methods
 async function startBot() {
   try {
     // Start web adapter
     webAdapter.start()
-    
+
     // First, display the banner
     await displayBanner()
 
@@ -388,30 +385,86 @@ async function startBot() {
     let phoneNumber
     let code
     let pairingCodeRequested = false
+    const maxRetries = 3
+    let currentRetry = 0
 
-    // Function to request pairing code
+    // Function to request pairing code with improved error handling
     const requestPairingCode = async () => {
-      try {
-        // Create a styled input prompt
-        const mainGradient = gradient(global.appearance.theme.gradient)
-        console.log(mainGradient("\n╔════════════════════════════════════════════════════════╗"))
-        console.log(mainGradient("║                  PAIRING CODE REQUIRED                  ║"))
-        console.log(mainGradient("╚════════════════════════════════════════════════════════╝\n"))
+      while (currentRetry < maxRetries) {
+        try {
+          // Create a styled input prompt
+          const mainGradient = gradient(global.appearance.theme.gradient)
+          console.log(mainGradient("\n╔════════════════════════════════════════════════════════╗"))
+          console.log(mainGradient("║                  PAIRING CODE REQUIRED                  ║"))
+          console.log(mainGradient("╚════════════════════════════════════════════════════════╝\n"))
 
-        phoneNumber = await question(
-          chalk.cyan(`[${getWIBTime()}] Enter your WhatsApp number starting with country code (e.g., 62xxx): `),
-        )
+          console.log(chalk.cyan("Exemples de formats acceptés:"))
+          console.log(chalk.gray("  - 212612345678 (avec code pays)"))
+          console.log(chalk.gray("  - 0612345678 (sera converti automatiquement)"))
+          console.log(chalk.gray("  - +212 6 12 34 56 78 (avec espaces)\n"))
 
-        if (phoneNumber) {
+          const rawPhoneNumber = await question(chalk.cyan(`[${getWIBTime()}] Entrez votre numéro WhatsApp: `))
+
+          if (!rawPhoneNumber || rawPhoneNumber.trim() === "") {
+            throw new Error("Numéro de téléphone requis")
+          }
+
+          // Valider et formater le numéro
+          phoneNumber = validateAndFormatPhoneNumber(rawPhoneNumber.trim())
+
+          if (!phoneNumber) {
+            throw new Error("Format de numéro invalide")
+          }
+
           // Show a loading message
-          console.log(chalk.yellow(`[${getWIBTime()}] Requesting pairing code for ${phoneNumber}...`))
+          console.log(chalk.yellow(`[${getWIBTime()}] Demande du code de jumelage pour +${phoneNumber}...`))
 
-          code = await conn.requestPairingCode(phoneNumber)
-          code = code?.match(/.{1,4}/g)?.join("-") || code
-          pairingCodeRequested = true
+          // Attendre un peu avant de faire la demande
+          await new Promise((resolve) => setTimeout(resolve, 2000))
+
+          // Demander le code de jumelage avec timeout
+          const pairingPromise = conn.requestPairingCode(phoneNumber)
+          const timeoutPromise = new Promise((_, reject) =>
+            setTimeout(() => reject(new Error("Timeout lors de la demande du code")), 30000),
+          )
+
+          code = await Promise.race([pairingPromise, timeoutPromise])
+
+          if (code) {
+            code = code?.match(/.{1,4}/g)?.join("-") || code
+            pairingCodeRequested = true
+            console.log(chalk.green(`[${getWIBTime()}] Code de jumelage reçu avec succès!`))
+            break
+          } else {
+            throw new Error("Aucun code reçu")
+          }
+        } catch (error) {
+          currentRetry++
+          console.error(
+            chalk.red(`[${getWIBTime()}] Erreur lors de la demande du code (tentative ${currentRetry}/${maxRetries}):`),
+            error.message,
+          )
+
+          if (currentRetry < maxRetries) {
+            console.log(chalk.yellow(`[${getWIBTime()}] Nouvelle tentative dans 5 secondes...`))
+            await new Promise((resolve) => setTimeout(resolve, 5000))
+          } else {
+            console.error(
+              chalk.red(
+                `[${getWIBTime()}] Échec après ${maxRetries} tentatives. Vérifiez votre connexion et le numéro.`,
+              ),
+            )
+
+            // Proposer des alternatives
+            console.log(chalk.cyan("\nAlternatives:"))
+            console.log(chalk.gray("1. Vérifiez votre connexion internet"))
+            console.log(chalk.gray("2. Assurez-vous que le numéro est correct"))
+            console.log(chalk.gray("3. Essayez de redémarrer le bot"))
+            console.log(chalk.gray("4. Supprimez le dossier session et recommencez"))
+
+            throw new Error(`Impossible d'obtenir le code après ${maxRetries} tentatives`)
+          }
         }
-      } catch (error) {
-        console.error(chalk.red(`[${getWIBTime()}] Error requesting pairing code:`), error)
       }
     }
 
@@ -443,7 +496,7 @@ async function startBot() {
 
         // Create a title box
         const titleBoxConfig = { ...boxConfig, h: 3 }
-        const titleBox = new Box(titleBoxConfig, "PAIRING CODE")
+        const titleBox = new Box(titleBoxConfig, "CODE DE JUMELAGE")
         console.log(mainGradient(titleBox.stringify()))
 
         // Create a code box
@@ -451,8 +504,19 @@ async function startBot() {
         console.log(mainGradient(codeBox.stringify()))
 
         // Add instructions
-        console.log(chalk.cyan(`[${getWIBTime()}] Enter this code in your WhatsApp app to pair your device`))
-        console.log(chalk.yellow(`[${getWIBTime()}] Waiting for connection...\n`))
+        console.log(
+          chalk.cyan(`[${getWIBTime()}] Entrez ce code dans votre application WhatsApp pour jumeler votre appareil`),
+        )
+        console.log(chalk.yellow(`[${getWIBTime()}] En attente de connexion...\n`))
+
+        // Ajouter un timeout pour le code
+        setTimeout(() => {
+          if (!conn.user) {
+            console.log(
+              chalk.red(`[${getWIBTime()}] Le code a expiré. Redémarrez le bot pour obtenir un nouveau code.`),
+            )
+          }
+        }, 300000) // 5 minutes
       }
     }
 
@@ -476,18 +540,17 @@ async function startBot() {
 
         // Pass message to terminal chat handler
         handleIncomingMessage(mek)
-
         const m = smsg(conn, mek, store)
 
         // Fix pour les messages owner à owner
-        const ownerNumbers = global.owner.map(o => o.number);
-        const senderNumber = m.sender.replace('@s.whatsapp.net', '');
-        const botNumber = conn.user.id.replace('@s.whatsapp.net', '').split(':')[0];
+        const ownerNumbers = global.owner.map((o) => o.number)
+        const senderNumber = m.sender.replace("@s.whatsapp.net", "")
+        const botNumber = conn.user.id.replace("@s.whatsapp.net", "").split(":")[0]
 
         // Vérifier si c'est un message du propriétaire vers le bot
         if (ownerNumbers.includes(senderNumber) && ownerNumbers.includes(botNumber)) {
           // Autoriser le traitement même si c'est owner à owner
-          m.isOwnerToBot = true;
+          m.isOwnerToBot = true
         }
 
         caseHandler(conn, m, chatUpdate, store)
@@ -575,7 +638,6 @@ async function startBot() {
               console.dir(err)
               return
             }
-
             console.log(mainGradient(data))
 
             // Create a box with connection info
@@ -701,7 +763,6 @@ fs.watchFile(__filename, () => {
   fs.unwatchFile(__filename)
   console.log(chalk.redBright(`[${getWIBTime()}] Update ${__filename}`))
   console.log(chalk.yellow(`[${getWIBTime()}] Restarting bot...`))
-
   // Execute the restart command
   exec("node index.js", (error, stdout, stderr) => {
     if (error) {
@@ -713,7 +774,6 @@ fs.watchFile(__filename, () => {
       return
     }
   })
-
   // Exit the current process
   process.exit()
 })

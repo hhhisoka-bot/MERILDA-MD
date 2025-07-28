@@ -47,5 +47,16 @@
     "terminal-kit": "^3.0.1",
     "terminal-link": "^3.0.0",
     "yt-search": "^2.13.1"
+  },
+  
+   "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
   }
 }
+
+ 
+
