@@ -1,8 +1,8 @@
 require('./config');
 const { WA_DEFAULT_EPHEMERAL } = require('@whiskeysockets/baileys').default
 
-function GroupParticipants(Zion, { id, participants, action, author }) {
-    Zion.groupMetadata(id)
+function GroupParticipants(Hisoka, { id, participants, action, author }) {
+    Hisoka.groupMetadata(id)
         .then(gcdata => {
             const subject = gcdata.subject
 
@@ -12,7 +12,7 @@ function GroupParticipants(Zion, { id, participants, action, author }) {
 
                 switch (action) {
                     case "add":
-                        Zion.sendMessage(id, {image: {url: `https://api.siputzx.my.id/api/canvas/welcomev4?avatar=https://files.catbox.moe/nwvkbt.png&background=${thumbnail}&description=@${jid.split("@")[0]}` }, caption: `Hai @${jid.split("@")[0]} 👋\n\nSelamat datang di *${subject}*!\nJangan lupa baca deskripsi grup dan tetap patuhi aturan. 😊✨`,
+                        Hisoka.sendMessage(id, {image: {url: `https://api.siputzx.my.id/api/canvas/welcomev4?avatar=https://files.catbox.moe/nwvkbt.png&background=${thumbnail}&description=@${jid.split("@")[0]}` }, caption: `Hai @${jid.split("@")[0]} 👋\n\nSelamat datang di *${subject}*!\nJangan lupa baca deskripsi grup dan tetap patuhi aturan. 😊✨`,
                                 contextInfo: { mentionedJid: [jid] }
                             },
                             { ephemeralExpiration: WA_DEFAULT_EPHEMERAL }
@@ -20,7 +20,7 @@ function GroupParticipants(Zion, { id, participants, action, author }) {
                         break
 
                     case "remove":
-                        Zion.sendMessage(id, {image: {url: `https://api.siputzx.my.id/api/canvas/goodbyev4?avatar=https://files.catbox.moe/nwvkbt.png&background=${thumbnail}&description=@${jid.split("@")[0]}` }, caption: `Selamat tinggal @${jid.split("@")[0]} 👋\nSemoga sukses di luar sana! 🚀`,
+                        Hisoka.sendMessage(id, {image: {url: `https://api.siputzx.my.id/api/canvas/goodbyev4?avatar=https://files.catbox.moe/nwvkbt.png&background=${thumbnail}&description=@${jid.split("@")[0]}` }, caption: `Selamat tinggal @${jid.split("@")[0]} 👋\nSemoga sukses di luar sana! 🚀`,
                                 contextInfo: { mentionedJid: [jid] }
                             },
                             { ephemeralExpiration: WA_DEFAULT_EPHEMERAL }
@@ -29,7 +29,7 @@ function GroupParticipants(Zion, { id, participants, action, author }) {
 
                     case "promote":
                         if (author) {
-                            Zion.sendMessage(
+                            Hisoka.sendMessage(
                                 id,
                                 {
                                     text: `🎉 *@${author.split("@")[0]} telah menjadikan @${jid.split("@")[0]} sebagai admin grup ini!* 👑`,
@@ -42,7 +42,7 @@ function GroupParticipants(Zion, { id, participants, action, author }) {
 
                     case "demote":
                         if (author) {
-                            Zion.sendMessage(
+                            Hisoka.sendMessage(
                                 id,
                                 {
                                     text: `😔 *@${author.split("@")[0]} telah menghapus @${jid.split("@")[0]} dari jabatan admin grup ini.* 🚫`,

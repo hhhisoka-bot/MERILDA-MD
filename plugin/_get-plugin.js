@@ -1,6 +1,6 @@
 const fs = require("fs")
 
-let handler = async (m, { Zion, isOwner, reply, text }) => {
+let handler = async (m, { Hisoka, isOwner, reply, text }) => {
 if (!isOwner) return reply(global.mess.owner)
 if (!text) return m.reply("namafile plugins nya")
 if (!text.endsWith(".js")) return m.reply("Nama file harus berformat .js")

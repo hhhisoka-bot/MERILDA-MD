@@ -1,5 +1,5 @@
 {
-    "name": "Zion-MD",
+    "name": "𝚅𝚛𝚞𝚜𝚑 𝙼𝚊𝚛𝚒𝚊 𝚟𝟸",
     "version": "New",
     "description": "Multi-Device",
     "main": "index.js",
@@ -13,7 +13,7 @@
         "kyzo",
         "Silence"
     ],
-    "author": "Kyzo",
+    "author": "hhhisoka-bot",
     "license": "MIT",
     "dependencies": {
         "@adiwajshing/keyed-db": "^0.2.4",

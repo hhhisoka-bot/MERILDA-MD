@@ -1,7 +1,7 @@
 
 const regex = /chat\.whatsapp\.com\/([0-9A-Za-z]{20,24})/i
 
-let handler = async (m, { Zion, text }) => {
+let handler = async (m, { Hisoka, text }) => {
   if (!text) return m.reply('📌 Contoh: .stalkgrup https://chat.whatsapp.com/xxxxx\n')
 
   const match = text.match(regex)
@@ -10,7 +10,7 @@ let handler = async (m, { Zion, text }) => {
   const code = match[1]
 
   try {
-    const res = await Zion.groupGetInviteInfo(code)
+    const res = await Hisoka.groupGetInviteInfo(code)
     const {
       subject, subjectOwner, owner, creation, desc, size
     } = res

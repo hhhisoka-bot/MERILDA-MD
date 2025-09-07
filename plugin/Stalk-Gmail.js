@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-let handler = async (m, { Zion, text, command }) => {
+let handler = async (m, { Hisoka, text, command }) => {
   if (!text || !text.includes('@')) {
     return m.reply(`📮 *Contoh:* ${command} emailmu@gmail.com`);
   }

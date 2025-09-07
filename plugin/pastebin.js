@@ -1,7 +1,7 @@
 
 const axios = require('axios')
 
-let handler = async (m, { Zion, text, args, command }) => {
+let handler = async (m, { Hisoka, text, args, command }) => {
   if (!text) return m.reply(`📌 Contoh:\n${command} Ini contoh teks yang akan diunggah ke Pastebin`)
 
   const api_dev_key = 'h9WMT2Mn9QW-qDhvUSc-KObqAYcjI0he' // Ganti dengan API key dari akun Pastebin kamu

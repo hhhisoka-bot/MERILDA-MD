@@ -2,8 +2,8 @@ const fs = require('fs')
 const path = require('path')
 const axios = require('axios')
 const { execSync } = require('child_process')
-let handler = async (m, { args, Zion, text, prefix, command }) => {
-await Zion.sendMessage(m.chat, {react: {text: '🚀', key: m.key}})
+let handler = async (m, { args, Hisoka, text, prefix, command }) => {
+await Hisoka.sendMessage(m.chat, {react: {text: '🚀', key: m.key}})
 try {
       if (!text) return m.reply(`Contoh: ${prefix + command} hai`)
       if (text.length > 250) return m.reply(`Karakter terbatas, max 250!`)
@@ -44,7 +44,7 @@ try {
           `ffmpeg -y -f concat -safe 0 -i ${fileListPath} -vf "fps=30" -c:v libx264 -preset superfast -pix_fmt yuv420p ${outputVideoPath}`
         )
 
-        await Zion.sendImageAsSticker(m.chat, outputVideoPath, m, {
+        await Hisoka.sendImageAsSticker(m.chat, outputVideoPath, m, {
           packname: foother,
           author: nama
         })

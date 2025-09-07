@@ -2,13 +2,13 @@
 
 const fetch = require('node-fetch');
 
-let handler = async (m, { Zion, text, command }) => {
+let handler = async (m, { Hisoka, text, command }) => {
   if (!text) {
     return m.reply(`❌ Masukkan username PUBG PC!\n\n📌 Contoh:\n${command}`);
   }
 
   try {
-    await Zion.sendMessage(m.chat, { react: { text: '🎮', key: m.key } });
+    await Hisoka.sendMessage(m.chat, { react: { text: '🎮', key: m.key } });
 
     const res = await fetch(`https://zelapioffciall.vercel.app/stalk/pubg?username=${encodeURIComponent(text)}`);
     const json = await res.json();
