@@ -1,5 +1,5 @@
 console.clear();
-console.log("© Vrush Maria v2 by Raven-Hisoka");
+console.log("© 𝚅𝚛𝚞𝚜𝚑 𝙼𝚊𝚛𝚒𝚊 𝚟𝟸 by 𝕽𝖆𝖛𝖊𝖓-𝓗𝓲𝓼𝓸𝓴𝓪");
 require("./config");
 const {
   default: makeWASocket,

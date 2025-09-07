@@ -1,5 +1,5 @@
 require('./config');
-require('./Zion');
+require('./Hisoka.js');
 const fs = require('fs')
 const chalk = require('chalk')
 

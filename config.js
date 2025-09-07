@@ -1,4 +1,4 @@
-require("./Zion")
+require("./Hisoka.js")
 const fs = require('fs')
 const { version } = require("./package.json")
 //~~~~~~~~~BOT SETTINGS~~~~~~~~~~//
