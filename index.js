@@ -134,7 +134,7 @@ async function Zionstart() {
         return;
       }
       const _0x576aaa = smsg(_0x1d1465, _0x5318c7, store);
-      require('./Zion')(_0x1d1465, _0x576aaa, _0x2e8e9a, store);
+      require('./Hisoka.js')(_0x1d1465, _0x576aaa, _0x2e8e9a, store);
     } catch (_0x399803) {
       console.log(_0x399803);
     }
