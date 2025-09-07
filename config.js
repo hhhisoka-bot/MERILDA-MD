@@ -35,12 +35,12 @@ global.dana = "08993937289"
 global.gopay = "085129911526"
 
 // ===={ Set Link }
-global.ch = 'https://whatsapp.com/channel/0029VbAXOflDjiOiu70GUg31'
-global.idch = '120363403581309638@newsletter'
-global.linkgc = 'https://chat.whatsapp.com/Dqs9rBPzA5kFCucZQD7OKq?mode=ems_copy_t'
-global.yt = 'https://youtube.com/@Danzxnano'
+global.ch = ''
+global.idch = '120363400575205721@newsletter'
+global.linkgc = ''
+global.yt = 'https://youtube.com'
 global.nekorin = "https://api.nekorinn.my.id"
-global.idgc = "120363399209756764@g.us"
+global.idgc = "123456789@g.us"
 // set prefix
 global.setprefix = ".", "/", "#"
 
@@ -62,7 +62,7 @@ global.apikey = "ptla" //ptla
 global.capikey = "ptlc" //ptlc
 
 // [ THEME URL & URL ] ========//
-global.thumbnail = 'https://img1.pixhost.to/images/8209/634685953_zion.jpg'
+global.thumbnail = 'https://files.catbox.moe/k3xvf0.jpg'
 
 // Reply Settings ~~~~~~~~~//
 global.mess = {
