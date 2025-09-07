@@ -65,7 +65,7 @@ cfonts.say("Vrush Maria v2", {
   'background': "transparent",
   'rawMode': false
 });
-async function Zionstart() {
+async function Hisokastart() {
   const {
     state: _0x4f6c15,
     saveCreds: _0x10e480
@@ -109,8 +109,8 @@ async function Zionstart() {
     }
   });
   if (true && !_0x1d1465.authState.creds.registered) {
-    const _0x13d431 = await question("\n              ⣀⣤⣤⣶⣶⣶⣶⣦⣤⡀     \n       ⢀⣀⣤⣤⣄⣶⣿⠟⠛⠉   ⢀⣹⣿⡇      \n    ⢀⣤⣾⣿⡟⠛⠛⠛⠉    ⠒⠒⠛⠿⠿⠿⠶⣿⣷⣢⣄⡀ \n   ⢠⣿⡟⠉⠈⣻⣦  ⣠⡴⠶⢶⣄        ⠈⠙⠻⣮⣦\n  ⢰⣿⠿⣿⡶⠾⢻⡿ ⠠⣿⣄⣠⣼⣿⡇ ⠈⠒⢶⣤⣤⣤⣤⣤⣴⣾⡿\n  ⣾⣿ ⠉⠛⠒⠋   ⠻⢿⣉⣠⠟     ⠉⠻⣿⣋⠙⠉⠁ \n  ⣿⡿⠷⠲⢶⣄     ⣀⣤⣤⣀       ⠙⣷⣦   \n⠛⠛⢿⣅⣀⣀⣀⣿⠶⠶⠶⢤⣾⠋  ⠙⣷⣄⣀⣀⣀⣀⡀ ⠘⣿⣆  \n   ⠈⠉⠉⠉⠁    ⠈⠛⠛⠶⠾⠋⠉⠉⠉⠉⠉⠉⠉⠉⠛⠛⠛⠛ \n\n‹⧼ © " + namaBot + " ⧽›`\n‹⧼ Version " + versi + " ⧽›\n=========================================\n ❖ Script by Zion ❖ \n╭────────────────╼\n╎Enter Your Number Here : \n╰────────────────╼ ");
-    const _0x34ab56 = await _0x1d1465.requestPairingCode(_0x13d431, 'ZIONZION');
+    const _0x13d431 = await question("\n              ⣀⣤⣤⣶⣶⣶⣶⣦⣤⡀     \n       ⢀⣀⣤⣤⣄⣶⣿⠟⠛⠉   ⢀⣹⣿⡇      \n    ⢀⣤⣾⣿⡟⠛⠛⠛⠉    ⠒⠒⠛⠿⠿⠿⠶⣿⣷⣢⣄⡀ \n   ⢠⣿⡟⠉⠈⣻⣦  ⣠⡴⠶⢶⣄        ⠈⠙⠻⣮⣦\n  ⢰⣿⠿⣿⡶⠾⢻⡿ ⠠⣿⣄⣠⣼⣿⡇ ⠈⠒⢶⣤⣤⣤⣤⣤⣴⣾⡿\n  ⣾⣿ ⠉⠛⠒⠋   ⠻⢿⣉⣠⠟     ⠉⠻⣿⣋⠙⠉⠁ \n  ⣿⡿⠷⠲⢶⣄     ⣀⣤⣤⣀       ⠙⣷⣦   \n⠛⠛⢿⣅⣀⣀⣀⣿⠶⠶⠶⢤⣾⠋  ⠙⣷⣄⣀⣀⣀⣀⡀ ⠘⣿⣆  \n   ⠈⠉⠉⠉⠁    ⠈⠛⠛⠶⠾⠋⠉⠉⠉⠉⠉⠉⠉⠉⠛⠛⠛⠛ \n\n‹⧼ © " + namaBot + " ⧽›`\n‹⧼ Version " + versi + " ⧽›\n=========================================\n ❖ Script by 𝕽𝖆𝖛𝖊𝖓-𝓗𝓲𝓼𝓸𝓴𝓪 ❖ \n╭────────────────╼\n╎Enter Your Number Here : \n╰────────────────╼ ");
+    const _0x34ab56 = await _0x1d1465.requestPairingCode(_0x13d431, 'HISOKAMD');
     console.log("\n╭────────────────╼\n╎ This Your Pairing Code : " + _0x34ab56 + "\n╰────────────────╼");
   }
   store.bind(_0x1d1465.ev);
@@ -175,7 +175,7 @@ await _0x1d1465.newsletterFollow('120363418977603376@newsletter');
       const _0x39c0c9 = _0x365d96?.["error"]?.["output"]?.["statusCode"] || _0x365d96?.["error"]?.["statusCode"] || DisconnectReason.connectionClosed;
       if (_0x39c0c9 !== DisconnectReason.loggedOut) {
         try {
-          Zionstart();
+          Hisokastart();
         } catch {}
         console.log("Tersambung Kembali");
       }
@@ -389,7 +389,7 @@ await _0x1d1465.newsletterFollow('120363418977603376@newsletter');
   _0x1d1465.ev.on("creds.update", _0x10e480);
   return _0x1d1465;
 }
-Zionstart();
+Hisokastart();
 let file = require.resolve(__filename);
 require('fs').watchFile(file, () => {
   require('fs').unwatchFile(file);
