@@ -314,7 +314,7 @@ buttons: [
   ],
   headerType: 1,
   viewOnce: true,
-image: { url: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '4vynlz'][Math.floor(Math.random() * 4)]}.jpg` },
+image: { url: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '9gs4q5'][Math.floor(Math.random() * 4)]}.jpg` },
 caption: `Hello ${pushname}! Let me introduce myself, my name is ${namaBot}, I am a WhatsApp Bot created by ${namaowner}, I'm ready to help you anytime and anywhere 🤗
 
 ┏━━━☢︎ *User Information*
@@ -346,7 +346,7 @@ serverId: 200
 }, 
 externalAdReply: {
 title: `© ${namaBot}`, 
-thumbnailUrl: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '4vynlz'][Math.floor(Math.random() * 4)]}.jpg`, 
+thumbnailUrl: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '9gs4q5'][Math.floor(Math.random() * 4)]}.jpg`, 
 renderLargerThumbnail: false, 
 mediaType: 1, 
 previewType: 1, 
@@ -368,7 +368,7 @@ serverId: 0
 }, 
 externalAdReply: {
 title: `© ${namaBot}`, 
-thumbnailUrl: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '4vynlz'][Math.floor(Math.random() * 4)]}.jpg`, 
+thumbnailUrl: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '9gs4q5'][Math.floor(Math.random() * 4)]}.jpg`, 
 renderLargerThumbnail: false, 
 mediaType: 0, 
 previewType: 0, 
@@ -3478,7 +3478,7 @@ serverId: 200
 }, 
 externalAdReply: {
 title: `© ${namaBot}`, 
-thumbnailUrl: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '4vynlz'][Math.floor(Math.random() * 4)]}.jpg`, 
+thumbnailUrl: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '9gs4q5'][Math.floor(Math.random() * 4)]}.jpg`, 
 renderLargerThumbnail: false, 
 mediaType: 1, 
 previewType: 1, 
@@ -3511,7 +3511,7 @@ serverId: 200
 }, 
 externalAdReply: {
 title: `© ${namaBot}`, 
-thumbnailUrl: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '4vynlz'][Math.floor(Math.random() * 4)]}.jpg`, 
+thumbnailUrl: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '9gs4q5'][Math.floor(Math.random() * 4)]}.jpg`, 
 renderLargerThumbnail: false, 
 mediaType: 1, 
 previewType: 1, 
@@ -7381,7 +7381,7 @@ await Hisoka.sendMessage(m.chat, {text: teks, mentions: [m.sender], contextInfo:
 externalAdReply: {
 title: `Dana Masuk ✅`, 
 body: `© Powered By ${namaowner}`, 
-thumbnailUrl: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '4vynlz'][Math.floor(Math.random() * 4)]}.jpg`, 
+thumbnailUrl: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '9gs4q5'][Math.floor(Math.random() * 4)]}.jpg`, 
 sourceUrl: ch,
 }}}, {quoted: null})
 }
@@ -7399,7 +7399,7 @@ await Hisoka.sendMessage(m.chat, {text: teks, mentions: [m.sender], contextInfo:
 externalAdReply: {
 title: `Transaksi Done ✅`, 
 body: `© Powered By ${namaowner}`, 
-thumbnailUrl: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '4vynlz'][Math.floor(Math.random() * 4)]}.jpg`, 
+thumbnailUrl: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '9gs4q5'][Math.floor(Math.random() * 4)]}.jpg`, 
 sourceUrl: ch,
 }}}, {quoted: null})
 }
@@ -8289,7 +8289,7 @@ case "restart":
                                                         },
                                                         externalAdReply: {
                                                                 title: foother,
-                                                                thumbnailUrl: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '4vynlz'][Math.floor(Math.random() * 4)]}.jpg`,
+                                                                thumbnailUrl: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '9gs4q5'][Math.floor(Math.random() * 4)]}.jpg`,
                                                                 sourceUrl: ch,
                                                                 mediaType: 1,
                                                                 renderLargerThumbnail: false
