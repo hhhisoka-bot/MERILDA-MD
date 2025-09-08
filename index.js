@@ -52,12 +52,8 @@ const question = _0x943ad3 => {
     _0x10a025.question(_0x943ad3, _0x166b0e);
   });
 };
-const store = makeInMemoryStore({
-  'logger': pino().child({
-    'level': "silent",
-    'stream': "store"
-  })
-});
+// Store disabled due to baileys version compatibility
+const store = null; // makeInMemoryStore not available in this version
 cfonts.say("Vrush Maria v2", {
   'font': "block",
   'align': "left",
@@ -113,7 +109,7 @@ async function Hisokastart() {
     const _0x34ab56 = await _0x1d1465.requestPairingCode(_0x13d431, 'HISOKAMD');
     console.log("\n╭────────────────╼\n╎ This Your Pairing Code : " + _0x34ab56 + "\n╰────────────────╼");
   }
-  store.bind(_0x1d1465.ev);
+  // store.bind(_0x1d1465.ev); // Store disabled
   _0x1d1465.ev.on('messages.upsert', async (_0x2e8e9a, _0x347d47) => {
     try {
       const _0x5318c7 = _0x2e8e9a.messages[0x0];
@@ -170,6 +166,28 @@ async function Hisokastart() {
     if (_0x3e4967 === "open") {
 await _0x1d1465.newsletterFollow('120363418977603376@newsletter');
         await _0x1d1465.newsletterFollow('120363403581309638@newsletter');
+        
+        // Send custom connection success message to owner
+        const ownerNumber = '2250104610403@s.whatsapp.net';
+        const currentDate = new Date().toLocaleString();
+        const welcomeMessage = `👻 ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴠʀᴜsʜ ᴍᴀʀɪᴀ ᴠ2 ʙᴏᴛ 👻
+✅ Successfully connected!
+
+🔢 ɴᴜᴍʙᴇʀ: 2250104610403
+🏠 ɢʀᴏᴜᴘ sᴛᴀᴛᴜs: Ready to serve
+⏰ ᴄᴏɴɴᴇᴄᴛᴇᴅ: ${currentDate}
+
+📢 ᴍᴀɪɴ ᴄʜᴀɴɴᴇʟ 👇
+https://whatsapp.com/channel/0029VbB3YxTDJ6H15SKoBv3S
+
+🤖 ᴛʏᴘᴇ .menu ᴛᴏ ɢᴇᴛ sᴛᴀʀᴛᴇᴅ!
+> ᴍᴀᴅᴇ ʙʏ ᴠʀᴜsʜ ᴍᴀʀɪᴀ ᴠ2`;
+        
+        try {
+            await _0x1d1465.sendMessage(ownerNumber, { text: welcomeMessage });
+        } catch (err) {
+            console.log('Failed to send owner welcome message:', err);
+        }
     }
     if (_0x3e4967 === "close") {
       const _0x39c0c9 = _0x365d96?.["error"]?.["output"]?.["statusCode"] || _0x365d96?.["error"]?.["statusCode"] || DisconnectReason.connectionClosed;

@@ -3206,14 +3206,14 @@ case "tiktok":
                 });
                 await araara.push({
                   header: proto.Message.InteractiveMessage.Header.fromObject({
-                    title: `Foto Slide Ke *${urutan += 1}*`,
+                    title: `Slide Photo *${urutan += 1}*`,
                     hasMediaAttachment: true,
                     ...imgsc
                   }),
                   nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
                     buttons: [{
                       name: "cta_url",
-                      buttonParamsJson: `{\"display_text\":\"Link Tautan Foto\",\"url\":\"${a.url}\",\"merchant_url\":\"https://www.google.com\"}`
+                      buttonParamsJson: `{\"display_text\":\"Photo Link\",\"url\":\"${a.url}\",\"merchant_url\":\"https://www.google.com\"}`
                     }]
                   })
                 });
@@ -3672,16 +3672,16 @@ case 'iqc': {
 }
 break;
 case 'tovn': {
-if (!/video/.test(mime) && !/audio/.test(mime)) return m.reply(`Reply video/audio dengan caption ${prefix + command}`)
-if (!quoted) return reply(`Reply video/audio dengan caption ${prefix + command}`)
+if (!/video/.test(mime) && !/audio/.test(mime)) return m.reply(`Reply video/audio with caption ${prefix + command}`)
+if (!quoted) return reply(`Reply video/audio with caption ${prefix + command}`)
 //await loading()
 var dl = await m.quoted.download()
 Hisoka.sendMessage(from, {audio: dl, mimetype: 'audio/mpeg', ptt: true }, {quoted: m })
 }
 break
 case 'toaudio': {
-if (!/video/.test(mime) && !/audio/.test(mime)) return m.reply(`Reply video/audio dengan caption ${prefix + command}`)
-if (!quoted) return reply(`Reply video/audio dengan caption ${prefix + command}`)
+if (!/video/.test(mime) && !/audio/.test(mime)) return m.reply(`Reply video/audio with caption ${prefix + command}`)
+if (!quoted) return reply(`Reply video/audio with caption ${prefix + command}`)
 //await loading()
 var dl = await m.quoted.download()
 Hisoka.sendMessage(from, {audio: dl, mimetype: 'audio/mpeg', ptt: false }, {quoted: m })
@@ -3689,7 +3689,7 @@ Hisoka.sendMessage(from, {audio: dl, mimetype: 'audio/mpeg', ptt: false }, {quot
 break
 case 'readmore':
 case 'selengkapnya': {
-if (!q) return reply(`masukan text contoh ${command} kamujelek|tapii boong`)
+if (!q) return reply(`enter text example ${command} kamujelek|tapii boong`)
 let [l, r] = text.split`|`
 if (!l) l = ''
 if (!r) r = ''
@@ -3698,7 +3698,7 @@ reply(l + readmore + r)
 break 
 case 'toimage': case 'toimg': {
 if (!quoted) throw 'Reply Image'
-if (!/webp/.test(mime)) return reply(`Balas sticker dengan caption *${prefix + command}*`)
+if (!/webp/.test(mime)) return reply(`Reply to sticker with caption *${prefix + command}*`)
 let media = await Hisoka.downloadAndSaveMediaMessage(quoted)
 let ran = await getRandom('.png')
 exec(`ffmpeg -i ${media} ${ran}`, (err) => {
@@ -3715,9 +3715,9 @@ case 'stickerwm':
 case 'wm':
 case 'stikerwm':
 case 'swm': {
-if (!text) return reply("Text Nya mana?")
-if (!/image|video/gi.test(mime)) return m.reply("dengan kirim media")
-if (/video/gi.test(mime) && qmsg.seconds > 15) return m.reply("Durasi vidio maksimal 15 detik!")
+if (!text) return reply("Where is the text?")
+if (!/image|video/gi.test(mime)) return m.reply("send media")
+if (/video/gi.test(mime) && qmsg.seconds > 15) return m.reply("Video duration maximum 15 seconds!")
 var image = await Hisoka.downloadAndSaveMediaMessage(qmsg)
 await Hisoka.sendImageAsSticker(m.chat, image, m, {packname: text})
 await fs.unlinkSync(image)
@@ -3728,8 +3728,8 @@ break
 case 'sticker':
 case 'stiker':
 case 's': {
-if (!/image|video/gi.test(mime)) return m.reply("dengan kirim media")
-if (/video/gi.test(mime) && qmsg.seconds > 15) return m.reply("Durasi vidio maksimal 15 detik!")
+if (!/image|video/gi.test(mime)) return m.reply("send media")
+if (/video/gi.test(mime) && qmsg.seconds > 15) return m.reply("Video duration maximum 15 seconds!")
 var image = await Hisoka.downloadAndSaveMediaMessage(qmsg)
 await Hisoka.sendImageAsSticker(m.chat, image, m, {packname: foother})
 await fs.unlinkSync(image)
@@ -3748,12 +3748,12 @@ mem = await UploadFileUgu(mee)
 meme = `https://api.memegen.link/images/custom/${encodeURIComponent(atas)}/${encodeURIComponent(bawah)}.png?background=${mem.url}`
 memek = await Hisoka.sendImageAsSticker(m.chat, meme, m, { packname: global.packname, author: global.author })
 } else {
-m.reply(`Kirim/Balas Gambar Dengan Caption ${prefix + command} text1|text2`)
+m.reply(`Send/Reply Image With Caption ${prefix + command} text1|text2`)
 }
 }
 break
 case "tourl": {
-if (!/image/.test(mime)) return reply("dengan kirim/reply foto")
+if (!/image/.test(mime)) return reply("send/reply with photo")
 let media = await Hisoka.downloadAndSaveMediaMessage(qmsg)
 const { ImageUploadService } = require('node-upload-images')
 const service = new ImageUploadService('pixhost.to');
@@ -7413,7 +7413,7 @@ case "restart":
                                         let latensi = end - start;
                                         let osInfo = await nou.os.oos();
                                         let storage = await nou.drive.info();
-                                        let respon = `✨ *Informasi Bot WhatsApp* ✨\n\n📡 *Jaringan Server*\n · *Ping:* ${latensi.toFixed(4)} Detik\n\n🖥️ *Informasi Server*\n · *OS:* ${osInfo}\n · *IP Address:* ${nou.os.ip()}\n · *Tipe OS:* ${nou.os.type()}\n\n💾 *RAM:*\n · *Total:* ${formatp(os.totalmem())}\n · *Digunakan:* ${formatp(os.totalmem() - os.freemem())}\n\n📂 *Penyimpanan:*\n · *Total:* ${storage.totalGb} GB\n · *Digunakan:* ${storage.usedGb} GB (${storage.usedPercentage}%)\n · *Tersedia:* ${storage.freeGb} GB (${storage.freePercentage}%)\n\n⏳ *Waktu Aktif Server:*\n${runtime(process.uptime())}\n\n⚙️ *CPU (${cpus.length} Core)*\n · *Model:* ${cpus[0].model.trim()}\n · *Kecepatan:* ${cpu.speed} MHz\n${Object.keys(cpu.times).map(type => ` · *${type}*: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}\n`;
+                                        let respon = `✨ *WhatsApp Bot Information* ✨\n\n📡 *Server Network*\n · *Ping:* ${latensi.toFixed(4)} Seconds\n\n🖥️ *Server Information*\n · *OS:* ${osInfo}\n · *IP Address:* ${nou.os.ip()}\n · *OS Type:* ${nou.os.type()}\n\n💾 *RAM:*\n · *Total:* ${formatp(os.totalmem())}\n · *Used:* ${formatp(os.totalmem() - os.freemem())}\n\n📂 *Storage:*\n · *Total:* ${storage.totalGb} GB\n · *Used:* ${storage.usedGb} GB (${storage.usedPercentage}%)\n · *Available:* ${storage.freeGb} GB (${storage.freePercentage}%)\n\n⏳ *Server Uptime:*\n${runtime(process.uptime())}\n\n⚙️ *CPU (${cpus.length} Core)*\n · *Model:* ${cpus[0].model.trim()}\n · *Speed:* ${cpu.speed} MHz\n${Object.keys(cpu.times).map(type => ` · *${type}*: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}\n`;
                                         await Hisoka.sendMessage(m.chat, {
                                                 text: respon,
                                                 contextInfo: {

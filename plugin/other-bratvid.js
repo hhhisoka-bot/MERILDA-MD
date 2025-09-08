@@ -55,7 +55,7 @@ try {
         if (fs.existsSync(fileListPath)) fs.unlinkSync(fileListPath)
         if (fs.existsSync(outputVideoPath)) fs.unlinkSync(outputVideoPath)
 } catch (err) {
-  m.reply('An error occurred ;' + err)
+  m.reply('An error occurred: ' + err)
 }
 }
 

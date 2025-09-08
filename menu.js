@@ -1309,7 +1309,7 @@ global.menuquotes = `
 │✎.quotesislamic
 ╚─────────────☉
 `
-global.menucecan = `╔──☉ *C E C A N* 
+global.menucecan = `╔──☉ *G A L L E R Y* 
 │✎.hijaber
 │✎.jeni
 │✎.jiso

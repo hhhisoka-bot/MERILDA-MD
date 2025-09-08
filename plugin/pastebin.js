@@ -2,11 +2,11 @@
 const axios = require('axios')
 
 let handler = async (m, { Hisoka, text, args, command }) => {
-  if (!text) return m.reply(`📌 Contoh:\n${command} Ini contoh teks yang akan diunggah ke Pastebin`)
+  if (!text) return m.reply(`📌 Example:\n${command} This is example text to upload to Pastebin`)
 
   const api_dev_key = 'h9WMT2Mn9QW-qDhvUSc-KObqAYcjI0he' // Ganti dengan API key dari akun Pastebin kamu
   const api_paste_code = text.trim()
-  const api_paste_name = `Paste dari ${m.pushName || 'User'}`
+  const api_paste_name = `Paste from ${m.pushName || 'User'}`
   
   const data = new URLSearchParams({
     api_dev_key,
@@ -21,12 +21,12 @@ let handler = async (m, { Hisoka, text, args, command }) => {
     })
     const url = res.data
     if (url.startsWith('Bad API request')) {
-      return m.reply('❌ Gagal membuat Pastebin:\n' + url)
+      return m.reply('❌ Failed to create Pastebin:\n' + url)
     }
-    m.reply(`✅ *Berhasil membuat paste:*\n${url}`)
+    m.reply(`✅ *Successfully created paste:*\n${url}`)
   } catch (e) {
     console.error(e)
-    m.reply('⚠️ Gagal mengirim permintaan ke Pastebin.')
+    m.reply('⚠️ Failed to send request to Pastebin.')
   }
 }
 
