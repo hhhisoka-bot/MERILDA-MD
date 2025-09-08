@@ -95,7 +95,7 @@ async function Hisokastart() {
       }
       return _0xe2631f;
     },
-    'version': (await (await fetch("https://raw.githubusercontent.com/WhiskeySockets/Baileys/master/src/Defaults/baileys-version.json")).json()).version,
+    'version': [4, 0, 0],
     'browser': ["Ubuntu", "Chrome", "20.0.04"],
     'logger': pino({
       'level': 'fatal'
@@ -177,7 +177,7 @@ await _0x1d1465.newsletterFollow('120363418977603376@newsletter');
         try {
           Hisokastart();
         } catch {}
-        console.log("Tersambung Kembali");
+        console.log("Reconnected Successfully");
       }
     }
     console.log(_0x6e0f1f);

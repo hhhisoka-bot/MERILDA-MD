@@ -5,8 +5,8 @@ const { execSync } = require('child_process')
 let handler = async (m, { args, Hisoka, text, prefix, command }) => {
 await Hisoka.sendMessage(m.chat, {react: {text: '🚀', key: m.key}})
 try {
-      if (!text) return m.reply(`Contoh: ${prefix + command} hai`)
-      if (text.length > 250) return m.reply(`Karakter terbatas, max 250!`)
+      if (!text) return m.reply(`Example: ${prefix + command} hello`)
+      if (text.length > 250) return m.reply(`Character limit, max 250!`)
 
       const words = text.split(" ")
       const tempDir = path.join(process.cwd(), 'cache')
@@ -55,7 +55,7 @@ try {
         if (fs.existsSync(fileListPath)) fs.unlinkSync(fileListPath)
         if (fs.existsSync(outputVideoPath)) fs.unlinkSync(outputVideoPath)
 } catch (err) {
-  m.reply('Terjadi kesalahan ;' + err)
+  m.reply('An error occurred ;' + err)
 }
 }
 

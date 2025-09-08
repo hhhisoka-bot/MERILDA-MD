@@ -12,7 +12,7 @@ function GroupParticipants(Hisoka, { id, participants, action, author }) {
 
                 switch (action) {
                     case "add":
-                        Hisoka.sendMessage(id, {image: {url: `https://api.siputzx.my.id/api/canvas/welcomev4?avatar=https://files.catbox.moe/nwvkbt.png&background=${thumbnail}&description=@${jid.split("@")[0]}` }, caption: `Hai @${jid.split("@")[0]} 👋\n\nSelamat datang di *${subject}*!\nJangan lupa baca deskripsi grup dan tetap patuhi aturan. 😊✨`,
+                        Hisoka.sendMessage(id, {image: {url: `https://api.siputzx.my.id/api/canvas/welcomev4?avatar=https://files.catbox.moe/nwvkbt.png&background=${thumbnail}&description=@${jid.split("@")[0]}` }, caption: `Hi @${jid.split("@")[0]} 👋\n\nWelcome to *${subject}*!\nPlease read the group description and follow the rules. 😊✨`,
                                 contextInfo: { mentionedJid: [jid] }
                             },
                             { ephemeralExpiration: WA_DEFAULT_EPHEMERAL }
@@ -20,7 +20,7 @@ function GroupParticipants(Hisoka, { id, participants, action, author }) {
                         break
 
                     case "remove":
-                        Hisoka.sendMessage(id, {image: {url: `https://api.siputzx.my.id/api/canvas/goodbyev4?avatar=https://files.catbox.moe/nwvkbt.png&background=${thumbnail}&description=@${jid.split("@")[0]}` }, caption: `Selamat tinggal @${jid.split("@")[0]} 👋\nSemoga sukses di luar sana! 🚀`,
+                        Hisoka.sendMessage(id, {image: {url: `https://api.siputzx.my.id/api/canvas/goodbyev4?avatar=https://files.catbox.moe/nwvkbt.png&background=${thumbnail}&description=@${jid.split("@")[0]}` }, caption: `Goodbye @${jid.split("@")[0]} 👋\nGood luck out there! 🚀`,
                                 contextInfo: { mentionedJid: [jid] }
                             },
                             { ephemeralExpiration: WA_DEFAULT_EPHEMERAL }
@@ -32,7 +32,7 @@ function GroupParticipants(Hisoka, { id, participants, action, author }) {
                             Hisoka.sendMessage(
                                 id,
                                 {
-                                    text: `🎉 *@${author.split("@")[0]} telah menjadikan @${jid.split("@")[0]} sebagai admin grup ini!* 👑`,
+                                    text: `🎉 *@${author.split("@")[0]} has promoted @${jid.split("@")[0]} to admin of this group!* 👑`,
                                     contextInfo: { mentionedJid: [...tag] }
                                 },
                                 { ephemeralExpiration: WA_DEFAULT_EPHEMERAL }
@@ -45,7 +45,7 @@ function GroupParticipants(Hisoka, { id, participants, action, author }) {
                             Hisoka.sendMessage(
                                 id,
                                 {
-                                    text: `😔 *@${author.split("@")[0]} telah menghapus @${jid.split("@")[0]} dari jabatan admin grup ini.* 🚫`,
+                                    text: `😔 *@${author.split("@")[0]} has removed @${jid.split("@")[0]} from admin position of this group.* 🚫`,
                                     contextInfo: { mentionedJid: [...tag] }
                                 },
                                 { ephemeralExpiration: WA_DEFAULT_EPHEMERAL }
@@ -54,7 +54,7 @@ function GroupParticipants(Hisoka, { id, participants, action, author }) {
                         break
 
                     default:
-                        console.log(`⚠️ Aksi tidak dikenal: ${action} untuk ${jid} di grup ${subject}`)
+                        console.log(`⚠️ Unknown action: ${action} for ${jid} in group ${subject}`)
                 }
             }
         })

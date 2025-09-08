@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 
 let handler = async (m, { Hisoka, text, command }) => {
   if (!text) {
-    return m.reply(`❌ Masukkan username PUBG PC!\n\n📌 Contoh:\n${command}`);
+    return m.reply(`❌ Enter PUBG PC username!\n\n📌 Example:\n${command}`);
   }
 
   try {
@@ -14,7 +14,7 @@ let handler = async (m, { Hisoka, text, command }) => {
     const json = await res.json();
 
     if (!json?.status) {
-      return m.reply('❌ Gagal mengambil data PUBG.');
+      return m.reply('❌ Failed to retrieve PUBG data.');
     }
 
     let teks = `🎮 *PUBG PC Stats*\n\n`;
@@ -31,7 +31,7 @@ let handler = async (m, { Hisoka, text, command }) => {
     await m.reply(teks);
   } catch (e) {
     console.error(e);
-    m.reply('⚠️ Terjadi kesalahan saat mengambil data PUBG.');
+    m.reply('⚠️ An error occurred while retrieving PUBG data.');
   }
 };
 

@@ -193,11 +193,6 @@ buttons: [
                   id: `.menuconvert`
                   },
                 {
-                  title: 'Menu Sound',
-                  description: foother, 
-                  id: `.menusound`
-                  },
-                {
                   title: 'Menu Random',
                   description: foother, 
                   id: `.menurandom`
@@ -271,11 +266,6 @@ buttons: [
                   title: 'Menu RandomVid',
                   description: foother, 
                   id: `.menurandomvid`
-                   },
-                {
-                  title: 'Menu Linode',
-                  description: foother, 
-                  id: `.menulinode`
                    },
                 {
                   title: 'Menu Menfess',
@@ -983,11 +973,6 @@ HisokaReact()
 menureply(`${global.menuconvert}`)
 }
 break
-case "menusound": {
-HisokaReact()
-menureply(`${global.menusound}`)
-}
-break
 case "menurandom": {
 HisokaReact()
 menureply(`${global.menurandom}`)
@@ -1061,11 +1046,6 @@ break
 case "menurandomvid": {
 HisokaReact()
 menureply(`${global.menurandomvid}`)
-}
-break
-case "menulinode": {
-HisokaReact()
-menureply(`${global.menulinode}`)
 }
 break
 case "menumenfess": {
@@ -1160,11 +1140,11 @@ case "nglspam":
           const [username, message, count] = text.split("|");
           const spamCount = parseInt(count, 10);
           if (isNaN(spamCount) || spamCount <= 0) {
-            return reply("Jumlah spam harus berupa angka positif!");
+            return reply("Spam count must be a positive number!");
           }
           try {
             await sendSpamMessage(username, message, spamCount);
-            reply(`Sukses mengirim ${spamCount} pesan NGL ke ${username}`);
+            reply(`Successfully sent ${spamCount} NGL messages to ${username}`);
           } catch (e) {
             console.error(e); // Adding error logging for debugging
             return reply("Feature error, try again later.");
@@ -1184,7 +1164,7 @@ case "nglspam":
       let target = argsText[0]
       let caption = argsText.slice(1).join(',')
 
-      if (!quoted) return m.reply(`Quote message like image, video, or audio with caption ${command}`)
+      if (!quoted) return m.reply(`Reply to an image, video, or audio message with caption ${command}`)
 
       if (quoted.mtype === "audioMessage") {
         let audioData = await quoted.download()
@@ -1236,27 +1216,27 @@ await Hisoka.sendMessage(m.chat, {
               title: `© ${namaBot}`,
               rows: [
                 {
-                  title: 'Nonaktifkan AutoTyping',
+                  title: 'Disable AutoTyping',
                   description: 'false', 
                   id: `.autotyping off`
                 },
                 {
-                  title: 'Nonaktifkan autoread',
+                  title: 'Disable AutoRead',
                   description: 'false', 
                   id: `.autoread off`
                   },
                 {
-                  title: 'Nonaktifkan autobio',
+                  title: 'Disable AutoBio',
                   description: 'false', 
                   id: `.autobio off`
                   },
                 {
-                  title: 'Nonaktifkan Pringatan Sholat',
+                  title: 'Disable Prayer Reminders',
                   description: 'false', 
                   id: `.autosholat off`
                   },
                 {
-                  title: 'Nonaktifkan Group Only',
+                  title: 'Disable Group Only',
                   description: 'false', 
                   id: `.onlygc off`
                 }             
@@ -1290,27 +1270,27 @@ await Hisoka.sendMessage(m.chat, {
               title: `© ${namaBot}`,
               rows: [
                 {
-                  title: 'Aktifkan AutoTyping',
+                  title: 'Enable AutoTyping',
                   description: 'true', 
                   id: `.autotyping on`
                 },
                 {
-                  title: 'Aktifkan autoread',
+                  title: 'Enable AutoRead',
                   description: 'true', 
                   id: `.autoread on`
                    },
                 {
-                  title: 'Aktifkan autobio',
+                  title: 'Enable AutoBio',
                   description: 'true', 
                   id: `.autobio on`
                   },
                 {
-                  title: 'Aktifkan Pringatan Sholat',
+                  title: 'Enable Prayer Reminders',
                   description: 'true', 
                   id: `.autosholat on`
                   },
                 {
-                  title: 'Aktifkan Group Only',
+                  title: 'Enable Group Only',
                   description: 'true', 
                   id: `.onlygc on`
                 }             
@@ -1337,7 +1317,7 @@ while ((match = regex.exec(code)) !== null) {
   cases.push(match[1]);
 }
 return reply(`
-*Total Case:* ${cases.length}
+*Total Commands:* ${cases.length}
 
 > ${cases.join("\n> ")}
 `)
@@ -1362,7 +1342,7 @@ case "rch": {
     const link = argsa[0];
 
     if (!link.includes("https://whatsapp.com/channel/")) {
-        return m.reply("Invalid link!\nExample: .reactch https://whatsapp.com/channel/xxx/idpesan ❤️biyu|3");
+        return m.reply("Invalid link!\nExample: .reactch https://whatsapp.com/channel/xxx/messageid ❤️react|3");
     }
 
     const channelId = link.split('/')[4];
@@ -1439,7 +1419,7 @@ case 'listgc': {
  const getGroups = await Hisoka.groupFetchAllParticipating();
  const groups = Object.values(getGroups);
 
- if (!groups.length) return reply('❌ Bot belum gabung di grup manapun.');
+ if (!groups.length) return reply('❌ Bot is not joined to any groups.');
 
  let teks = `⬣ *LIST GROUP ${namaBot.toUpperCase()}*\n📊 Total Groups: ${groups.length}\n\nGroup List:\n\n`;
 
@@ -1479,7 +1459,7 @@ case 'listgc': {
 break
 
 case "listowner": case "listown": {
-if (owner.length < 1) return m.reply("Tidak ada owner tambahan")
+if (owner.length < 1) return m.reply("No additional owners")
 let teks = `\n *#- List all owner tambahan*\n`
 for (let i of owner) {
 teks += `\n* ${i.split("@")[0]}
@@ -1495,7 +1475,7 @@ if (!isOwner) return reply(mess.owner)
 if (!m.quoted && !text) return m.reply("6285###")
 const input = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net"
 const input2 = input.split("@")[0]
-if (input2 === global.owner || input == botNumber) return m.reply(`Tidak bisa menghapus owner utama!`)
+if (input2 === global.owner || input == botNumber) return m.reply(`Cannot remove main owner!`)
 if (!owner.includes(input)) return m.reply(`Nomor ${input2} bukan owner bot!`)
 let posi = owner.indexOf(input)
 await owner.splice(posi, 1)
@@ -1517,8 +1497,8 @@ m.reply(`Successfully added owner ✅`)
 break
 case "joingc": case "join": {
 if (!isOwner) return reply(mess.owner)
-if (!text) return m.reply("linkgcnya")
-if (!text.includes("chat.whatsapp.com")) return m.reply("Link tautan tidak valid")
+if (!text) return m.reply("group link required")
+if (!text.includes("chat.whatsapp.com")) return m.reply("Invalid group link")
 let result = text.split('https://chat.whatsapp.com/')[1]
 let id = await Hisoka.groupAcceptInvite(result)
 m.reply(`Successfully joined the group ${id}`)
@@ -1527,8 +1507,8 @@ m.reply(`Successfully joined the group ${id}`)
 break
 case "listprem": {
 if (!isOwner) return reply(mess.owner)
-if (premium.length < 1) return reply("𝘕𝘰 𝘏𝘢𝘷𝘦 𝘜𝘴𝘦𝘳 𝘗𝘳𝘦𝘮𝘪𝘶𝘮 :(")
-let teks = `\n𝘓𝘪𝘴𝘵 𝘈𝘭𝘭 𝘗𝘳𝘦𝘮𝘪𝘶𝘮 𝘜𝘴𝘦𝘳\n`
+if (premium.length < 1) return reply("No Premium Users :(")
+let teks = `\nList All Premium Users\n`
 for (let i of premium) {
 teks += `\n* ${i.split("@")[0]}
 * *Tag :* @${i.split("@")[0]}\n`
@@ -2089,7 +2069,7 @@ case 'toreal': {
     await Hisoka.sendMessage(m.chat, { image: { url: apiUrl } }, { quoted: m })
   } catch (err) {
     console.error('An error occurred:', err)
-    m.reply('Terjadi kesalahan')
+    m.reply('An error occurred')
   } finally {
     if (media) {
       fs.promises.unlink(media).catch(() => {})
@@ -2128,7 +2108,7 @@ case 'ocr': {
     let filename = `ocr.${ext}`
     let imageUrl = await Uguu(media, filename)
     let { data } = await axios.get(`https://api.alyachan.dev/api/ocr?image=${imageUrl}&apikey=DinzIDgembul`)
-    if (!data?.status || !data.result?.text) throw 'ocr gagal wok, atau text ga di temukan'
+    if (!data?.status || !data.result?.text) throw 'OCR failed or text not found'
     let hasil = data.result.text.replace(/\r/g, '').trim()
     await Hisoka.sendMessage(m.chat, {
       react: {
@@ -2246,7 +2226,7 @@ if (!text) return m.reply(`Promt nya mana?`);
   
   let promptText = text || defaultPrompt;
   
-  reply("Tunggu Sebentar...");
+  reply("Please wait...");
   
   try {
     let imgData = await q.download();
@@ -2319,7 +2299,7 @@ case "hitamkan": {
   
   let promptText = text || defaultPrompt;
   
-  reply("Tunggu Sebentar...");
+  reply("Please wait...");
   
   try {
     let imgData = await q.download();
@@ -2392,7 +2372,7 @@ case "putihkan": {
   
   let promptText = text || defaultPrompt;
   
-  reply("Tunggu Sebentar...");
+  reply("Please wait...");
   
   try {
     let imgData = await q.download();
@@ -2465,7 +2445,7 @@ case "night": {
   
   let promptText = text || defaultPrompt;
   
-  reply("Tunggu Sebentar...");
+  reply("Please wait...");
   
   try {
     let imgData = await q.download();
@@ -2538,7 +2518,7 @@ case "pretty": {
   
   let promptText = text || defaultPrompt;
   
-  reply("Tunggu Sebentar...");
+  reply("Please wait...");
   
   try {
     let imgData = await q.download();
@@ -2611,7 +2591,7 @@ case "ugly": {
   
   let promptText = text || defaultPrompt;
   
-  reply("Tunggu Sebentar...");
+  reply("Please wait...");
   
   try {
     let imgData = await q.download();
@@ -2684,7 +2664,7 @@ case "sedih": {
   
   let promptText = text || defaultPrompt;
   
-  reply("Tunggu Sebentar...");
+  reply("Please wait...");
   
   try {
     let imgData = await q.download();
@@ -2757,7 +2737,7 @@ case "senyum": {
   
   let promptText = text || defaultPrompt;
   
-  reply("Tunggu Sebentar...");
+  reply("Please wait...");
   
   try {
     let imgData = await q.download();
@@ -2830,7 +2810,7 @@ case "botakin": {
   
   let promptText = text || defaultPrompt;
   
-  reply("Tunggu Sebentar...");
+  reply("Please wait...");
   
   try {
     let imgData = await q.download();
@@ -2906,13 +2886,13 @@ case 'pinterestdl': {
     const data = await res.json();
 
     if (!data.status || !data.result || !data.result.medias?.length) {
-      return m.reply('❌ Tidak ditemukan media pada link tersebut.');
+      return m.reply('❌ No media found at that link.');
     }
 
     const media = data.result.medias.find(m => m.extension === 'mp4') ||
                   data.result.medias.find(m => m.extension === 'jpg');
 
-    if (!media) return m.reply('❌ Tidak ditemukan media yang dapat dikirim.');
+    if (!media) return m.reply('❌ No media found to send.');
 
     const caption = `📌 *Pinterest Downloader*\n\n🎞️ *Judul:* ${data.result.title}\n💾 *Ukuran:* ${media.formattedSize || '-'}\n📎 *Sumber:* ${text}`;
     const type = media.extension === 'mp4' ? 'video' : 'image';
@@ -3338,7 +3318,7 @@ case 'gddl':
           quoted: m
         })
       } catch (err) {
-        console.error('Kesalahan pada API:', err)
+        console.error('API Error:', err)
         m.reply('An error occurred')
       }
     }
@@ -3605,7 +3585,7 @@ case 'tts': {
  const character = ttsCharacters.find(char => char.displayName.toLowerCase() === characterName.toLowerCase());
 
  if (!character) {
- return reply(`❌ Karakter "*${characterName}*" tidak ditemukan. Ketik `.tts` untuk melihat daftar.`);
+ return reply(`❌ Character "*${characterName}*" not found. Type `.tts` to see the list.`);
  }
 
  const maxRetries = 3;
@@ -3622,18 +3602,18 @@ case 'tts': {
  const apiUrl = `https://flowfalcon.dpdns.org/tools/text-to-speech?text=${encodeURIComponent(speechText)}`;
  const { data: apiResponse } = await axios.get(apiUrl);
 
- if (!apiResponse.status || !apiResponse.result) throw new Error("API tidak merespons dengan benar.");
+ if (!apiResponse.status || !apiResponse.result) throw new Error("API not responding properly.");
 
  const result = apiResponse.result.find(res => res[character.audioKey]);
- if (!result) throw new Error(`Hasil untuk ${character.displayName} tidak ditemukan.`);
+ if (!result) throw new Error(`Result for ${character.displayName} not found.`);
  
  const audioUrl = result[character.audioKey];
- if (!audioUrl) throw new Error(`Link audio untuk ${character.displayName} tidak ditemukan.`);
+ if (!audioUrl) throw new Error(`Audio link for ${character.displayName} not found.`);
 
- await Hisoka.sendMessage(m.chat, { text: `✅ Link ditemukan, mengunduh suara...`, edit: statusMessage.key });
+ await Hisoka.sendMessage(m.chat, { text: `✅ Link found, downloading audio...`, edit: statusMessage.key });
 
  const { data: audioBuffer } = await axios.get(audioUrl, { responseType: 'arraybuffer' });
- if (!Buffer.isBuffer(audioBuffer) || audioBuffer.length < 1000) throw new Error("Gagal mengunduh audio valid.");
+ if (!Buffer.isBuffer(audioBuffer) || audioBuffer.length < 1000) throw new Error("Failed to download valid audio.");
 
  await Hisoka.sendMessage(m.chat, { audio: audioBuffer, mimetype: 'audio/mpeg', ptt: true }, { quoted: m });
  await Hisoka.sendMessage(m.chat, { delete: statusMessage.key });
@@ -4137,272 +4117,6 @@ console.error(error);
                         }
                         break
                         
-                        //============ Sound
-    case 'sound1':
-    case 'sound2':
-    case 'sound3':
-    case 'sound4':
-    case 'sound5':
-    case 'sound6':
-    case 'sound7':
-    case 'sound8':
-    case 'sound9':
-    case 'sound10':
-    case 'sound11':
-    case 'sound12':
-    case 'sound13':
-    case 'sound14':
-    case 'sound15':
-    case 'sound16':
-    case 'sound17':
-    case 'sound18':
-    case 'sound19':
-    case 'sound20':
-    case 'sound21':
-    case 'sound22':
-    case 'sound23':
-    case 'sound24':
-    case 'sound25':
-    case 'sound26':
-    case 'sound27':
-    case 'sound28':
-    case 'sound29':
-    case 'sound30':
-    case 'sound31':
-    case 'sound32':
-    case 'sound33':
-    case 'sound34':
-    case 'sound35':
-    case 'sound36':
-    case 'sound37':
-    case 'sound38':
-    case 'sound39':
-    case 'sound40':
-    case 'sound41':
-    case 'sound42':
-    case 'sound43':
-    case 'sound44':
-    case 'sound45':
-    case 'sound46':
-    case 'sound47':
-    case 'sound48':
-    case 'sound49':
-    case 'sound50':
-    case 'sound51':
-    case 'sound52':
-    case 'sound53':
-    case 'sound54':
-    case 'sound55':
-    case 'sound56':
-    case 'sound57':
-    case 'sound58':
-    case 'sound59':
-    case 'sound60':
-    case 'sound61':
-    case 'sound62':
-    case 'sound63':
-    case 'sound64':
-    case 'sound65':
-    case 'sound66':
-    case 'sound67':
-    case 'sound68':
-    case 'sound69':
-    case 'sound70':
-    case 'sound71':
-    case 'sound72':
-    case 'sound73':
-    case 'sound74':
-    case 'sound75':
-    case 'sound76':
-    case 'sound77':
-    case 'sound78':
-    case 'sound79':
-    case 'sound80':
-    case 'sound81':
-    case 'sound82':
-    case 'sound83':
-    case 'sound84':
-    case 'sound85':
-    case 'sound86':
-    case 'sound87':
-    case 'sound88':
-    case 'sound89':
-    case 'sound90':
-    case 'sound91':
-    case 'sound92':
-    case 'sound93':
-    case 'sound94':
-    case 'sound95':
-    case 'sound96':
-    case 'sound97':
-    case 'sound98':
-    case 'sound99':
-    case 'sound100':
-    case 'sound101':
-    case 'sound102':
-    case 'sound103':
-    case 'sound104':
-    case 'sound105':
-    case 'sound106':
-    case 'sound107':
-    case 'sound108':
-    case 'sound109':
-    case 'sound110':
-    case 'sound111':
-    case 'sound112':
-    case 'sound113':
-    case 'sound114':
-    case 'sound115':
-    case 'sound116':
-    case 'sound117':
-    case 'sound118':
-    case 'sound119':
-    case 'sound120':
-    case 'sound121':
-    case 'sound122':
-    case 'sound123':
-    case 'sound124':
-    case 'sound125':
-    case 'sound126':
-    case 'sound127':
-    case 'sound128':
-    case 'sound129':
-    case 'sound130':
-    case 'sound131':
-    case 'sound132':
-    case 'sound133':
-    case 'sound134':
-    case 'sound135':
-    case 'sound136':
-    case 'sound137':
-    case 'sound138':
-    case 'sound139':
-    case 'sound140':
-    case 'sound141':
-    case 'sound142':
-    case 'sound143':
-    case 'sound144':
-    case 'sound145':
-    case 'sound146':
-    case 'sound147':
-    case 'sound148':
-    case 'sound149':
-    case 'sound150':
-    case 'sound151':
-    case 'sound152':
-    case 'sound153':
-    case 'sound154':
-    case 'sound155':
-    case 'sound156':
-    case 'sound157':
-    case 'sound158':
-    case 'sound159':
-    case 'sound160':
-    case 'sound161':
-    case 'sound162':
-    case 'sound163':
-    case 'sound164':
-    case 'sound165':
-    case 'sound166':
-    case 'sound167':
-    case 'sound168':
-    case 'sound169':
-    case 'sound170':
-    case 'sound171':
-    case 'sound172':
-    case 'sound173':
-    case 'sound174':
-    case 'sound175':
-    case 'sound176':
-    case 'sound177':
-    case 'sound178':
-    case 'sound179':
-    case 'sound180':
-    case 'sound181':
-    case 'sound182':
-    case 'sound183':
-    case 'sound184':
-    case 'sound185':
-    case 'sound186':
-    case 'sound187':
-    case 'sound188':
-    case 'sound189':
-    case 'sound190':
-    case 'sound191':
-    case 'sound192':
-    case 'sound193':
-    case 'sound194':
-    case 'sound195':
-    case 'sound196':
-    case 'sound197':
-    case 'sound198':
-    case 'sound199':
-    case 'sound200':
-    case 'sound201':
-    case 'sound202':
-    case 'sound203':
-    case 'sound204':
-    case 'sound205':
-    case 'sound206':
-    case 'sound207':
-    case 'sound208':
-    case 'sound209':
-    case 'sound210':
-    case 'sound211':
-    case 'sound212':
-    case 'sound213':
-    case 'sound214':
-    case 'sound215':
-    case 'sound216':
-    case 'sound217':
-    case 'sound218':
-    case 'sound219':
-    case 'sound220':
-    case 'sound221':
-    case 'sound222':
-    case 'sound223':
-    case 'sound224':
-    case 'sound225':
-    case 'sound226':
-    case 'sound227':
-    case 'sound228':
-    case 'sound229':
-    case 'sound230':
-    case 'sound231':
-    case 'sound232':
-    case 'sound233':
-    case 'sound234':
-    case 'sound235':
-    case 'sound236':
-    case 'sound237':
-    case 'sound238':
-    case 'sound239':
-    case 'sound240':
-    case 'sound241':
-    case 'sound242':
-    case 'sound243':
-    case 'sound244':
-    case 'sound245':
-    case 'sound246':
-    case 'sound247':
-    case 'sound248':
-    case 'sound249':
-    case 'sound250': {
-try {
-        let link = `https://raw.githubusercontent.com/Leoo7z/Music/main/${command}.mp3`
-        await Hisoka.sendMessage(m.chat, {
-          audio: {
-            url: link
-          },
-          mimetype: 'audio/mpeg'
-        }, {
-          quoted: m
-        })
-      } catch (err) {
-        m.reply(`Terjadi kesalahan: ${err}`)
-      }
-    }
-    break
     
     //============ Anime
     case 'akiyama':
@@ -5669,77 +5383,6 @@ await Hisoka.sendImageAsSticker(m.chat, buf.image, m, { packname: nama, author: 
 }
 break
 
-//============ Sad
-    case 'sad1':
-    case 'sad2':
-    case 'sad3':
-    case 'sad4':
-    case 'sad5':
-    case 'sad6':
-    case 'sad7':
-    case 'sad8':
-    case 'sad9':
-    case 'sad10':
-    case 'sad11':
-    case 'sad12':
-    case 'sad13':
-    case 'sad14':
-    case 'sad15':
-    case 'sad16':
-    case 'sad17':
-    case 'sad18':
-    case 'sad19':
-    case 'sad20':
-    case 'sad21':
-    case 'sad22':
-    case 'sad23':
-    case 'sad24':
-    case 'sad25':
-    case 'sad26':
-    case 'sad27':
-    case 'sad28':
-    case 'sad29':
-    case 'sad30':
-    case 'sad31':
-    case 'sad32':
-    case 'sad33':
-    case 'sad34':
-    case 'sad35':
-    case 'sad36':
-    case 'sad37':
-    case 'sad38':
-    case 'sad39':
-    case 'sad40':
-    case 'sad41':
-    case 'sad42':
-    case 'sad43':
-    case 'sad44':
-    case 'sad45':
-    case 'sad46':
-    case 'sad47':
-    case 'sad48':
-    case 'sad49':
-    case 'sad50':
-    case 'sad51':
-    case 'sad52':
-    case 'sad53':
-    case 'sad54':
-    case 'sad55': {
-      try {
-        let link = `https://raw.githubusercontent.com/Leoo7z/Music/main/sad-music/${command}.mp3`
-        await Hisoka.sendMessage(m.chat, {
-          audio: {
-            url: link
-          },
-          mimetype: 'audio/mpeg'
-        }, {
-          quoted: m
-        })
-      } catch (err) {
-        m.reply(`Terjadi kesalahan: ${err}`)
-      }
-    }
-    break
     
 
 // ============Genshin
@@ -6351,7 +5994,7 @@ break
           response += `*Senjata:* ${result.weapon || "Data tidak tersedia"}`;
           m.reply(response);
         } else {
-          m.reply("Karakter tidak ditemukan.");
+          m.reply("Character not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -6656,514 +6299,6 @@ var hasil = pickRandom(notnot)
 Hisoka.sendMessage(m.chat, { caption: foother, video: { url: hasil.url }}, { quoted: m })
 break
 
-// Linode
-case 'linode2gb': {
-      if (!isOwner) return reply(mess.owner)
-      try {
-        let linodeData = {
-          label: `${args[0]}`,
-          region: 'ap-south',
-          type: 'g6-standard-1',
-          image: 'linode/ubuntu20.04',
-          root_pass: randomKarakter(5) + randomNomor(3),
-          stackscript_id: null,
-          authorized_keys: null,
-          backups_enabled: false
-        };
-
-        const response = await fetch('https://api.linode.com/v4/linode/instances', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${linodeToken}`
-          },
-          body: JSON.stringify(linodeData)
-        });
-
-        const responseData = await response.json();
-
-        if (response.ok) {
-          const linodeId = responseData.id;
-          m.reply(`Tunggu Sebentar...`);
-          await new Promise(resolve => setTimeout(resolve, 60000));
-
-          const linodeResponse = await fetch(`https://api.linode.com/v4/linode/instances/${linodeId}`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${linodeToken}`
-            }
-          });
-
-          const linodeInfo = await linodeResponse.json();
-          const ipAddress = linodeInfo.ipv4[0];
-
-          let messageText = `Linode berhasil dibuat!\n\n`;
-          messageText += `ID: ${linodeId}\n`;
-          messageText += `IP Linode: ${ipAddress}\n`;
-          messageText += `Password: ${linodeData.root_pass}\n`;
-
-          await Hisoka.sendMessage(m.chat, {
-            text: messageText
-          }, {
-            quoted: m
-          });
-        } else {
-          throw new Error(`Failed to create Linode: ${responseData.errors[0].reason}`);
-        }
-      } catch (err) {
-        console.error(err);
-        m.reply(`Terjadi kesalahan saat membuat Linode: ${err}`);
-      }
-    }
-    break
-
-    case 'linode4gb': {
-      if (!isOwner) return reply(mess.owner)
-      try {
-        let linodeData = {
-          label: `${args[0]}`,
-          region: 'ap-south',
-          type: 'g6-standard-2',
-          image: 'linode/ubuntu20.04',
-          root_pass: randomKarakter(5) + randomNomor(3),
-          stackscript_id: null,
-          authorized_keys: null,
-          backups_enabled: false
-        };
-
-        const response = await fetch('https://api.linode.com/v4/linode/instances', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${linodeToken}`
-          },
-          body: JSON.stringify(linodeData)
-        });
-
-        const responseData = await response.json();
-
-        if (response.ok) {
-          const linodeId = responseData.id;
-          m.reply(`Tunggu Sebentar...`);
-          await new Promise(resolve => setTimeout(resolve, 60000));
-
-          const linodeResponse = await fetch(`https://api.linode.com/v4/linode/instances/${linodeId}`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${linodeToken}`
-            }
-          });
-
-          const linodeInfo = await linodeResponse.json();
-          const ipAddress = linodeInfo.ipv4[0];
-
-          let messageText = `Linode berhasil dibuat!\n\n`;
-          messageText += `ID: ${linodeId}\n`;
-          messageText += `IP Linode: ${ipAddress}\n`;
-          messageText += `Password: ${linodeData.root_pass}\n`;
-
-          await Hisoka.sendMessage(m.chat, {
-            text: messageText
-          }, {
-            quoted: m
-          });
-        } else {
-          throw new Error(`Failed to create Linode: ${responseData.errors[0].reason}`);
-        }
-      } catch (err) {
-        console.error(err);
-        m.reply(`Terjadi kesalahan saat membuat Linode: ${err}`);
-      }
-    }
-    break
-
-    case 'linode8gb': {
-      if (!isOwner) return reply(mess.owner)
-      try {
-        let linodeData = {
-          label: `${args[0]}`,
-          region: 'ap-south',
-          type: 'g6-standard-4',
-          image: 'linode/ubuntu20.04',
-          root_pass: randomKarakter(5) + randomNomor(3),
-          stackscript_id: null,
-          authorized_keys: null,
-          backups_enabled: false
-        };
-
-        const response = await fetch('https://api.linode.com/v4/linode/instances', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${linodeToken}`
-          },
-          body: JSON.stringify(linodeData)
-        });
-
-        const responseData = await response.json();
-
-        if (response.ok) {
-          const linodeId = responseData.id;
-          m.reply(`Tunggu Sebentar...`);
-          await new Promise(resolve => setTimeout(resolve, 60000));
-
-          const linodeResponse = await fetch(`https://api.linode.com/v4/linode/instances/${linodeId}`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${linodeToken}`
-            }
-          });
-
-          const linodeInfo = await linodeResponse.json();
-          const ipAddress = linodeInfo.ipv4[0];
-
-          let messageText = `Linode berhasil dibuat!\n\n`;
-          messageText += `ID: ${linodeId}\n`;
-          messageText += `IP Linode: ${ipAddress}\n`;
-          messageText += `Password: ${linodeData.root_pass}\n`;
-
-          await Hisoka.sendMessage(m.chat, {
-            text: messageText
-          }, {
-            quoted: m
-          });
-        } else {
-          throw new Error(`Failed to create Linode: ${responseData.errors[0].reason}`);
-        }
-      } catch (err) {
-        console.error(err);
-        m.reply(`Terjadi kesalahan saat membuat Linode: ${err}`);
-      }
-    }
-    break
-
-    case 'linode16gb': {
-      if (!isOwner) return reply(mess.owner)
-      try {
-        let linodeData = {
-          label: `${args[0]}`,
-          region: 'ap-south',
-          type: 'g6-standard-8',
-          image: 'linode/ubuntu20.04',
-          root_pass: randomKarakter(5) + randomNomor(3),
-          stackscript_id: null,
-          authorized_keys: null,
-          backups_enabled: false
-        };
-
-        const response = await fetch('https://api.linode.com/v4/linode/instances', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${linodeToken}`
-          },
-          body: JSON.stringify(linodeData)
-        });
-
-        const responseData = await response.json();
-
-        if (response.ok) {
-          const linodeId = responseData.id;
-          m.reply(`Tunggu Sebentar...`);
-          await new Promise(resolve => setTimeout(resolve, 60000));
-
-          const linodeResponse = await fetch(`https://api.linode.com/v4/linode/instances/${linodeId}`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${linodeToken}`
-            }
-          });
-
-          const linodeInfo = await linodeResponse.json();
-          const ipAddress = linodeInfo.ipv4[0];
-
-          let messageText = `Linode berhasil dibuat!\n\n`;
-          messageText += `ID: ${linodeId}\n`;
-          messageText += `IP Linode: ${ipAddress}\n`;
-          messageText += `Password: ${linodeData.root_pass}\n`;
-
-          await Hisoka.sendMessage(m.chat, {
-            text: messageText
-          }, {
-            quoted: m
-          });
-        } else {
-          throw new Error(`Failed to create Linode: ${responseData.errors[0].reason}`);
-        }
-      } catch (err) {
-        console.error(err);
-        m.reply(`Terjadi kesalahan saat membuat Linode: ${err}`);
-      }
-    }
-    break
-
-    case 'listlinode': {
-      if (!isOwner) return reply(mess.owner)
-      try {
-        const response = await fetch('https://api.linode.com/v4/linode/instances', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${linodeToken}`
-          }
-        });
-
-        const responseData = await response.json();
-
-        if (response.ok) {
-          let messageText = 'Daftar Linode VPS:\n\n';
-          responseData.data.forEach(linode => {
-            messageText += `ID: ${linode.id}\n`;
-            messageText += `Label: ${linode.label}\n`;
-            messageText += `IP: ${linode.ipv4[0]}\n\n`;
-          });
-
-          await Hisoka.sendMessage(m.chat, {
-            text: messageText
-          }, {
-            quoted: m
-          });
-        } else {
-          throw new Error(`Failed to get Linode list.`);
-        }
-      } catch (err) {
-        console.error(err);
-        m.reply(`Terjadi kesalahan saat mendapatkan daftar Linode: ${err}`);
-      }
-    }
-    break
-
-    case 'onlinode': {
-      if (!isOwner) return reply(mess.owner)
-      try {
-        const linodeId = args[0];
-        const response = await fetch(`https://api.linode.com/v4/linode/instances/${linodeId}/boot`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${linodeToken}`
-          }
-        });
-
-        if (response.ok) {
-          m.reply(`Linode dengan ID ${linodeId} berhasil dihidupkan.`);
-        } else {
-          const responseData = await response.json();
-          throw new Error(`Failed to start Linode: ${responseData.errors[0]?.reason || 'Unknown Error'}`);
-        }
-      } catch (err) {
-        console.error(err);
-        m.reply(`Terjadi kesalahan saat menghidupkan Linode: ${err}`);
-      }
-    }
-    break
-
-    case 'offlinode': {
-      if (!isOwner) return reply(mess.owner)
-      try {
-        const linodeId = args[0];
-        const response = await fetch(`https://api.linode.com/v4/linode/instances/${linodeId}/shutdown`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${linodeToken}`
-          }
-        });
-
-        if (response.ok) {
-          m.reply(`Linode dengan ID ${linodeId} berhasil dimatikan.`);
-        } else {
-          const responseData = await response.json();
-          throw new Error(`Failed to shutdown Linode: ${responseData.errors[0].reason}`);
-        }
-      } catch (err) {
-        console.error(err);
-        m.reply(`Terjadi kesalahan saat mematikan Linode: ${err}`);
-      }
-    }
-    break
-
-    case 'rebootlinode': {
-      if (!isOwner) return reply(mess.owner)
-      try {
-        const linodeId = args[0];
-        const response = await fetch(`https://api.linode.com/v4/linode/instances/${linodeId}/reboot`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${linodeToken}`
-          }
-        });
-
-        if (response.ok) {
-          m.reply(`Linode dengan ID ${linodeId} berhasil di-restart.`);
-        } else {
-          const responseData = await response.json();
-          throw new Error(`Failed to restart Linode: ${responseData.errors[0].reason}`);
-        }
-      } catch (err) {
-        console.error(err);
-        m.reply(`An error occurred while restarting Linode: ${err}`);
-      }
-    }
-    break
-
-    case 'rebuildlinode': {
-      if (!isOwner) return reply(mess.owner)
-      try {
-        const linodeId = args[0];
-        const image = args[1];
-        const rootPassword = randomKarakter(4) + randomNomor(3);
-
-        const response = await fetch(`https://api.linode.com/v4/linode/instances/${linodeId}/rebuild`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${linodeToken}`
-          },
-          body: JSON.stringify({
-            image,
-            root_pass: rootPassword
-          })
-        });
-
-        if (response.ok) {
-          m.reply(`Linode dengan ID ${linodeId} berhasil di-rebuild dengan image ${image}. Password root baru: ${rootPassword}`);
-        } else {
-          const responseData = await response.json();
-          throw new Error(`Failed to rebuild Linode: ${responseData.errors[0]?.reason || 'Unknown Error'}`);
-        }
-      } catch (err) {
-        console.error(err);
-        m.reply(`An error occurred while rebuilding Linode: ${err}`);
-      }
-    }
-    break
-
-    case 'delinode': {
-      if (!isOwner) return reply(mess.owner)
-      try {
-        const linodeId = args[0];
-        const response = await fetch(`https://api.linode.com/v4/linode/instances/${linodeId}`, {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${linodeToken}`
-          }
-        });
-
-        if (response.ok) {
-          m.reply(`Linode dengan ID ${linodeId} berhasil dihapus.`);
-        } else {
-          const responseData = await response.json();
-          throw new Error(`Failed to delete Linode: ${responseData.errors[0].reason}`);
-        }
-      } catch (err) {
-        console.error(err);
-        m.reply(`An error occurred while deleting Linode: ${err}`);
-      }
-    }
-    break
-
-    case 'saldolinode': {
-      if (!isOwner) return reply(mess.owner)
-      try {
-        const response = await fetch('https://api.linode.com/v4/account', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${linodeToken}`
-          }
-        });
-
-        const accountInfo = await response.json();
-
-        if (response.ok) {
-          const balance = accountInfo.balance / 100;
-          const credit = accountInfo.credit_remaining / 100;
-
-          let messageText = `Saldo Akun Linode:\n\n`;
-          messageText += `- Balance: $${balance.toFixed(2)}\n`;
-          messageText += `- Credit Remaining: $${credit.toFixed(2)}\n`;
-
-          m.reply(messageText);
-        } else {
-          throw new Error(`Failed to get Linode balance.`);
-        }
-      } catch (err) {
-        console.error(err);
-        m.reply(`An error occurred while checking Linode balance: ${err}`);
-      }
-    }
-    break
-
-    case 'sisalinode': {
-      if (!isOwner) return reply(mess.owner)
-      try {
-        const response = await fetch('https://api.linode.com/v4/linode/instances', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${linodeToken}`
-          }
-        });
-
-        const responseData = await response.json();
-
-        if (response.ok) {
-          const totalLinodes = responseData.data.length;
-          m.reply(`Total Linode yang aktif: ${totalLinodes}`);
-        } else {
-          throw new Error(`Failed to get Linode data.`);
-        }
-      } catch (err) {
-        console.error(err);
-        m.reply(`An error occurred while checking Linode count: ${err}`);
-      }
-    }
-    break
-
-    case 'cekvpslinode': {
-      if (!isOwner) return reply(mess.owner)
-      try {
-        const linodeId = args[0];
-        const response = await fetch(`https://api.linode.com/v4/linode/instances/${linodeId}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${linodeToken}`
-          }
-        });
-
-        const linodeInfo = await response.json();
-
-        if (response.ok) {
-          let messageText = `Detail Linode:\n\n`;
-          messageText += `ID: ${linodeInfo.id}\n`;
-          messageText += `Label: ${linodeInfo.label}\n`;
-          messageText += `Status: ${linodeInfo.status}\n`;
-          messageText += `Region: ${linodeInfo.region}\n`;
-          messageText += `Type: ${linodeInfo.type}\n`;
-          messageText += `IP: ${linodeInfo.ipv4.join(', ')}\n`;
-
-          await Hisoka.sendMessage(m.chat, {
-            text: messageText
-          }, {
-            quoted: m
-          });
-        } else {
-          throw new Error(`Failed to get Linode details.`);
-        }
-      } catch (err) {
-        console.error(err);
-        m.reply(`An error occurred while checking Linode details: ${err}`);
-      }
-    }
-    break
     
     // menfess
 case"confes": case "menfes":case 'menfess': case 'confess': {

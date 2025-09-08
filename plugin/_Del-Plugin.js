@@ -4,11 +4,11 @@ const handler = async (m, { reply, isOwner, text, command, cmd }) => {
 try {
 if (!isOwner) return reply(mess.owner)
 const Plugin = await fs.readdirSync("./Plugins")
-if (Plugin.length < 1) return reply("Tidak ada file plugin")
-if (!text || !text.endsWith(".js")) return reply(`*contoh:* ${command} ping.js`)
-if (!Plugin.includes(text)) return reply("Plugin tidak ditemukan")
+if (Plugin.length < 1) return reply("No plugin files found")
+if (!text || !text.endsWith(".js")) return reply(`*example:* ${command} ping.js`)
+if (!Plugin.includes(text)) return reply("Plugin not found")
 await fs.unlinkSync(`./Plugins/${text.toLowerCase().trim()}`)
-return reply(`Berhasil menghapus plugin *${text.toLowerCase().trim()}*`)
+return reply(`Successfully deleted plugin *${text.toLowerCase().trim()}*`)
 } catch (err) {
 console.log(err)
 }
