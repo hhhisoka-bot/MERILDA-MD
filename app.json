@@ -1,0 +1,26 @@
+{
+  "name": "WhatsApp Bot - Vrush Maria v2",
+  "description": "Advanced WhatsApp Bot with AI features, fortune telling, downloads, and more",
+  "repository": "https://github.com/user/whatsapp-bot",
+  "logo": "https://files.catbox.moe/k3xvf0.jpg",
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "baileys",
+    "nodejs",
+    "ai",
+    "download"
+  ],
+  "env": {
+    "SESSION_ID": {
+      "description": "Session ID for WhatsApp authentication",
+      "required": false
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "stack": "heroku-22"
+}

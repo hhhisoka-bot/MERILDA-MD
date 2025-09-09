@@ -1,11 +1,24 @@
 {
     "name": "𝚅𝚛𝚞𝚜𝚑 𝙼𝚊𝚛𝚒𝚊 𝚟𝟸",
     "version": "New",
-    "description": "Multi-Device",
+    "description": "Advanced WhatsApp Bot with AI features, fortune telling, downloads, and multi-device support",
     "main": "index.js",
     "type": "commonjs",
+    "engines": {
+        "node": ">=18.0.0",
+        "npm": ">=8.0.0"
+    },
+    "homepage": "https://github.com/user/whatsapp-bot",
+    "bugs": {
+        "url": "https://github.com/user/whatsapp-bot/issues"
+    },
     "scripts": {
-        "start": "node index.js"
+        "start": "node index.js",
+        "dev": "node index.js",
+        "install-auto": "node install.js",
+        "postinstall": "node install.js",
+        "deploy": "npm install && npm start",
+        "build": "echo 'No build step required'"
     },
     "keywords": [
         "whiskeysockets",

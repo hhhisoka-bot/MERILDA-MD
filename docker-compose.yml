@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  whatsapp-bot:
+    build: .
+    container_name: whatsapp-bot
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./session:/app/session
+      - ./lib/database:/app/lib/database
+    networks:
+      - bot-network
+
+networks:
+  bot-network:
+    driver: bridge

@@ -1602,7 +1602,7 @@ m.reply(jsonData)
 break 
 case 'readchange': case 'autoread':{
 if (!isOwner) return reply(mess.owner)
-if (args.length < 1) return reply(`Contoh ${prefix + command} on/off`)
+if (args.length < 1) return reply(`Example ${prefix + command} on/off`)
 if (q === 'on') {
 global.autoread = true
 m.reply(`Successfully changed autoread to ${q}`)
@@ -1615,13 +1615,13 @@ m.reply(`Successfully changed autoread to ${q}`)
 break
     case 'autotyping': {
 if (!isOwner) return reply(mess.owner)
-if (!args[0]) return m.reply(`Example: ${prefix+command} on/off`)
+if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.autotyping = true
-await m.reply('Successfully activated autotyping.')
+await m.reply('Auto typing successfully activated.')
 } else if (args[0] === 'off') {
 global.autotyping = false
-await m.reply('Successfully deactivated autotyping.')
+await m.reply('Auto typing successfully deactivated.')
 }}
 
 break               
@@ -1629,7 +1629,7 @@ case 'autosholat': {
 Hisoka.autoshalat = Hisoka.autoshalat ? Hisoka.autoshalat : {}
 
  if (!isOwner) return reply(mess.owner)
-if (!args[0]) return m.reply(`Example: ${prefix+command} on/off`)
+if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 
  if (text === "on") {
  Hisoka.autoshalat[sender] = {
@@ -1644,7 +1644,7 @@ if (!args[0]) return m.reply(`Example: ${prefix+command} on/off`)
 break 
     case 'onlygc': {
 if (!isOwner) return reply(mess.owner)
-if (!args[0]) return m.reply(`Example: ${prefix+command} on/off`)
+if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.onlygc = true
 await m.reply(`Successfully activated ${prefix+command}.`)
@@ -1656,7 +1656,7 @@ await m.reply(`Successfully deactivated ${prefix+command}.`)
 break                         
 case 'antilinkall': {
 if (!isOwner) return reply(mess.owner)
-if (!args[0]) return m.reply(`Example: ${prefix+command} on/off`)
+if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.Antilinkall = true
 await m.reply(`Successfully activated ${prefix+command}.`)
@@ -1669,7 +1669,7 @@ break
 case 'autoaigc':
 case 'autoai': {
 if (!isOwner) return reply(mess.owner)
-if (!args[0]) return m.reply(`Example: ${prefix+command} on/off`)
+if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.autoaigc = true
 await m.reply(`Sukses mengaktifkan ${command}.`)
@@ -1681,7 +1681,7 @@ await m.reply(`Sukses menonaktifkan ${command}.`)
 break               
 case 'autobio': {
 if (!isOwner) return reply(mess.owner)
-if (!args[0]) return m.reply(`Example: ${prefix+command} on/off`)
+if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.autobio = true
 await m.reply(`Sukses mengaktifkan ${command}.`)
@@ -1753,7 +1753,7 @@ case 'antibot': {
 if (!isGroupAdmins && !isOwner) return reply(mess.admin)
 if (!isGroup) return reply(mess.group);
 if (!isBotAdmins) return reply(mess.botadmin)
-if (!args[0]) return m.reply(`Example: ${prefix+command} on/off`)
+if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.antibotGroups = true
 await m.reply(`Successfully activated ${prefix+command}.`)
@@ -1769,7 +1769,7 @@ case 'antilinkig': {
 if (!isGroupAdmins && !isOwner) return reply(mess.admin)
 if (!isGroup) return reply(mess.group);
 if (!isBotAdmins) return reply(mess.botadmin)
-if (!args[0]) return m.reply(`Example: ${prefix+command} on/off`)
+if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.Antilinkig = true
 await m.reply(`Sukses mengaktifkan ${command}.`)
@@ -1784,7 +1784,7 @@ case 'antiwame': {
 if (!isGroupAdmins && !isOwner) return reply(mess.admin)
 if (!isGroup) return reply(mess.group);
 if (!isBotAdmins) return reply(mess.botadmin)
-if (!args[0]) return m.reply(`Example: ${prefix+command} on/off`)
+if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.antiWame = true
 await m.reply(`Sukses mengaktifkan ${command}.`)
@@ -1799,7 +1799,7 @@ case 'antilinkch': {
 if (!isGroupAdmins && !isOwner) return reply(mess.admin)
 if (!isGroup) return reply(mess.group);
 if (!isBotAdmins) return reply(mess.botadmin)
-if (!args[0]) return m.reply(`Example: ${prefix+command} on/off`)
+if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.Antilinkch = true
 await m.reply(`Sukses mengaktifkan ${command}.`)
@@ -1814,7 +1814,7 @@ case 'antilinkgc': {
 if (!isGroupAdmins && !isOwner) return reply(mess.admin)
 if (!isGroup) return reply(mess.group);
 if (!isBotAdmins) return reply(mess.botadmin)
-if (!args[0]) return m.reply(`Example: ${prefix+command} on/off`)
+if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.Antilinkgc = true
 await m.reply(`Sukses mengaktifkan ${command}.`)
@@ -2221,7 +2221,7 @@ if (!text) return m.reply(`Promt nya mana?`);
   
   let defaultPrompt = `${text}`;
   
-  if (!mime) return reply(`Kirim/reply gambar dengan caption *${prefix + command}*`);
+  if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
   if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
@@ -2294,7 +2294,7 @@ case "hitamkan": {
   
   let defaultPrompt = `ubah warna kulit karakter manjadi warna hitam`;
   
-  if (!mime) return reply(`Kirim/reply gambar dengan caption *${prefix + command}*`);
+  if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
   if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
@@ -2367,7 +2367,7 @@ case "putihkan": {
   
   let defaultPrompt = `ubah warna kulit karakter manjadi warna putih`;
   
-  if (!mime) return reply(`Kirim/reply gambar dengan caption *${prefix + command}*`);
+  if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
   if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
@@ -2440,7 +2440,7 @@ case "night": {
   
   let defaultPrompt = `ubah jadi malam hari`;
   
-  if (!mime) return reply(`Kirim/reply gambar dengan caption *${prefix + command}*`);
+  if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
   if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
@@ -2513,7 +2513,7 @@ case "pretty": {
   
   let defaultPrompt = `edit wajah karakter menjadi wajah orang Korea`;
   
-  if (!mime) return reply(`Kirim/reply gambar dengan caption *${prefix + command}*`);
+  if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
   if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
@@ -2586,7 +2586,7 @@ case "ugly": {
   
   let defaultPrompt = `edit wajah karakter menjadi jelek`;
   
-  if (!mime) return reply(`Kirim/reply gambar dengan caption *${prefix + command}*`);
+  if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
   if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
@@ -2659,7 +2659,7 @@ case "sedih": {
   
   let defaultPrompt = `ubah reaksi wajahnya menjadi sedih`;
   
-  if (!mime) return reply(`Kirim/reply gambar dengan caption *${prefix + command}*`);
+  if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
   if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
@@ -2732,7 +2732,7 @@ case "senyum": {
   
   let defaultPrompt = `ubah reaksi wajahnya menjadi senang`;
   
-  if (!mime) return reply(`Kirim/reply gambar dengan caption *${prefix + command}*`);
+  if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
   if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
@@ -2805,7 +2805,7 @@ case "botakin": {
   
   let defaultPrompt = `hilangkan rambut di kepalanya`;
   
-  if (!mime) return reply(`Kirim/reply gambar dengan caption *${prefix + command}*`);
+  if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
   if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
@@ -4546,23 +4546,23 @@ break
     break
     
     //============ Primbon
-    case 'artimimpi': case 'tafsirmimpi': {
+    case 'dreammeaning': case 'artimimpi': case 'tafsirmimpi': {
 if (!text) return reply(`Contoh : ${prefix + command} belanja`)
 let anu = await primbon.tafsir_mimpi(text)
 if (anu.status == false) return reply(anu.message)
 reply(`• *Mimpi :* ${anu.message.mimpi}\n• *Arti :* ${anu.message.arti}\n• *Solusi :* ${anu.message.solusi}`)
 }
 break
-case 'ramalanjodoh': case 'ramaljodoh': {
-if (!text) return reply(`Contoh : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`)
+case 'loveforecast': case 'ramalanjodoh': case 'ramaljodoh': {
+if (!text) return reply(`Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`)
 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
 let anu = await primbon.ramalan_jodoh(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
 if (anu.status == false) return reply(anu.message)
 reply(`• *Nama Anda :* ${anu.message.nama_anda.nama}\n• *Lahir Anda :* ${anu.message.nama_anda.tgl_lahir}\n• *Nama Pasangan :* ${anu.message.nama_pasangan.nama}\n• *Lahir Pasangan :* ${anu.message.nama_pasangan.tgl_lahir}\n• *Hasil :* ${anu.message.result}\n• *Catatan :* ${anu.message.catatan}`)
 }
 break
-case 'ramalanjodohbali': case 'ramaljodohbali': {
-if (!text) return reply(`Contoh : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`)
+case 'balineseloveforecast': case 'ramalanjodohbali': case 'ramaljodohbali': {
+if (!text) return reply(`Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`)
 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
 let anu = await primbon.ramalan_jodoh_bali(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
 if (anu.status == false) return reply(anu.message)
@@ -4570,7 +4570,7 @@ reply(`• *Nama Anda :* ${anu.message.nama_anda.nama}\n• *Lahir Anda :* ${anu
 }
 break
 case 'suamiistri': {
-if (!text) return reply(`Contoh : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`)
+if (!text) return reply(`Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`)
 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
 let anu = await primbon.suami_istri(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
 if (anu.status == false) return reply(anu.message)
@@ -4578,21 +4578,21 @@ reply(`• *Nama Suami :* ${anu.message.suami.nama}\n• *Lahir Suami :* ${anu.m
 }
 break
 case 'ramalancinta': case 'ramalcinta': {
-if (!text) return reply(`Contoh : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`)
+if (!text) return reply(`Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`)
 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
 let anu = await primbon.ramalan_cinta(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
 if (anu.status == false) return reply(anu.message)
 reply(`• *Nama Anda :* ${anu.message.nama_anda.nama}\n• *Lahir Anda :* ${anu.message.nama_anda.tgl_lahir}\n• *Nama Pasangan :* ${anu.message.nama_pasangan.nama}\n• *Lahir Pasangan :* ${anu.message.nama_pasangan.tgl_lahir}\n• *Sisi Positif :* ${anu.message.sisi_positif}\n• *Sisi Negatif :* ${anu.message.sisi_negatif}\n• *Catatan :* ${anu.message.catatan}`)
 }
 break
-case 'artinama': {
-if (!text) return reply(`Contoh : ${prefix + command} Dika Ardianta`)
+case 'namemeaning': case 'artinama': {
+if (!text) return reply(`Example : ${prefix + command} Dika Ardianta`)
 let anu = await primbon.arti_nama(text)
 if (anu.status == false) return reply(anu.message)
 reply(`• *Nama :* ${anu.message.nama}\n• *Arti :* ${anu.message.arti}\n• *Catatan :* ${anu.message.catatan}`)
 }
 break
-case 'kecocokannama': case 'cocoknama': {
+case 'namecompatibility': case 'kecocokannama': case 'cocoknama': {
 if (!text) return reply(`Contoh : ${prefix + command} Dika, 7, 7, 2005`)
 let [nama, tgl, bln, thn] = text.split`,`
 let anu = await primbon.kecocokan_nama(nama, tgl, bln, thn)
@@ -4841,19 +4841,19 @@ case 'dilan':
       m.reply(`${quotesislamic}`)
     }
     break
-    case 'faktaunik': {
+    case 'uniquefact': case 'faktaunik': {
       const fakta = await fetchJson(`https://raw.githubusercontent.com/Leoo7z/quotes/main/quotes-source/faktaunik.json`)
       const faktaunik = await pickRandom(fakta)
       m.reply(`*Taukah Kamu?*\n\n${faktaunik}`)
     }
     break
-    case 'katasenja': {
+    case 'duskword': case 'katasenja': {
       const senja = await fetchJson(`https://raw.githubusercontent.com/Leoo7z/quotes/main/quotes-source/katasenja.json`)
       const katasenja = await pickRandom(senja)
       m.reply(`${katasenja}`)
     }
     break
-    case 'katailham': {
+    case 'inspirationalword': case 'katailham': {
       const ilham = await fetchJson(`https://raw.githubusercontent.com/Leoo7z/quotes/main/quotes-source/katailham.json`)
       const katailham = await pickRandom(ilham)
       m.reply(`${katailham}`)
@@ -4877,24 +4877,18 @@ case 'dilan':
       m.reply(`${pantun}`)
     }
     break
-    case 'motivasi': {
-      const motiv = await fetchJson(`https://raw.githubusercontent.com/Leoo7z/quotes/main/quotes-source/motivasi.json`)
-      const motivasi = await pickRandom(motiv)
-      m.reply(`${motivasi}`)
-    }
-    break
     
 // ============Cecan
-    case 'hijaber':
-    case 'jeni':
-    case 'jiso':
+    case 'hijabgirl': case 'hijaber':
+    case 'jennie': case 'jeni':
+    case 'jisoo': case 'jiso':
     case 'justina':
     case 'rose':
     case 'ryujin': {
       let heyy
-      if (/hijaber/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/Leoo7z/Image-Source/main/image/hijaber.json')
-      if (/jeni/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/Leoo7z/Image-Source/main/image/jeni.json')
-      if (/jiso/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/Leoo7z/Image-Source/main/image/jiso.json')
+      if (/hijabgirl|hijaber/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/Leoo7z/Image-Source/main/image/hijaber.json')
+      if (/jennie|jeni/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/Leoo7z/Image-Source/main/image/jeni.json')
+      if (/jisoo|jiso/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/Leoo7z/Image-Source/main/image/jiso.json')
       if (/justina/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/Leoo7z/Image-Source/main/image/justina.json')
       if (/rose/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/Leoo7z/Image-Source/main/image/rose.json')
       if (/ryujin/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/Leoo7z/Image-Source/main/image/ryujin.json')
@@ -7382,8 +7376,8 @@ case "restart":
  if (!isOwner) {
  return reply(mess.owner);
  }
- reply(`restarting ${namaBot}`);
- reply(`Succes`);
+ reply(`Restarting ${namaBot}`);
+ reply(`Success`);
  await sleep(3000);
  process.exit();
  break;
@@ -7440,7 +7434,7 @@ case "restart":
                         break;
                         case 'stalkff': {
       try {
-        if (!text) return m.reply(`Contoh: ${command} 12345678`)
+        if (!text) return m.reply(`Example: ${command} 12345678`)
         const apiUrl = await fetchJson(`https://vapis.my.id/api/ff-stalk?id=${text}`)
         const ffData = apiUrl.data.account
         if (ffData) {

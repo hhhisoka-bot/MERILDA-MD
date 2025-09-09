@@ -1,0 +1,20 @@
+[app]
+name = "whatsapp-bot"
+
+[app.services]
+[app.services.web]
+type = "web"
+instance_type = "nano"
+
+[app.services.web.build]
+type = "buildpack"
+
+[app.services.web.env]
+NODE_ENV = "production"
+
+[app.services.web.ports]
+port = 5000
+protocol = "http"
+
+[app.services.web.health_check]
+path = "/"
