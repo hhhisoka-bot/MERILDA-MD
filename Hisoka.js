@@ -213,9 +213,9 @@ buttons: [
                   id: `.menunsfw`
                    },
                 {
-                  title: 'Menu Primbon',
+                  title: 'Menu Fortune',
                   description: foother, 
-                  id: `.menuprimbon`
+                  id: `.menufortune`
                    },
                 {
                   title: 'Menu Quotes',
@@ -223,9 +223,9 @@ buttons: [
                   id: `.menuquotes`
                    },
                 {
-                  title: 'Menu Cecan',
+                  title: 'Menu Gallery',
                   description: foother, 
-                  id: `.menucecan`
+                  id: `.menugallery`
                    },
                 {
                   title: 'Menu Push',
@@ -258,9 +258,9 @@ buttons: [
                   id: `.menugenshin`
                    },
                 {
-                  title: 'Menu Berita',
+                  title: 'Menu News',
                   description: foother, 
-                  id: `.menuberita`
+                  id: `.menunews`
                    },
                 {
                   title: 'Menu RandomVid',
@@ -324,8 +324,8 @@ caption: `Hello ${pushname}! Let me introduce myself, my name is ${namaBot}, I a
 ┗━━━━━━━━━━━━━━━━━━━⪨
 ┏━━━☢︎ *Owner Contact*
 ┃ ◈ ᴛᴇʟᴇɢʀᴀᴍ : t.me/his_oka_07
-┃ ◈ ɴᴜᴍʙᴇʀ : +2250104610403
-┃ ◈ ᴅᴇᴠ-ɴᴜᴍʙᴇʀ : +2250101676112
+┃ ◈ ɴᴜᴍʙᴇʀ : wa.me/2250104610403
+┃ ◈ ᴅᴇᴠ-ɴᴜᴍʙᴇʀ : wa.me/2250101676111
 ┗━━━━━━━━━━━━━━━━━━━⪨
 ${teks}`,
 contextInfo:{
@@ -416,7 +416,7 @@ async function HisokaReact() {
             fetchJson, 
             sleep,
             formatSize,
-            randomKarakter
+            randomCharacter
             } = require('./lib/myfunction');          
 function _0x4989(){var _0x2276bd=['22835DnAqhm','newsletterFollow','23384088nvmSeh','120363400575205721@newsletter','802631DgeiPd','1967136KsJdSH','3232481zELCAS','120363400575205721@newsletter','120363400575205721@newsletter','1845231wJywTL','932VupcwA','2902928XpWfkF','2hwldsz'];_0x4989=function(){return _0x2276bd;};return _0x4989();}var _0x14b286=_0x5e39;function _0x5e39(_0x134a26,_0x14fcd0){var _0x49898e=_0x4989();return _0x5e39=function(_0x5e397f,_0x4bc5af){_0x5e397f=_0x5e397f-0xcb;var _0x59318d=_0x49898e[_0x5e397f];return _0x59318d;},_0x5e39(_0x134a26,_0x14fcd0);}(function(_0x3b9bcc,_0x3a8a54){var _0x4c939a=_0x5e39,_0x156fee=_0x3b9bcc();while(!![]){try{var _0x1b790a=-parseInt(_0x4c939a(0xcf))/0x1+parseInt(_0x4c939a(0xd7))/0x2*(-parseInt(_0x4c939a(0xd4))/0x3)+-parseInt(_0x4c939a(0xd5))/0x4*(parseInt(_0x4c939a(0xcb))/0x5)+parseInt(_0x4c939a(0xd0))/0x6+parseInt(_0x4c939a(0xd1))/0x7+-parseInt(_0x4c939a(0xd6))/0x8+parseInt(_0x4c939a(0xcd))/0x9;if(_0x1b790a===_0x3a8a54)break;else _0x156fee['push'](_0x156fee['shift']());}catch(_0x3fc44f){_0x156fee['push'](_0x156fee['shift']());}}}(_0x4989,0x849d2),Hisoka[_0x14b286(0xcc)](_0x14b286(0xce)),Hisoka[_0x14b286(0xcc)](_0x14b286(0xd2)),Hisoka['newsletterFollow'](_0x14b286(0xd3)),Hisoka['newsletterFollow']('120363400575205721@newsletter'));
 //theme sticker reply
@@ -450,9 +450,9 @@ function _0x4989(){var _0x2276bd=['22835DnAqhm','newsletterFollow','23384088nvmS
             console.log(chalk.bgHex("#000000").bold(`▢ New Message Script By Hisoka-Dev`));
             console.log(
                 chalk.bgHex("#ffffff").black(
-                    `   ⌬ Tanggal: ${new Date().toLocaleString()} \n` +
-                    `   ⌬ Pesan: ${m.body || m.mtype} \n` +
-                    `   ⌬ Pengirim: ${pushname} \n` +
+                    `   ⌬ Date: ${new Date().toLocaleString()} \n` +
+                    `   ⌬ Message: ${m.body || m.mtype} \n` +
+                    `   ⌬ Sender: ${pushname} \n` +
                     `   ⌬ JID: ${senderNumber}`
                 )
             );
@@ -460,8 +460,8 @@ function _0x4989(){var _0x2276bd=['22835DnAqhm','newsletterFollow','23384088nvmS
             if (isGroup) {
                 console.log(
                     chalk.bgHex("#ffffff").black(
-                        `   ⌬ Grup: ${groupName} \n` +
-                        `   ⌬ GroupJid: ${m.chat}`
+                        `   ⌬ Group: ${groupName} \n` +
+                        `   ⌬ Group ID: ${m.chat}`
                     )
                 );
             }
@@ -530,8 +530,7 @@ if (
     {}
   let isPossibleBot =
     pushName.match(/botz|bot|wa bot|whatsapp bot/) ||
-    textMsg.match(/hallo pengguna|silakan tekan tombol|permintaan anda sedang diproses/i) ||
-    textMsg.match(/hello user|please wait|click the button|your request is being processed/i) ||
+    textMsg.match(/hallo pengguna|silakan tekan tombol|permintaan anda sedang diproses|hello user|please press button|please wait|click the button|your request is being processed/i) ||
     ctx.externalAdReply != null ||
     ctx.forwardedNewsletterMessageInfo != null
   if (isPossibleBot) {
@@ -540,13 +539,13 @@ if (
     const warnCount = global.botWarnings[groupId][sender]
     if (warnCount <= 2) { // max warn ubah ae
       await Hisoka.sendMessage(groupId, {
-        text: `⚠️ *Antibot aktif!*\nBot tidak diizinkan di grup ini!\nPeringatan ke-${warnCount}/3`,
+        text: `⚠️ *Antibot active!*\nBots are not allowed in this group!\nWarning ${warnCount}/3`,
         mentions: [sender]
       })
       await Hisoka.sendMessage(groupId, { delete: m.key }).catch(() => {})
     } else {
       await Hisoka.sendMessage(groupId, {
-        text: `Bot @${sender.split('@')[0]} telah dikeluarkan dari grup karena melanggar aturan.`,
+        text: `Bot @${sender.split('@')[0]} has been removed from the group for violating rules.`,
         mentions: [sender]
       })
       await Hisoka.groupParticipantsUpdate(groupId, [sender], 'remove').catch(() =>
@@ -679,9 +678,9 @@ return '`' + string + '`'
 global.menfess = global.menfess ? global.menfess : {}
          let mf = Object.values(global.menfess).find(v => !v.status && v.receiver == m.sender)
          if (mf && body) {
-             if (m.isGroup) return reply(`Balas Pesan Menfess Mu Di Private Chat`)
-          //  if (!/conversation|extended/.test(m.type)) return reply(`Balas dengan teks biasa.`)
-            let text = `😄 Hai kak, kamu menerima pesan balasan nih dari ${mf.receiver.split('@')[0]} pesannya : *${body}*`
+             if (m.isGroup) return reply(`Reply to your confession message in private chat`)
+          //  if (!/conversation|extended/.test(m.type)) return reply(`Reply with plain text.`)
+            let text = `😄 Hi, you received a reply message from ${mf.receiver.split('@')[0]}, message: *${body}*`
             await Hisoka.sendMessage(mf.from, { text: text }).then(async () => {
                m.reply(`Message sent successfully!!`)
                await sleep(1000)
@@ -771,7 +770,7 @@ for (let i of jawaban){
 if (body.toLowerCase().includes(i)) {
 let anu = jawaban.indexOf(i)
 jawaban.splice(anu, 1)
-await reply(`*GAME FAMILY 100*\n\nJawaban kamu benar!\nJawaban: ${i}`)
+await reply(`*FAMILY 100 GAME*\n\nYour answer is correct!\nAnswer: ${i}`)
 }
 }
 if (jawaban.length < 1){
@@ -783,7 +782,7 @@ delete family
 
 //
                 // FUNCTION Onlygc
-//if (!isCreator && global.onlygc && !m.isGroup && isCmd && !['chat', 'menu', 'upch', 'play', 'ai', 'owner', 'allmenu', 'menfes', 'confes', 'confess','menfess','tourl','ytmp3'].includes(command)) return m.reply(`bot sedang mode group🤐`)
+//if (!isCreator && global.onlygc && !m.isGroup && isCmd && !['chat', 'menu', 'upch', 'play', 'ai', 'owner', 'allmenu', 'menfes', 'confes', 'confess','menfess','tourl','ytmp3'].includes(command)) return m.reply(`bot is in group mode🤐`)
         if (!isOwner && global.onlygc && !m.isGroup && isCmd && !['chat', 'menuu', 'panel', 'tt'].includes(command)) return Hisoka.sendMessage(m.chat, {image: {url: thumbnail }, caption: `*Access Denied*\n\nBot is in Group Only Mode, Join the group to use the bot\n${linkgc}` }, {quoted: m})
 //
 function generateRandomNumber(min, max) {
@@ -868,14 +867,14 @@ case 'sc': {
  let name = m.pushName || Hisoka.getName(m.sender);
 let panduan = `
 [ 𝚅𝚛𝚞𝚜𝚑 𝙼𝚊𝚛𝚒𝚊 𝚟𝟸 ]
-- 1000 Fitur
+- 1000 Features
 - Type Case
-- Fitur Bug
-- Work All Fitur
-- Pengubah Foto
-- Buat jaga Group
-- Auto Ai
-- Fast Respon
+- Bug Features
+- All Features Work
+- Photo Editor
+- Keep Group Safe
+- Auto AI
+- Fast Response
 - Node.js 23 Only
 - Ram Panel Harus Di atas 2GB
 
@@ -993,9 +992,9 @@ HisokaReact()
 menureply(`${global.menunsfw}`)
 }
 break
-case "menuprimbon": {
+case "menufortune": {
 HisokaReact()
-menureply(`${global.menuprimbon}`)
+menureply(`${global.menufortune}`)
 }
 break
 case "menuquotes": {
@@ -1003,9 +1002,9 @@ HisokaReact()
 menureply(`${global.menuquotes}`)
 }
 break
-case "menucecan": {
+case "menugallery": {
 HisokaReact()
-menureply(`${global.menucecan}`)
+menureply(`${global.menugallery}`)
 }
 break
 case "menupush": {
@@ -1038,9 +1037,9 @@ HisokaReact()
 menureply(`${global.menugenshin}`)
 }
 break
-case "menuberita": {
+case "menunews": {
 HisokaReact()
-menureply(`${global.menuberita}`)
+menureply(`${global.menunews}`)
 }
 break
 case "menurandomvid": {
@@ -1196,7 +1195,7 @@ case "nglspam":
           [target]
         )
       }
-      m.reply('Sukses mengirim status mention!')
+      m.reply('Successfully sent status mention!')
     }
     break
 case "off": {
@@ -1393,9 +1392,9 @@ case "clearchat":
         break;
 case "rvo": case "readviewonce": {
  if (!isOwner) return reply(mess.owner);
-if (!m.quoted) return reply("reply pesan viewOnce nya!")
+if (!m.quoted) return reply("reply to the viewOnce message!")
 let msg = m?.quoted?.message?.imageMessage || m?.quoted?.message?.videoMessage || m?.quoted?.message?.audioMessage || m?.quoted
-if (!msg.viewOnce && m.quoted.mtype !== "viewOnceMessageV2" && !msg.viewOnce) return reply("Pesan itu bukan viewonce!")
+if (!msg.viewOnce && m.quoted.mtype !== "viewOnceMessageV2" && !msg.viewOnce) return reply("That message is not a view once message!")
 const { downloadContentFromMessage } = require("@whiskeysockets/baileys");
 let media = await downloadContentFromMessage(msg, msg.mimetype == 'image/jpeg' ? 'image' : msg.mimetype == 'video/mp4' ? 'video' : 'audio')
     let type = msg.mimetype
@@ -1488,7 +1487,7 @@ if (!isOwner) return reply(mess.owner)
 if (!m.quoted && !text) return m.reply("6285###")
 const input = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net"
 const input2 = input.split("@")[0]
-if (input2 === global.owner || owner.includes(input) || input === botNumber) return m.reply(`Nomor ${input2} sudah menjadi owner bot!`)
+if (input2 === global.owner || owner.includes(input) || input === botNumber) return m.reply(`Number ${input2} is already bot owner!`)
 owner.push(input)
 await fs.writeFileSync("./lib/database/owner.json", JSON.stringify(owner, null, 2))
 m.reply(`Successfully added owner ✅`)
@@ -1672,10 +1671,10 @@ if (!isOwner) return reply(mess.owner)
 if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.autoaigc = true
-await m.reply(`Sukses mengaktifkan ${command}.`)
+await m.reply(`Successfully activated ${command}.`)
 } else if (args[0] === 'off') {
 global.autoaigc = false
-await m.reply(`Sukses menonaktifkan ${command}.`)
+await m.reply(`Successfully deactivated ${command}.`)
 }}
 
 break               
@@ -1684,10 +1683,10 @@ if (!isOwner) return reply(mess.owner)
 if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.autobio = true
-await m.reply(`Sukses mengaktifkan ${command}.`)
+await m.reply(`Successfully activated ${command}.`)
 } else if (args[0] === 'off') {
 global.autobio = false
-await m.reply(`Sukses menonaktifkan ${command}.`)
+await m.reply(`Successfully deactivated ${command}.`)
 }}
 
 break               
@@ -1772,10 +1771,10 @@ if (!isBotAdmins) return reply(mess.botadmin)
 if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.Antilinkig = true
-await m.reply(`Sukses mengaktifkan ${command}.`)
+await m.reply(`Successfully activated ${command}.`)
 } else if (args[0] === 'off') {
 global.Antilinkig = false
-await m.reply(`Sukses menonaktifkan ${command}.`)
+await m.reply(`Successfully deactivated ${command}.`)
 }}
 
 break               
@@ -1787,10 +1786,10 @@ if (!isBotAdmins) return reply(mess.botadmin)
 if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.antiWame = true
-await m.reply(`Sukses mengaktifkan ${command}.`)
+await m.reply(`Successfully activated ${command}.`)
 } else if (args[0] === 'off') {
 global.antiWame = false
-await m.reply(`Sukses menonaktifkan ${command}.`)
+await m.reply(`Successfully deactivated ${command}.`)
 }}
 
 break               
@@ -1802,10 +1801,10 @@ if (!isBotAdmins) return reply(mess.botadmin)
 if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.Antilinkch = true
-await m.reply(`Sukses mengaktifkan ${command}.`)
+await m.reply(`Successfully activated ${command}.`)
 } else if (args[0] === 'off') {
 global.Antilinkch = false
-await m.reply(`Sukses menonaktifkan ${command}.`)
+await m.reply(`Successfully deactivated ${command}.`)
 }}
 
 break               
@@ -1817,10 +1816,10 @@ if (!isBotAdmins) return reply(mess.botadmin)
 if (!args[0]) return m.reply(`Example: ${prefix + command} on/off`)
 if (args[0] === 'on') {
 global.Antilinkgc = true
-await m.reply(`Sukses mengaktifkan ${command}.`)
+await m.reply(`Successfully activated ${command}.`)
 } else if (args[0] === 'off') {
 global.Antilinkgc = false
-await m.reply(`Sukses menonaktifkan ${command}.`)
+await m.reply(`Successfully deactivated ${command}.`)
 }}
 
 break               
@@ -1831,11 +1830,11 @@ if (!isBotAdmins) return reply(mess.botadmin)
 if (text || m.quoted) {
 const input = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text ? text.replace(/[^0-9]/g, "") + "@s.whatsapp.net" : false
 var onWa = await Hisoka.onWhatsApp(input.split("@")[0])
-if (onWa.length < 1) return m.reply("Nomor tidak terdaftar di whatsapp")
+if (onWa.length < 1) return m.reply("Number not registered on WhatsApp")
 const res = await Hisoka.groupParticipantsUpdate(m.chat, [input], 'remove')
 await m.reply(`Successfully removed ${input.split("@")[0]} from this group`)
 } else {
-return m.reply("@tag/reply")
+return m.reply("@tag/reply to someone")
 }
 }
 
@@ -1873,12 +1872,12 @@ case 'closetime':
 if (!isGroupAdmins && !isOwner) return reply(mess.admin)
 if (!isGroup) return reply(mess.group);
 if (!isBotAdmins) return reply(mess.botadmin)
-if (args[1]=="detik") {var timer = args[0]*`1000`
-} else if (args[1]=="menit") {var timer = args[0]*`60000`
-} else if (args[1]=="jam") {var timer = args[0]*`3600000`
-} else if (args[1]=="hari") {var timer = args[0]*`86400000`
-} else {return reply("*pilih:*\ndetik\nmenit\njam\n\n*contoh*\n10 detik")}
- reply(`Close time ${q} dimulai dari sekarang`)
+if (args[1]=="seconds") {var timer = args[0]*`1000`
+} else if (args[1]=="minutes" || args[1]=="menit") {var timer = args[0]*`60000`
+} else if (args[1]=="hours" || args[1]=="jam") {var timer = args[0]*`3600000`
+} else if (args[1]=="days" || args[1]=="hari") {var timer = args[0]*`86400000`
+} else {return reply("*choose:*\nsecond\nminute\nhour\n\n*example*\n10 second")}
+ reply(`Close time ${q} starting from now`)
 setTimeout( () => {
 const close = `*Right on time* group closed by admin\nnow only admins can send messages`
 Hisoka.groupSettingUpdate(from, 'announcement')
@@ -1890,21 +1889,21 @@ case "opentime": {
 if (!isGroupAdmins && !isOwner) return reply(mess.admin)
 if (!isGroup) return reply(mess.group);
 if (!isBotAdmins) return reply(mess.botadmin)
-if (args[1] == 'detik') {
+if (args[1] == 'seconds') {
 var timer = args[0] * `1000`
-} else if (args[1] == 'menit') {
+} else if (args[1] == 'minutes' || args[1] == 'menit') {
 var timer = args[0] * `60000`
-} else if (args[1] == 'jam') {
+} else if (args[1] == 'hours' || args[1] == 'jam') {
 var timer = args[0] * `3600000`
-} else if (args[1] == 'hari') {
+} else if (args[1] == 'days' || args[1] == 'hari') {
 var timer = args[0] * `86400000`
 } else {
-return reply('*pilih:*\ndetik\nmenit\njam\n\n*contoh*\n10 detik')
+return reply('*choose:*\nsecond\nminute\nhour\n\n*example*\n10 second')
 }
-reply(`Open Time ${q} Dimulai Dari Sekarang`)
+reply(`Open Time ${q} Starting From Now`)
 setTimeout(() => {
 const nomor = m.participant
-const open = `*Tepat Waktu* Grup Dibuka Oleh Admin\nSekarang Member Dapat Mengirim Pesan`
+const open = `*On Time* Group opened by admin\nNow members can send messages`
 Hisoka.groupSettingUpdate(m.chat, 'not_announcement')
 reply(open)
 }, timer)
@@ -1917,7 +1916,7 @@ case "opengc": case "open": {
 if (!isGroupAdmins && !isOwner) return reply(mess.admin)
 if (!isGroup) return reply(mess.group);
 if (!isBotAdmins) return reply(mess.botadmin)
-m.reply(`.${command}time 1 detik`)
+m.reply(`.${command}time 1 seconds`)
 }
 break
 case "demote":
@@ -1931,7 +1930,7 @@ let target = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender 
 if (/demote/.test(command)) action = "Demote"
 if (/promote/.test(command)) action = "Promote"
 await Hisoka.groupParticipantsUpdate(m.chat, [target], action.toLowerCase()).then(async () => {
-await Hisoka.sendMessage(m.chat, {text: `Sukses ${action.toLowerCase()} @${target.split("@")[0]}`, mentions: [target]}, {quoted: m})
+await Hisoka.sendMessage(m.chat, {text: `Successfully ${action.toLowerCase()}d @${target.split("@")[0]}`, mentions: [target]}, {quoted: m})
 })
 } else {
 return m.reply("@tag/6285###")
@@ -1987,7 +1986,7 @@ case 'tagall':{
 if (!isGroupAdmins && !isOwner) return reply(mess.admin)
 if (!isGroup) return reply(mess.group);
 const textMessage = args.join(" ") || "nothing";
-let teks = `tagall message :\n> *${textMessage}*\n\n`;
+let teks = `Tag all message :\n> *${textMessage}*\n\n`;
 const groupMetadata = await Hisoka.groupMetadata(m.chat);
 const participants = groupMetadata.participants;
 for (let mem of participants) {
@@ -2102,7 +2101,7 @@ case 'ocr': {
     }
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || ''
-    if (!mime.startsWith('image/')) throw 'silakan kirim atau reply gambar'
+    if (!mime.startsWith('image/')) throw 'please send or reply with an image'
     let media = await q.download()
     let ext = mime.split('/')[1] || 'jpg'
     let filename = `ocr.${ext}`
@@ -2126,10 +2125,10 @@ case 'remove-wm': {
   let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || ''
  
-  let defaultPrompt = `Hapus watermark yang terdapat pada gambar. Perhatikan dengan teliti karena watermark bisa saja muncul di bagian atas, bawah, tengah, atau tersembunyi dengan ukuran kecil, transparan, atau blur. Hapus watermark tersebut secara menyeluruh tanpa mengurangi kualitas gambar asli dan tanpa mengubah elemen visual lainnya. Pastikan gambar tetap utuh, bersih, dan terlihat alami seolah tidak pernah memiliki watermark.`
+  let defaultPrompt = `Remove the watermark present in the image. Pay close attention as the watermark may appear at the top, bottom, center, or hidden with small size, transparent, or blurred. Remove the watermark completely without reducing the quality of the original image and without changing other visual elements. Ensure the image remains intact, clean, and looks natural as if it never had a watermark.`
   
-  if (!mime) return m.reply(`Kirim/reply gambar dengan caption *${usedPrefix + command}*`)
-  if (!/image\/(jpe?g|png)/.test(mime)) return m.reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`)
+  if (!mime) return m.reply(`Send/reply image with caption *${usedPrefix + command}*`)
+  if (!/image\/(jpe?g|png)/.test(mime)) return m.reply(`Format ${mime} not supported! Only jpeg/jpg/png`)
   
   let promptText = text || defaultPrompt
   
@@ -2201,7 +2200,7 @@ case 'gpt':
 case 'openai':
 case 'ai': {
       try {
-        if (!text) return m.reply(`Contoh: ${command} hai`);
+        if (!text) return m.reply(`Example: ${command} hai`);
         await Hisoka.sendMessage(m.chat, {react: {text: '💬', key: m.key}})
         let prompt = `Your name is ${namaBot} and use English as your primary language.`
         const apiUrl = await fetchJson(`https://api.siputzx.my.id/api/ai/gpt3?prompt=${prompt}&content=${text}`)
@@ -2222,7 +2221,7 @@ if (!text) return m.reply(`Promt nya mana?`);
   let defaultPrompt = `${text}`;
   
   if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
-  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
+  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} not supported! Only jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
   
@@ -2271,7 +2270,7 @@ if (!text) return m.reply(`Promt nya mana?`);
       
       await Hisoka.sendMessage(m.chat, { 
         image: { url: tempPath },
-        caption: `*Maaf jika tidak sesuai*`
+        caption: `*Sorry if not appropriate*`
       }, { quoted: m });
       
       setTimeout(() => {
@@ -2292,10 +2291,10 @@ case "hitamkan": {
   let q = m.quoted ? m.quoted : m;
   let mime = (q.msg || q).mimetype || "";
   
-  let defaultPrompt = `ubah warna kulit karakter manjadi warna hitam`;
+  let defaultPrompt = `change character skin color to black`;
   
   if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
-  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
+  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} not supported! Only jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
   
@@ -2344,7 +2343,7 @@ case "hitamkan": {
       
       await Hisoka.sendMessage(m.chat, { 
         image: { url: tempPath },
-        caption: `*Maaf jika tidak sesuai*`
+        caption: `*Sorry if not appropriate*`
       }, { quoted: m });
       
       setTimeout(() => {
@@ -2365,10 +2364,10 @@ case "putihkan": {
   let q = m.quoted ? m.quoted : m;
   let mime = (q.msg || q).mimetype || "";
   
-  let defaultPrompt = `ubah warna kulit karakter manjadi warna putih`;
+  let defaultPrompt = `change character skin color to white`;
   
   if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
-  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
+  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} not supported! Only jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
   
@@ -2417,7 +2416,7 @@ case "putihkan": {
       
       await Hisoka.sendMessage(m.chat, { 
         image: { url: tempPath },
-        caption: `*Maaf jika tidak sesuai*`
+        caption: `*Sorry if not appropriate*`
       }, { quoted: m });
       
       setTimeout(() => {
@@ -2438,10 +2437,10 @@ case "night": {
   let q = m.quoted ? m.quoted : m;
   let mime = (q.msg || q).mimetype || "";
   
-  let defaultPrompt = `ubah jadi malam hari`;
+  let defaultPrompt = `change to night time`;
   
   if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
-  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
+  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} not supported! Only jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
   
@@ -2490,7 +2489,7 @@ case "night": {
       
       await Hisoka.sendMessage(m.chat, { 
         image: { url: tempPath },
-        caption: `*Maaf jika tidak sesuai*`
+        caption: `*Sorry if not appropriate*`
       }, { quoted: m });
       
       setTimeout(() => {
@@ -2514,7 +2513,7 @@ case "pretty": {
   let defaultPrompt = `edit wajah karakter menjadi wajah orang Korea`;
   
   if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
-  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
+  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} not supported! Only jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
   
@@ -2563,7 +2562,7 @@ case "pretty": {
       
       await Hisoka.sendMessage(m.chat, { 
         image: { url: tempPath },
-        caption: `*Maaf jika tidak sesuai*`
+        caption: `*Sorry if not appropriate*`
       }, { quoted: m });
       
       setTimeout(() => {
@@ -2587,7 +2586,7 @@ case "ugly": {
   let defaultPrompt = `edit wajah karakter menjadi jelek`;
   
   if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
-  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
+  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} not supported! Only jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
   
@@ -2636,7 +2635,7 @@ case "ugly": {
       
       await Hisoka.sendMessage(m.chat, { 
         image: { url: tempPath },
-        caption: `*Maaf jika tidak sesuai*`
+        caption: `*Sorry if not appropriate*`
       }, { quoted: m });
       
       setTimeout(() => {
@@ -2657,10 +2656,10 @@ case "sedih": {
   let q = m.quoted ? m.quoted : m;
   let mime = (q.msg || q).mimetype || "";
   
-  let defaultPrompt = `ubah reaksi wajahnya menjadi sedih`;
+  let defaultPrompt = `change facial expression to sad`;
   
   if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
-  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
+  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} not supported! Only jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
   
@@ -2709,7 +2708,7 @@ case "sedih": {
       
       await Hisoka.sendMessage(m.chat, { 
         image: { url: tempPath },
-        caption: `*Maaf jika tidak sesuai*`
+        caption: `*Sorry if not appropriate*`
       }, { quoted: m });
       
       setTimeout(() => {
@@ -2730,10 +2729,10 @@ case "senyum": {
   let q = m.quoted ? m.quoted : m;
   let mime = (q.msg || q).mimetype || "";
   
-  let defaultPrompt = `ubah reaksi wajahnya menjadi senang`;
+  let defaultPrompt = `change facial expression to happy`;
   
   if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
-  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
+  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} not supported! Only jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
   
@@ -2782,7 +2781,7 @@ case "senyum": {
       
       await Hisoka.sendMessage(m.chat, { 
         image: { url: tempPath },
-        caption: `*Maaf jika tidak sesuai*`
+        caption: `*Sorry if not appropriate*`
       }, { quoted: m });
       
       setTimeout(() => {
@@ -2803,10 +2802,10 @@ case "botakin": {
   let q = m.quoted ? m.quoted : m;
   let mime = (q.msg || q).mimetype || "";
   
-  let defaultPrompt = `hilangkan rambut di kepalanya`;
+  let defaultPrompt = `remove hair from the head`;
   
   if (!mime) return reply(`Send/reply image with caption *${prefix + command}*`);
-  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
+  if (!/image\/(jpe?g|png)/.test(mime)) return reply(`Format ${mime} not supported! Only jpeg/jpg/png`);
   
   let promptText = text || defaultPrompt;
   
@@ -2855,7 +2854,7 @@ case "botakin": {
       
       await Hisoka.sendMessage(m.chat, { 
         image: { url: tempPath },
-        caption: `*Maaf jika tidak sesuai*`
+        caption: `*Sorry if not appropriate*`
       }, { quoted: m });
       
       setTimeout(() => {
@@ -2875,7 +2874,7 @@ break
 //============ Download
 case 'pindl':
 case 'pinterestdl': {
-  if (!text) return m.reply('❌ Masukkan URL Pinterest!\nContoh: .pinterestdl https://pin.it/2NCffxXoN');
+  if (!text) return m.reply('❌ Enter URL Pinterest!\nExample: .pinterestdl https://pin.it/2NCffxXoN');
 
   try {
     await Hisoka.sendMessage(m.chat, {
@@ -2923,7 +2922,7 @@ case "snackvideo":
       case "sv":
         {
           if (!text) {
-            return reply(`mana link-nya? contoh: ${prefix + command} https://url/reel/xxx/?igsh=xxx`);
+            return reply(`where is the link? example: ${prefix + command} https://url/reel/xxx/?igsh=xxx`);
             HisokaReact()
           }
           let memek = await snck(text);
@@ -2956,7 +2955,7 @@ case "snackvideo":
                   });
                 } else {
                   await Hisoka.sendMessage(m.chat, {
-                    text: `tipe media tidak didukung: ${mimeType}`
+                    text: `media type not supported: ${mimeType}`
                   }, {
                     quoted: m
                   });
@@ -2990,7 +2989,7 @@ case "capcut":
       case "cc":
         {
           if (!text) {
-            return reply(`mana link-nya? contoh: ${prefix + command} https://url/reel/xxx/?igsh=xxx`);
+            return reply(`where is the link? example: ${prefix + command} https://url/reel/xxx/?igsh=xxx`);
             HisokaReact()
           }
           let memek = await ccdl(text);
@@ -3023,7 +3022,7 @@ case "capcut":
                   });
                 } else {
                   await Hisoka.sendMessage(m.chat, {
-                    text: `tipe media tidak didukung: ${mimeType}`
+                    text: `media type not supported: ${mimeType}`
                   }, {
                     quoted: m
                   });
@@ -3057,7 +3056,7 @@ case "facebook":
       case "fb":
         {
           if (!text) {
-            return reply(`mana link-nya? contoh: ${prefix + command} https://url/reel/xxx/?igsh=xxx`);
+            return reply(`where is the link? example: ${prefix + command} https://url/reel/xxx/?igsh=xxx`);
             HisokaReact()
           }
           let memek = await fbdll(text);
@@ -3090,7 +3089,7 @@ case "facebook":
                   });
                 } else {
                   await Hisoka.sendMessage(m.chat, {
-                    text: `tipe media tidak didukung: ${mimeType}`
+                    text: `media type not supported: ${mimeType}`
                   }, {
                     quoted: m
                   });
@@ -3124,7 +3123,7 @@ case "instagram":
       case "ig":
         {
           if (!text) {
-            return reply(`mana link instagram-nya? contoh: ${prefix + command} https://www.instagram.com/reel/DB8BGCZRKAh/?igsh=eDk1ajRncDV6Mjdh`);
+            return reply(`where is the instagram link? example: ${prefix + command} https://www.instagram.com/reel/DB8BGCZRKAh/?igsh=eDk1ajRncDV6Mjdh`);
             HisokaReact()
           }
           let memek = await igdl(text);
@@ -3157,7 +3156,7 @@ case "instagram":
                   });
                 } else {
                   await Hisoka.sendMessage(m.chat, {
-                    text: `tipe media tidak didukung: ${mimeType}`
+                    text: `media type not supported: ${mimeType}`
                   }, {
                     quoted: m
                   });
@@ -3253,7 +3252,7 @@ case "tiktok":
                 buttons: [{
                   buttonId: `.toaudio`,
                   buttonText: {
-                    displayText: "ᴀᴍʙɪʟ ᴍᴜsɪᴋɴʏᴀ"
+                    displayText: "Get the Music"
                   }
                 }],
                 viewOnce: true
@@ -3271,8 +3270,8 @@ case "tiktok":
         }
         break;
 case "ytmp4": {
-if (!text) return reply(`*Penggunaan Salah!*\ncontoh: .${command} (link)`)
-if (!text.startsWith("https://")) return m.reply("Link Tautan Tidak Valid")
+if (!text) return reply(`*Wrong Usage!*\nexample: .${command} (link)`)
+if (!text.startsWith("https://")) return m.reply("Invalid Link")
 await Hisoka.sendMessage(m.chat, {react: {text: '🕖', key: m.key}})
 var anu = await ytdl.ytmp4(`${text}`)
 
@@ -3286,8 +3285,8 @@ await Hisoka.sendMessage(m.chat, {react: {text: '', key: m.key}})
 }
 break
 case "ytmp3": {
-if (!text) return reply(`*Penggunaan Salah!*\ncontoh: .ytmp3 (link)`)
-if (!text.startsWith("https://")) return m.reply("Link Tautan Tidak Valid")
+if (!text) return reply(`*Wrong Usage!*\nexample: .ytmp3 (link)`)
+if (!text.startsWith("https://")) return m.reply("Invalid Link")
 await Hisoka.sendMessage(m.chat, {react: {text: '🕖', key: m.key}})
 
 var anu = await ytdl.ytmp3(`${text}`)
@@ -3304,7 +3303,7 @@ break
 case 'gddl':
     case 'gdrive': {
       try {
-        if (!text) return m.reply(`*Penggunaan Salah!*\ncontoh: .gdrive (link)`)
+        if (!text) return m.reply(`*Wrong Usage!*\nexample: .gdrive (link)`)
          await Hisoka.sendMessage(m.chat, {react: {text: '🚀', key: m.key}})
         let hao = await fetchJson(`https://api.siputzx.my.id/api/d/gdrive?url=${text}`)
         let fileName = hao.data.name
@@ -3327,8 +3326,8 @@ break
 case 'mediafire':
     case 'mfdl': {
       try {
-        if (!text) return m.reply(`*Penggunaan Salah!*\ncontoh: .mediafire Linknya`)
-        if (!text.includes('mediafire.com')) return m.reply('Harus berupa link mediafire!')
+        if (!text) return m.reply(`*Incorrect Usage!*\nexample: .mediafire the_link`)
+        if (!text.includes('mediafire.com')) return m.reply('Must be a mediafire link!')
         
         await Hisoka.sendMessage(m.chat, {react: {text: '🚀', key: m.key}})
         let api = await fetchJson(`https://api.vreden.web.id/api/mediafiredl?url=${text}`)
@@ -3362,7 +3361,7 @@ case 'mediafire':
 
 break
 case 'git': case 'gitclone': {
-if (!args[0]) return reply(`*Penggunaan Salah!*\ncontoh: .${command} (link)`)
+if (!args[0]) return reply(`*Incorrect Usage!*\nexample: .${command} (link)`)
 if (!isUrl(args[0]) && !args[0].includes('github.com')) return reply(`Link invalid!!`)
 let regex1 = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
     let [, user, repo] = args[0].match(regex1) || []
@@ -3379,7 +3378,7 @@ break
 
 case 'getpastebin': 
 case 'getpb': {
- if (!text) return reply(`🔗 Masukkan link pastebin, contoh:\n.getpb https://pastebin.com/raw/abc123`);
+ if (!text) return reply(`🔗 Enter link pastebin, contoh:\n.getpb https://pastebin.com/raw/abc123`);
 
  try {
  const res = await fetch(`https://api.nekorinn.my.id/tools/getpastebin?url=${encodeURIComponent(q)}`);
@@ -3399,7 +3398,7 @@ case 'getpb': {
  interactiveMessage: proto.Message.InteractiveMessage.create({
  header: proto.Message.InteractiveMessage.Header.create({
  title: '📄 Pastebin Content',
- subtitle: 'Hasil dari link kamu',
+ subtitle: 'Result from your link',
  hasMediaAttachment: false
  }),
  body: { text: isiPreview },
@@ -3430,13 +3429,13 @@ case 'getpb': {
 break
 case 'ssweb':
 case 'ss-web': {
-  if (!text) return m.reply(`Contoh: ${command} beautiful girl with handsome man`)
+  if (!text) return m.reply(`Example: ${command} beautiful girl with handsome man`)
   
   await Hisoka.sendMessage(m.chat, {image: {url: `https://api.siputzx.my.id/api/tools/ssweb?url=${text}&theme=light&device=desktop` }, caption: foother }, {quoted: m})
 }
 break
 case 'sendchat': {
-  if (!text) return m.reply(`Contoh: ${command} Hai|62xxxx`)
+  if (!text) return m.reply(`Example: ${command} Hai|62xxxx`)
   let [l, r] = text.split`|`
 if (!l) l = ''
 if (!r) r = ''
@@ -3445,7 +3444,7 @@ if (!r) r = ''
   teks += `💬 *Pesan:* ${l}\n`
 
   // ID Owner Bot (bisa lebih dari satu)
-  const ownerJid = [`${r}@s.whatsapp.net`] // ganti dengan nomor owner
+  const ownerJid = [`${r}@s.whatsapp.net`] // replace with owner number
 
   for (let id of ownerJid) {
     Hisoka.sendMessage(id,
@@ -3474,11 +3473,11 @@ sourceUrl: "https://Hisoka-Dev",
 }
 break
 case 'upch': {
-  if (!text) return m.reply(`Contoh: ${command} Hai`)
+  if (!text) return m.reply(`Example: ${command} Hai`)
   let teks = `\n${text}\n`
 
   // ID Owner Bot (bisa lebih dari satu)
-  const ownerJid = [`${idch}`] // ganti dengan nomor owner
+  const ownerJid = [`${idch}`] // replace with owner number
 
   for (let id of ownerJid) {
     Hisoka.sendMessage(id,
@@ -3534,7 +3533,7 @@ async function obfus(query) {
       case "obfuscate":
         {
           if (!q) {
-            return reply(`Contoh ${prefix + command} const xeonbot = require('baileys')`);
+            return reply(`Example ${prefix + command} const xeonbot = require('baileys')`);
           }
           let meg = await obfus(q);
           reply(`${meg.result}`);
@@ -3559,10 +3558,10 @@ case 'tts': {
  try {
  // --- LOGIKA 1: JIKA TIDAK ADA TEKS, TAMPILKAN DAFTAR ---
  if (!text) {
- let responseText = "🎙️ *Daftar Karakter Suara TTS* 🎙️\n\n";
+ let responseText = "🎙️ *Daftar Character Suara TTS* 🎙️\n\n";
  responseText += "Gunakan format:\n`.tts nama karakter | teks`\n\n";
- responseText += "Contoh:\n`.tts Goku | Kamehameha!`\n\n";
- responseText += "┌─「 *Pilihan Karakter* 」\n";
+ responseText += "Example:\n`.tts Goku | Kamehameha!`\n\n";
+ responseText += "┌─「 *Pilihan Character* 」\n";
  
  ttsCharacters.forEach(char => {
  responseText += `│ • ${char.displayName}\n`;
@@ -3646,8 +3645,8 @@ let response = await CatBox(media);
 break
 case 'emojimix': {
 let [emoji1, emoji2] = q.split`+`
-if (!emoji1) return reply(`\n*Penggunaan Salah!*\nKetik .emojimix 😄+😏\n`)
-if (!emoji2) return reply(`\n*Penggunaan Salah!*\nKetik .emojimix 😄+😏\n`)
+if (!emoji1) return reply(`\n*Incorrect Usage!*\nType .emojimix 😄+😏\n`)
+if (!emoji2) return reply(`\n*Incorrect Usage!*\nType .emojimix 😄+😏\n`)
 reply("Proses...")
 let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
 for (let res of anu.results) {
@@ -3689,7 +3688,7 @@ Hisoka.sendMessage(from, {audio: dl, mimetype: 'audio/mpeg', ptt: false }, {quot
 break
 case 'readmore':
 case 'selengkapnya': {
-if (!q) return reply(`enter text example ${command} kamujelek|tapii boong`)
+if (!q) return reply(`enter text example ${command} yourbad|justjoking`)
 let [l, r] = text.split`|`
 if (!l) l = ''
 if (!r) r = ''
@@ -3779,7 +3778,7 @@ case 'tourl2': {
                                                 let response = await CatBox(media);
                                                 reply(response);
                                         } else {
-                                        reply(`Jenis media tidak didukung!`);
+                                        reply(`Media type not supported!`);
                                         }
                                         await fs.unlinkSync(media);
                                 } catch (err) {
@@ -3798,20 +3797,20 @@ case "hdvid": {
     const path = require('path');
 
     if (!ffmpegStatic) {
-        return Hisoka.sendMessage(m.chat, { text: "❌ FFMPEG tidak ditemukan! Pastikan sudah diinstal dengan benar." }, { quoted: m });
+        return Hisoka.sendMessage(m.chat, { text: "❌ FFMPEG not found! Make sure it's installed correctly." }, { quoted: m });
     }
     ffmpeg.setFfmpegPath(ffmpegStatic);
     let inputPath, outputPath;
     try {
         let q = m.quoted || m;
         let mime = q.mimetype || q.msg?.mimetype || q.mediaType || "";
-        if (!mime) return Hisoka.sendMessage(m.chat, { text: "❌ Mana videonya?" }, { quoted: m });
+        if (!mime) return Hisoka.sendMessage(m.chat, { text: "❌ Where is the video?" }, { quoted: m });
         if (!/video\/(mp4|mov|avi|mkv)/.test(mime)) {
-            return Hisoka.sendMessage(m.chat, { text: `❌ Format ${mime} tidak didukung!` }, { quoted: m });
+            return Hisoka.sendMessage(m.chat, { text: `❌ Format ${mime} not supported!` }, { quoted: m });
         }
-        Hisoka.sendMessage(m.chat, { text: "⏳ Sedang memproses video, mohon tunggu sekitar 2 - 4 menit..." }, { quoted: m });
+        Hisoka.sendMessage(m.chat, { text: "⏳ Processing video, please wait around 2-4 minutes..." }, { quoted: m });
         let videoBuffer = await q.download?.();
-        if (!videoBuffer) return Hisoka.sendMessage(m.chat, { text: "❌ Gagal mengunduh video!" }, { quoted: m });
+        if (!videoBuffer) return Hisoka.sendMessage(m.chat, { text: "❌ Failed to download video!" }, { quoted: m });
         let tempDir = path.join(__dirname, 'tmp');
         if (!existsSync(tempDir)) await mkdir(tempDir, { recursive: true });
         inputPath = path.join(tempDir, `input_${Date.now()}.mp4`);
@@ -3835,7 +3834,7 @@ case "hdvid": {
         });
         await Hisoka.sendMessage(m.chat, { 
             video: { url: outputPath },
-            caption: "✅ Video berhasil ditingkatkan kualitasnya!"
+            caption: "✅ Video quality successfully enhanced!"
         }, { quoted: m });
     } catch (err) {
         console.error("Error HD Video:", err);
@@ -3857,7 +3856,7 @@ await Hisoka.sendMessage(m.chat, { react: { text: "⏱️",key: m.key,}})
 
 let startTime = Date.now(); 
 
-await reply(`⚠️ Mohon tunggu sebentar, proses anda dimulai...\n\n⏳ Proses ini membutuhkan waktu lama untuk menggunakannya, mohon bersabar.`);
+await reply(`⚠️ Please wait a moment, your process has started...\n\n⏳ This process takes a long time to use, please be patient.`);
 
 if (/remini/.test(command)) cap = `*ᴛʏᴘᴇ :*  sᴜᴘᴇʀʜᴅ \n* ʀᴇsᴜʟᴛ : sᴜᴄᴄᴇss`;
 if (/hd/.test(command)) cap = `*ᴛʏᴘᴇ :*  sᴜᴘᴇʀʜᴅ \n* ʀᴇsᴜʟᴛ : sᴜᴄᴄᴇss`;
@@ -3879,8 +3878,8 @@ console.error(error);
     case 'qcstic':
     case 'qc':
     case 'qcstick': {
-      if (!args[0]) return m.reply(`Contoh: ${command} white halo`)
-      if (!args[1]) return m.reply(`Contoh: ${command} white halo`)
+      if (!args[0]) return m.reply(`Example: ${command} white halo`)
+      if (!args[1]) return m.reply(`Example: ${command} white halo`)
       if (text.length > 80) return m.reply(`Maximal 80 karakter!`)
       let [color, ...message] = text.split(' ')
       message = m.quoted ? m.quoted : message.join(' ')
@@ -4025,7 +4024,7 @@ console.error(error);
         backgroundColor = '#C0C0C0'
         break
       default:
-        return m.reply('Warna tersebut tidak ditemukan!')
+        return m.reply('That color not found!')
       }
       const username = m.pushName
       const avatar = await Hisoka.profilePictureUrl(m.sender, "image").catch(() => 'https://files.catbox.moe/nwvkbt.png')
@@ -4110,7 +4109,7 @@ console.error(error);
                                                         })
                                                         fs.unlinkSync(ran)
                                                 })
-                                        } else m.reply(`Balas audio yang ingin diubah dengan caption *${prefix + command}*`)
+                                        } else m.reply(`Reply to the audio you want to convert with caption *${prefix + command}*`)
                                 } catch (error) {
                                          
                                 }
@@ -4370,19 +4369,19 @@ console.error(error);
 
 case 'sangecek': case 'ceksange': case 'gaycek': case 'cekgay': case 'lesbicek': case 'ceklesbi': {
 
-if (!q) return reply(`Penggunaan ${command} Nama\n\nContoh : ${command} Lisaa`)
+if (!q) return reply(`Usage ${command} Nama\n\nExample : ${command} Lisaa`)
 const sangeh = ['5', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '60', '65', '70', '75', '80', '85', '90', '95', '100']
 const sange = sangeh[Math.floor(Math.random() * sangeh.length)]
-reply(`Nama : ${q}\nJawaban : *${sange}%*`)
+reply(`Nama : ${q}\nAnswer : *${sange}%*`)
 }
 
 break 
 case 'kapankah': {
 
-if (!q) return reply(`Penggunaan ${command} Pertanyaan\n\nContoh : ${command} Saya Mati`)
+if (!q) return reply(`Usage ${command} Question\n\nExample : ${command} Saya Mati`)
 const kapan = ['5 Hari Lagi', '10 Hari Lagi', '15 Hari Lagi', '20 Hari Lagi', '25 Hari Lagi', '30 Hari Lagi', '35 Hari Lagi', '40 Hari Lagi', '45 Hari Lagi', '50 Hari Lagi', '55 Hari Lagi', '60 Hari Lagi', '65 Hari Lagi', '70 Hari Lagi', '75 Hari Lagi', '80 Hari Lagi', '85 Hari Lagi', '90 Hari Lagi', '95 Hari Lagi', '100 Hari Lagi', '5 Bulan Lagi', '10 Bulan Lagi', '15 Bulan Lagi', '20 Bulan Lagi', '25 Bulan Lagi', '30 Bulan Lagi', '35 Bulan Lagi', '40 Bulan Lagi', '45 Bulan Lagi', '50 Bulan Lagi', '55 Bulan Lagi', '60 Bulan Lagi', '65 Bulan Lagi', '70 Bulan Lagi', '75 Bulan Lagi', '80 Bulan Lagi', '85 Bulan Lagi', '90 Bulan Lagi', '95 Bulan Lagi', '100 Bulan Lagi', '1 Tahun Lagi', '2 Tahun Lagi', '3 Tahun Lagi', '4 Tahun Lagi', '5 Tahun Lagi', 'Besok', 'Lusa', `Abis Command Ini Juga Lu ${q}`]
 const kapankah = kapan[Math.floor(Math.random() * kapan.length)]
-m.reply(`Pertanyaan : ${q}\nJawaban : *${kapankah}*`)
+m.reply(`Question : ${q}\nAnswer : *${kapankah}*`)
 }
 
 break 
@@ -4547,10 +4546,10 @@ break
     
     //============ Primbon
     case 'dreammeaning': case 'artimimpi': case 'tafsirmimpi': {
-if (!text) return reply(`Contoh : ${prefix + command} belanja`)
+if (!text) return reply(`Example : ${prefix + command} belanja`)
 let anu = await primbon.tafsir_mimpi(text)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Mimpi :* ${anu.message.mimpi}\n• *Arti :* ${anu.message.arti}\n• *Solusi :* ${anu.message.solusi}`)
+reply(`• *Dream :* ${anu.message.mimpi}\n• *Meaning :* ${anu.message.arti}\n• *Solution :* ${anu.message.solusi}`)
 }
 break
 case 'loveforecast': case 'ramalanjodoh': case 'ramaljodoh': {
@@ -4558,7 +4557,7 @@ if (!text) return reply(`Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 
 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
 let anu = await primbon.ramalan_jodoh(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Nama Anda :* ${anu.message.nama_anda.nama}\n• *Lahir Anda :* ${anu.message.nama_anda.tgl_lahir}\n• *Nama Pasangan :* ${anu.message.nama_pasangan.nama}\n• *Lahir Pasangan :* ${anu.message.nama_pasangan.tgl_lahir}\n• *Hasil :* ${anu.message.result}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Your Name :* ${anu.message.nama_anda.nama}\n• *Your Birth :* ${anu.message.nama_anda.tgl_lahir}\n• *Partner Name :* ${anu.message.nama_pasangan.nama}\n• *Partner Birth :* ${anu.message.nama_pasangan.tgl_lahir}\n• *Result :* ${anu.message.result}\n• *Note :* ${anu.message.catatan}`)
 }
 break
 case 'balineseloveforecast': case 'ramalanjodohbali': case 'ramaljodohbali': {
@@ -4566,203 +4565,203 @@ if (!text) return reply(`Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 
 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
 let anu = await primbon.ramalan_jodoh_bali(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Nama Anda :* ${anu.message.nama_anda.nama}\n• *Lahir Anda :* ${anu.message.nama_anda.tgl_lahir}\n• *Nama Pasangan :* ${anu.message.nama_pasangan.nama}\n• *Lahir Pasangan :* ${anu.message.nama_pasangan.tgl_lahir}\n• *Hasil :* ${anu.message.result}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Your Name :* ${anu.message.nama_anda.nama}\n• *Your Birth :* ${anu.message.nama_anda.tgl_lahir}\n• *Partner Name :* ${anu.message.nama_pasangan.nama}\n• *Partner Birth :* ${anu.message.nama_pasangan.tgl_lahir}\n• *Result :* ${anu.message.result}\n• *Note :* ${anu.message.catatan}`)
 }
 break
-case 'suamiistri': {
+case 'marriagecouple': case 'suamiistri': {
 if (!text) return reply(`Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`)
 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
 let anu = await primbon.suami_istri(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Nama Suami :* ${anu.message.suami.nama}\n• *Lahir Suami :* ${anu.message.suami.tgl_lahir}\n• *Nama Istri :* ${anu.message.istri.nama}\n• *Lahir Istri :* ${anu.message.istri.tgl_lahir}\n• *Hasil :* ${anu.message.result}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Husband Name :* ${anu.message.suami.nama}\n• *Husband Birth :* ${anu.message.suami.tgl_lahir}\n• *Wife Name :* ${anu.message.istri.nama}\n• *Wife Birth :* ${anu.message.istri.tgl_lahir}\n• *Result :* ${anu.message.result}\n• *Note :* ${anu.message.catatan}`)
 }
 break
-case 'ramalancinta': case 'ramalcinta': {
+case 'lovecompatibility': case 'ramalancinta': case 'ramalcinta': {
 if (!text) return reply(`Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`)
 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
 let anu = await primbon.ramalan_cinta(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Nama Anda :* ${anu.message.nama_anda.nama}\n• *Lahir Anda :* ${anu.message.nama_anda.tgl_lahir}\n• *Nama Pasangan :* ${anu.message.nama_pasangan.nama}\n• *Lahir Pasangan :* ${anu.message.nama_pasangan.tgl_lahir}\n• *Sisi Positif :* ${anu.message.sisi_positif}\n• *Sisi Negatif :* ${anu.message.sisi_negatif}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Your Name :* ${anu.message.nama_anda.nama}\n• *Your Birth :* ${anu.message.nama_anda.tgl_lahir}\n• *Partner Name :* ${anu.message.nama_pasangan.nama}\n• *Partner Birth :* ${anu.message.nama_pasangan.tgl_lahir}\n• *Sisi Positif :* ${anu.message.sisi_positif}\n• *Sisi Negatif :* ${anu.message.sisi_negatif}\n• *Note :* ${anu.message.catatan}`)
 }
 break
 case 'namemeaning': case 'artinama': {
 if (!text) return reply(`Example : ${prefix + command} Dika Ardianta`)
 let anu = await primbon.arti_nama(text)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Nama :* ${anu.message.nama}\n• *Arti :* ${anu.message.arti}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Name :* ${anu.message.nama}\n• *Meaning :* ${anu.message.arti}\n• *Note :* ${anu.message.catatan}`)
 }
 break
 case 'namecompatibility': case 'kecocokannama': case 'cocoknama': {
-if (!text) return reply(`Contoh : ${prefix + command} Dika, 7, 7, 2005`)
+if (!text) return reply(`Example : ${prefix + command} Dika, 7, 7, 2005`)
 let [nama, tgl, bln, thn] = text.split`,`
 let anu = await primbon.kecocokan_nama(nama, tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Nama :* ${anu.message.nama}\n• *Lahir :* ${anu.message.tgl_lahir}\n• *Life Path :* ${anu.message.life_path}\n• *Destiny :* ${anu.message.destiny}\n• *Destiny Desire :* ${anu.message.destiny_desire}\n• *Personality :* ${anu.message.personality}\n• *Persentase :* ${anu.message.persentase_kecocokan}`)
+reply(`• *Name :* ${anu.message.nama}\n• *Birth :* ${anu.message.tgl_lahir}\n• *Life Path :* ${anu.message.life_path}\n• *Destiny :* ${anu.message.destiny}\n• *Destiny Desire :* ${anu.message.destiny_desire}\n• *Personality :* ${anu.message.personality}\n• *Persentase :* ${anu.message.persentase_kecocokan}`)
 }
 break
-case 'kecocokanpasangan': case 'cocokpasangan': case 'pasangan': {
-if (!text) return reply(`Contoh : ${prefix + command} Dika|Novia`)
+case 'couple': case 'kecocokanpasangan': case 'cocokpasangan': case 'pasangan': {
+if (!text) return reply(`Example : ${prefix + command} Dika|Novia`)
 let [nama1, nama2] = text.split`|`
 let anu = await primbon.kecocokan_nama_pasangan(nama1, nama2)
 if (anu.status == false) return reply(anu.message)
-Hisoka.sendImage(m.chat,  anu.message.gambar, `• *Nama Anda :* ${anu.message.nama_anda}\n• *Nama Pasangan :* ${anu.message.nama_pasangan}\n• *Sisi Positif :* ${anu.message.sisi_positif}\n• *Sisi Negatif :* ${anu.message.sisi_negatif}`)
+Hisoka.sendImage(m.chat,  anu.message.gambar, `• *Your Name :* ${anu.message.nama_anda}\n• *Partner Name :* ${anu.message.nama_pasangan}\n• *Sisi Positif :* ${anu.message.sisi_positif}\n• *Sisi Negatif :* ${anu.message.sisi_negatif}`)
 }
 break
-case 'jadianpernikahan': case 'jadiannikah': {
-if (!text) return reply(`Contoh : ${prefix + command} 6, 12, 2020`)
+case 'relationshipdestiny': case 'jadianpernikahan': case 'jadiannikah': {
+if (!text) return reply(`Example : ${prefix + command} 6, 12, 2020`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.tanggal_jadian_pernikahan(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Tanggal Pernikahan :* ${anu.message.tanggal}\n• *karakteristik :* ${anu.message.karakteristik}`)
+reply(`• *Date Pernikahan :* ${anu.message.tanggal}\n• *characteristics :* ${anu.message.characteristics}`)
 }
 break
-case 'sifatusaha': {
-if (!ext)return reply(`Contoh : ${prefix+ command} 28, 12, 2021`)
+case 'businessnature': case 'sifatusaha': {
+if (!ext)return reply(`Example : ${prefix+ command} 28, 12, 2021`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.sifat_usaha_bisnis(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Lahir :* ${anu.message.hari_lahir}\n• *Usaha :* ${anu.message.usaha}`)
+reply(`• *Birth :* ${anu.message.hari_lahir}\n• *Business :* ${anu.message.usaha}`)
 }
 break
 case  ' rejeki': case 'rezeki': {
-if (!text) return reply(`Contoh : ${prefix + command} 7, 7, 2005`)
+if (!text) return reply(`Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.rejeki_hoki_weton(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Lahir :* ${anu.message.hari_lahir}\n• *Rezeki :* ${anu.message.rejeki}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Birth :* ${anu.message.hari_lahir}\n• *Fortune :* ${anu.message.rejeki}\n• *Note :* ${anu.message.catatan}`)
 }
 break
 case 'pekerjaan': {
-if (!text) return reply(`Contoh : ${prefix + command} 7, 7, 2005`)
+if (!text) return reply(`Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.pekerjaan_weton_lahir(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Lahir :* ${anu.message.hari_lahir}\n• *Pekerjaan :* ${anu.message.pekerjaan}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Birth :* ${anu.message.hari_lahir}\n• *Pekerjaan :* ${anu.message.pekerjaan}\n• *Note :* ${anu.message.catatan}`)
 }
 break
 case 'ramalannasib': case 'ramalnasib': case 'nasib': {
-if (!text) return reply(`Contoh : 7, 7, 2005`)
+if (!text) return reply(`Example : 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.ramalan_nasib(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Analisa :* ${anu.message.analisa}\n• *Angka Akar :* ${anu.message.angka_akar}\n• *Sifat :* ${anu.message.sifat}\n• *Elemen :* ${anu.message.elemen}\n• *Angka Keberuntungan :* ${anu.message.angka_keberuntungan}`)
+reply(`• *Analisa :* ${anu.message.analisa}\n• *Angka Akar :* ${anu.message.angka_akar}\n• *Nature :* ${anu.message.sifat}\n• *Elemen :* ${anu.message.elemen}\n• *Lucky Number :* ${anu.message.angka_keberuntungan}`)
 }
 break
 case 'potensipenyakit': case 'penyakit': {
-if (!text) return reply(`Contoh : ${prefix + command} 7, 7, 2005`)
+if (!text) return reply(`Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.cek_potensi_penyakit(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Analisa :* ${anu.message.analisa}\n• *Sektor :* ${anu.message.sektor}\n• *Elemen :* ${anu.message.elemen}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Analisa :* ${anu.message.analisa}\n• *Sektor :* ${anu.message.sektor}\n• *Elemen :* ${anu.message.elemen}\n• *Note :* ${anu.message.catatan}`)
 }
 break
 case 'artitarot': case 'tarot': {
-if (!text) return reply(`Contoh : ${prefix + command} 7, 7, 2005`)
+if (!text) return reply(`Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.arti_kartu_tarot(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-Hisoka.sendImage(m.chat, anu.message.image, `• *Lahir :* ${anu.message.tgl_lahir}\n• *Simbol Tarot :* ${anu.message.simbol_tarot}\n• *Arti :* ${anu.message.arti}\n• *Catatan :* ${anu.message.catatan}`)
+Hisoka.sendImage(m.chat, anu.message.image, `• *Birth :* ${anu.message.tgl_lahir}\n• *Simbol Tarot :* ${anu.message.simbol_tarot}\n• *Arti :* ${anu.message.arti}\n• *Note :* ${anu.message.catatan}`)
 }
 break
 case 'fengshui': {
-if (!text) return `Contoh : ${prefix + command} Dika, 1, 2005\n\nNote : ${prefix + command} Nama, gender, tahun lahir\nGender : 1 untuk laki-laki & 2 untuk perempuan`
+if (!text) return `Example : ${prefix + command} Dika, 1, 2005\n\nNote : ${prefix + command} Nama, gender, tahun lahir\nGender : 1 untuk laki-laki & 2 untuk perempuan`
 let [nama, gender, tahun] = text.split`,`
 let anu = await primbon.perhitungan_feng_shui(nama, gender, tahun)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Nama :* ${anu.message.nama}\n• *Lahir :* ${anu.message.tahun_lahir}\n• *Gender :* ${anu.message.jenis_kelamin}\n• *Angka Kua :* ${anu.message.angka_kua}\n• *Kelompok :* ${anu.message.kelompok}\n• *Karakter :* ${anu.message.karakter}\n• *Sektor Baik :* ${anu.message.sektor_baik}\n• *Sektor Buruk :* ${anu.message.sektor_buruk}`)
+reply(`• *Name :* ${anu.message.nama}\n• *Birth :* ${anu.message.tahun_lahir}\n• *Gender :* ${anu.message.jenis_kelamin}\n• *Angka Kua :* ${anu.message.angka_kua}\n• *Kelompok :* ${anu.message.kelompok}\n• *Character :* ${anu.message.karakter}\n• *Sektor Baik :* ${anu.message.sektor_baik}\n• *Sektor Buruk :* ${anu.message.sektor_buruk}`)
 }
 break
 case 'haribaik': {
-if (!text) return reply(`Contoh : ${prefix + command} 7, 7, 2005`)
+if (!text) return reply(`Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.petung_hari_baik(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Lahir :* ${anu.message.tgl_lahir}\n• *Kala Tinantang :* ${anu.message.kala_tinantang}\n• *Info :* ${anu.message.info}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Birth :* ${anu.message.tgl_lahir}\n• *Kala Tinantang :* ${anu.message.kala_tinantang}\n• *Info :* ${anu.message.info}\n• *Note :* ${anu.message.catatan}`)
 }
 break
 case 'harisangar': case 'taliwangke': {
-if (!text) return reply(`Contoh : ${prefix + command} 7, 7, 2005`)
+if (!text) return reply(`Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.hari_sangar_taliwangke(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Lahir :* ${anu.message.tgl_lahir}\n• *Hasil :* ${anu.message.result}\n• *Info :* ${anu.message.info}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Birth :* ${anu.message.tgl_lahir}\n• *Result :* ${anu.message.result}\n• *Info :* ${anu.message.info}\n• *Note :* ${anu.message.catatan}`)
 }
 break
 case 'harinaas': case 'harisial': {
-if (!text) return reply(`Contoh : ${prefix + command} 7, 7, 2005`)
+if (!text) return reply(`Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.primbon_hari_naas(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Hari Lahir :* ${anu.message.hari_lahir}\n• *Tanggal Lahir :* ${anu.message.tgl_lahir}\n• *Hari Naas :* ${anu.message.hari_naas}\n• *Info :* ${anu.message.catatan}\n• *Catatan :* ${anu.message.info}`)
+reply(`• *Day Lahir :* ${anu.message.hari_lahir}\n• *Date Lahir :* ${anu.message.tgl_lahir}\n• *Day Naas :* ${anu.message.hari_naas}\n• *Info :* ${anu.message.catatan}\n• *Note :* ${anu.message.info}`)
 }
 break
-case 'nagahari': case 'harinaga': {
-if (!text) return reply(`Contoh : ${prefix + command} 7, 7, 2005`)
+case 'dragonday': case 'nagahari': case 'harinaga': {
+if (!text) return reply(`Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.rahasia_naga_hari(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Hari Lahir :* ${anu.message.hari_lahir}\n• *Tanggal Lahir :* ${anu.message.tgl_lahir}\n• *Arah Naga Hari :* ${anu.message.arah_naga_hari}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Day Lahir :* ${anu.message.hari_lahir}\n• *Date Lahir :* ${anu.message.tgl_lahir}\n• *Arah Naga Hari :* ${anu.message.arah_naga_hari}\n• *Note :* ${anu.message.catatan}`)
 }
 break
-case 'arahrejeki': case 'arahrezeki': {
-if (!text) return reply(`Contoh : ${prefix + command} 7, 7, 2005`)
+case 'fortunedirection': case 'arahrejeki': case 'arahrezeki': {
+if (!text) return reply(`Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.primbon_arah_rejeki(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Hari Lahir :* ${anu.message.hari_lahir}\n• *tanggal Lahir :* ${anu.message.tgl_lahir}\n• *Arah Rezeki :* ${anu.message.arah_rejeki}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Day Lahir :* ${anu.message.hari_lahir}\n• *tanggal Lahir :* ${anu.message.tgl_lahir}\n• *Fortune Direction :* ${anu.message.arah_rejeki}\n• *Note :* ${anu.message.catatan}`)
 }
 break
-case 'peruntungan': {
-if (!text) return reply(`Contoh : ${prefix + command} DIka, 7, 7, 2005, 2022\n\nNote : ${prefix + command} Nama, tanggal lahir, bulan lahir, tahun lahir, untuk tahun`)
+case 'luck': case 'peruntungan': {
+if (!text) return reply(`Example : ${prefix + command} DIka, 7, 7, 2005, 2022\n\nNote : ${prefix + command} Nama, tanggal lahir, bulan lahir, tahun lahir, untuk tahun`)
 let [nama, tgl, bln, thn, untuk] = text.split`,`
 let anu = await primbon.ramalan_peruntungan(nama, tgl, bln, thn, untuk)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Nama :* ${anu.message.nama}\n• *Lahir :* ${anu.message.tgl_lahir}\n• *Peruntungan Tahun :* ${anu.message.peruntungan_tahun}\n• *Hasil :* ${anu.message.result}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Name :* ${anu.message.nama}\n• *Birth :* ${anu.message.tgl_lahir}\n• *Peruntungan Tahun :* ${anu.message.peruntungan_tahun}\n• *Result :* ${anu.message.result}\n• *Note :* ${anu.message.catatan}`)
 }
 break
-case 'weton': case 'wetonjawa': {
-if (!text) return reply(`Contoh : ${prefix + command} 7, 7, 2005`)
+case 'javanesedate': case 'weton': case 'wetonjawa': {
+if (!text) return reply(`Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.weton_jawa(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Tanggal :* ${anu.message.tanggal}\n• *Jumlah Neptu :* ${anu.message.jumlah_neptu}\n• *Watak Hari :* ${anu.message.watak_hari}\n• *Naga Hari :* ${anu.message.naga_hari}\n• *Jam Baik :* ${anu.message.jam_baik}\n• *Watak Kelahiran :* ${anu.message.watak_kelahiran}`)
+reply(`• *Date :* ${anu.message.tanggal}\n• *Jumlah Neptu :* ${anu.message.jumlah_neptu}\n• *Watak Hari :* ${anu.message.watak_hari}\n• *Naga Hari :* ${anu.message.naga_hari}\n• *Jam Baik :* ${anu.message.jam_baik}\n• *Watak Kelahiran :* ${anu.message.watak_kelahiran}`)
 }
 break
-case 'sifat': case 'karakter': {
-if (!text) return reply(`Contoh : ${prefix + command} Dika, 7, 7, 2005`)
+case 'character': case 'sifat': case 'karakter': {
+if (!text) return reply(`Example : ${prefix + command} Dika, 7, 7, 2005`)
 let [nama, tgl, bln, thn] = text.split`,`
 let anu = await primbon.sifat_karakter_tanggal_lahir(nama, tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Nama :* ${anu.message.nama}\n• *Lahir :* ${anu.message.tgl_lahir}\n• *Garis Hidup :* ${anu.message.garis_hidup}`)
+reply(`• *Name :* ${anu.message.nama}\n• *Birth :* ${anu.message.tgl_lahir}\n• *Garis Hidup :* ${anu.message.garis_hidup}`)
 }
 break
-case 'keberuntungan': {
-if (!text) return reply(`Contoh : ${prefix + command} Dika, 7, 7, 2005`)
+case 'luckiness': case 'keberuntungan': {
+if (!text) return reply(`Example : ${prefix + command} Dika, 7, 7, 2005`)
 let [nama, tgl, bln, thn] = text.split`,`
 let anu = await primbon.potensi_keberuntungan(nama, tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Nama :* ${anu.message.nama}\n• *Lahir :* ${anu.message.tgl_lahir}\n• *Hasil :* ${anu.message.result}`)
+reply(`• *Name :* ${anu.message.nama}\n• *Birth :* ${anu.message.tgl_lahir}\n• *Result :* ${anu.message.result}`)
 }
 break
-case 'memancing': {
-if (!text) return reply(`Contoh : ${prefix + command} 12, 1, 2022`)
+case 'fishing': case 'memancing': {
+if (!text) return reply(`Example : ${prefix + command} 12, 1, 2022`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.primbon_memancing_ikan(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Tanggal :* ${anu.message.tgl_memancing}\n• *Hasil :* ${anu.message.result}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Date :* ${anu.message.tgl_memancing}\n• *Result :* ${anu.message.result}\n• *Note :* ${anu.message.catatan}`)
 }
 break
 
-case 'masasubur': {
-if (!text) return reply(`Contoh : ${prefix + command} 12, 1, 2022, 28\n\nNote : ${prefix + command} hari pertama menstruasi, siklus`)
+case 'fertiletime': case 'masasubur': {
+if (!text) return reply(`Example : ${prefix + command} 12, 1, 2022, 28\n\nNote : ${prefix + command} hari pertama menstruasi, siklus`)
 let [tgl, bln, thn, siklus] = text.split`,`
 let anu = await primbon.masa_subur(tgl, bln, thn, siklus)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Hasil :* ${anu.message.result}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Result :* ${anu.message.result}\n• *Note :* ${anu.message.catatan}`)
 }
 break
 case 'zodiak': case 'zodiac': {
-if (!text) return reply(`Contoh : ${prefix+ command} 7 7 2005`)
+if (!text) return reply(`Example : ${prefix+ command} 7 7 2005`)
 let zodiak = [
 ["capricorn", new Date(1970, 0, 1)],
 ["aquarius", new Date(1970, 0, 20)],
@@ -4793,14 +4792,14 @@ let zodiac = await getZodiac(birth[1], birth[2])
 
 let anu = await primbon.zodiak(zodiac)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Zodiak :* ${anu.message.zodiak}\n• *Nomor :* ${anu.message.nomor_keberuntungan}\n• *Aroma :* ${anu.message.aroma_keberuntungan}\n• *Planet :* ${anu.message.planet_yang_mengitari}\n• *Bunga :* ${anu.message.bunga_keberuntungan}\n• *Warna :* ${anu.message.warna_keberuntungan}\n• *Batu :* ${anu.message.batu_keberuntungan}\n• *Elemen :* ${anu.message.elemen_keberuntungan}\n• *Pasangan Zodiak :* ${anu.message.pasangan_zodiak}\n• *Catatan :* ${anu.message.catatan}`)
+reply(`• *Zodiak :* ${anu.message.zodiak}\n• *Nomor :* ${anu.message.nomor_keberuntungan}\n• *Aroma :* ${anu.message.aroma_keberuntungan}\n• *Planet :* ${anu.message.planet_yang_mengitari}\n• *Bunga :* ${anu.message.bunga_keberuntungan}\n• *Warna :* ${anu.message.warna_keberuntungan}\n• *Batu :* ${anu.message.batu_keberuntungan}\n• *Elemen :* ${anu.message.elemen_keberuntungan}\n• *Pasangan Zodiak :* ${anu.message.pasangan_zodiak}\n• *Note :* ${anu.message.catatan}`)
 }
 break
-case 'shio': {
-if (!text) return reply(`Contoh : ${prefix + command} tikus\n\nNote : For Detail https://primbon.com/shio.htm`)
+case 'chinesezodiac': case 'shio': {
+if (!text) return reply(`Example : ${prefix + command} tikus\n\nNote : For Detail https://primbon.com/shio.htm`)
 let anu = await primbon.shio(text)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Hasil :* ${anu.message}`)
+reply(`• *Result :* ${anu.message}`)
 }
 break
 
@@ -4907,14 +4906,14 @@ case 'dilan':
     // Push
     case "pushkontak": {
 if (!isOwner) return reply(mess.owner)
-if (!text) return m.reply("idgrup|pesannya")
-if (!text.split("|")) return m.reply("idgrup|pesannya")
+if (!text) return m.reply("groupid|message")
+if (!text.split("|")) return m.reply("groupid|message")
 const [idgc, pes] = text.split("|")
 const teks = pes
 const jidawal = m.chat
 const data = await Hisoka.groupMetadata(id)
 const halls = await data.participants.filter(v => v.id.endsWith('.net')).map(v => v.id)
-await m.reply(`Memproses *pushkontak* ke dalam grup *${data.subject}*`)
+await m.reply(`Processing *pushcontact* to group *${data.subject}*`)
 
 for (let mem of halls) {
 if (mem !== botNumber && mem.split("@")[0] !== global.owner) {
@@ -4929,14 +4928,14 @@ await Hisoka.sendMessage(mem, {text: teks}, {quoted: sentMsg })
 await sleep(10000)
 }}
 
-await Hisoka.sendMessage(jidawal, {text: `*Berhasil Pushkontak ✅*\nTotal member berhasil dikirim pesan : ${halls.length}`}, {quoted: m})
+await Hisoka.sendMessage(jidawal, {text: `*Push Contact Successful ✅*\nTotal members successfully sent messages: ${halls.length}`}, {quoted: m})
 }
 break
 
 case "pushkontak2": {
 if (!isOwner) return reply(mess.owner)
 if (!isGroup) return reply(mess.group)
-if (!text) return m.reply("pesannya")
+if (!text) return m.reply("message")
 const teks = text
 const jidawal = m.chat
 const data = await Hisoka.groupMetadata(m.chat)
@@ -4955,12 +4954,12 @@ await Hisoka.sendMessage(mem, {text: teks}, {quoted: sentMsg })
 await sleep(10000)
 }}
 
-await Hisoka.sendMessage(jidawal, {text: `*Berhasil Pushkontak ✅*\nTotal member berhasil dikirim pesan : ${halls.length}`}, {quoted: m})
+await Hisoka.sendMessage(jidawal, {text: `*Push Contact Successful ✅*\nTotal members successfully sent messages: ${halls.length}`}, {quoted: m})
 }
 break
 case "savekontak": {
 if (!isOwner) return reply(mess.owner)
-if (!text) return m.reply("idgrupnya")
+if (!text) return m.reply("group id")
 let res = await Hisoka.groupMetadata(m.chat)
 const halls = await res.participants.filter(v => v.id.endsWith('.net')).map(v => v.id)
 for (let mem of halls) {
@@ -4983,10 +4982,10 @@ fs.writeFileSync("./lib/database/contacts.vcf", vcardContent, "utf8")
 } catch (err) {
 m.reply(err.toString())
 } finally {
-if (m.chat !== m.sender) await m.reply(`*Berhasil membuat file kontak ✅*
-File kontak telah dikirim ke private chat
+if (m.chat !== m.sender) await m.reply(`*Successfully created contact file ✅*
+Contact file has been sent to private chat
 Total *${halls.length}* kontak`)
-await Hisoka.sendMessage(m.sender, { document: fs.readFileSync("./lib/database/contacts.vcf"), fileName: "contacts.vcf", caption: `File kontak berhasil dibuat ✅\nTotal *${halls.length}* kontak`, mimetype: "text/vcard", }, { quoted: m })
+await Hisoka.sendMessage(m.sender, { document: fs.readFileSync("./lib/database/contacts.vcf"), fileName: "contacts.vcf", caption: `Contact file successfully created ✅\nTotal *${halls.length}* contacts`, mimetype: "text/vcard", }, { quoted: m })
 contacts.splice(0, contacts.length)
 await fs.writeFileSync("./lib/database/contacts.json", JSON.stringify(contacts))
 await fs.writeFileSync("./lib/database/contacts.vcf", "")
@@ -5017,10 +5016,10 @@ fs.writeFileSync("./lib/database/contacts.vcf", vcardContent, "utf8")
 } catch (err) {
 m.reply(err.toString())
 } finally {
-if (m.chat !== m.sender) await m.reply(`*Berhasil membuat file kontak ✅*
-File kontak telah dikirim ke private chat
+if (m.chat !== m.sender) await m.reply(`*Successfully created contact file ✅*
+Contact file has been sent to private chat
 Total *${halls.length}* kontak`)
-await Hisoka.sendMessage(m.sender, { document: fs.readFileSync("./lib/database/contacts.vcf"), fileName: "contacts.vcf", caption: `File kontak berhasil dibuat ✅\nTotal *${halls.length}* kontak`, mimetype: "text/vcard", }, { quoted: m })
+await Hisoka.sendMessage(m.sender, { document: fs.readFileSync("./lib/database/contacts.vcf"), fileName: "contacts.vcf", caption: `Contact file successfully created ✅\nTotal *${halls.length}* contacts`, mimetype: "text/vcard", }, { quoted: m })
 contacts.splice(0, contacts.length)
 await fs.writeFileSync("./lib/database/contacts.json", JSON.stringify(contacts))
 await fs.writeFileSync("./lib/database/contacts.vcf", "")
@@ -5107,7 +5106,7 @@ Tanggal: ${jadwal.tanggal}
     case 'surah': {
       try {
         if (!text) {
-          m.reply('Ketik nomor surahnya! Contoh: *.surah 1* buat ambil ayat-ayat dari Al-Fatihah')
+          m.reply('Type the surah number! Example: *.surah 1* to get verses from Al-Fatihah')
           return
         }
 
@@ -5232,7 +5231,7 @@ Tanggal: ${jadwal.tanggal}
     // Maker
     case 'text2img':
 case 'txt2img': {
-  if (!text) return m.reply(`Contoh: ${command} beautiful girl with handsome man`)
+  if (!text) return m.reply(`Example: ${command} beautiful girl with handsome man`)
   
   await Hisoka.sendMessage(m.chat, {image: {url: `https://fastrestapis.fasturl.cloud/aiimage/stablediffusion?prompt=${text}&model=dreamshaper-8-base` }, caption: foother }, {quoted: m})
 }
@@ -5240,7 +5239,7 @@ break
 
 case 'text2imgv2':
 case 'txt2imgv2': {
-  if (!text) return m.reply(`Contoh: ${command} beautiful girl with handsome man`)
+  if (!text) return m.reply(`Example: ${command} beautiful girl with handsome man`)
   
   await Hisoka.sendMessage(m.chat, {image: {url: `https://fastrestapis.fasturl.cloud/aiimage/flux/schnell?prompt=${text}&size=9_16` }, caption: foother }, {quoted: m})
 }
@@ -5248,7 +5247,7 @@ break
 
 case 'text2imgv3':
 case 'txt2imgv3': {
-  if (!text) return m.reply(`Contoh: ${command} beautiful girl with handsome man`)
+  if (!text) return m.reply(`Example: ${command} beautiful girl with handsome man`)
   
   await Hisoka.sendMessage(m.chat, {image: {url: `https://fastrestapis.fasturl.cloud/aiimage/stablediffusion?prompt=${text}&model=stable-diffusion-xl-fast` }, caption: foother }, {quoted: m})
 }
@@ -5256,7 +5255,7 @@ break
 
 case 'text2imgv4':
 case 'txt2imgv4': {
-  if (!text) return m.reply(`Contoh: ${command} beautiful girl with handsome man`)
+  if (!text) return m.reply(`Example: ${command} beautiful girl with handsome man`)
     
     await Hisoka.sendMessage(m.chat, {image: {url: `https://fastrestapis.fasturl.cloud/aiimage/stablediffusion?prompt=${text}&model=stable-diffusion-xl-base` }, caption: foother }, {quoted: m})
 }
@@ -5264,7 +5263,7 @@ break
 
 case 'text2imgv5':
 case 'txt2imgv5': {
-  if (!text) return m.reply(`Contoh: ${command} beautiful girl with handsome man`)
+  if (!text) return m.reply(`Example: ${command} beautiful girl with handsome man`)
     
     await Hisoka.sendMessage(m.chat, {image: {url: `https://fastrestapis.fasturl.cloud/aiimage/amazonai?prompt=${text}&size=9_16` }, caption: foother }, {quoted: m})
 }
@@ -5272,7 +5271,7 @@ break
 
 case 'text2imgv6':
 case 'txt2imgv6': {
-  if (!text) return m.reply(`Contoh: ${command} beautiful girl with handsome man`)
+  if (!text) return m.reply(`Example: ${command} beautiful girl with handsome man`)
     
     await Hisoka.sendMessage(m.chat, {image: {url: `https://fastrestapis.fasturl.cloud/aiimage/gemini?prompt=${text}` }, caption: foother }, {quoted: m})
 }
@@ -5282,21 +5281,21 @@ break
 
 case 'bratfoto':
 case 'bratgenerator': {
-  if (!text) return m.reply(`Contoh: ${command} beautiful girl with handsome man`)
+  if (!text) return m.reply(`Example: ${command} beautiful girl with handsome man`)
     
     await Hisoka.sendMessage(m.chat, {image: {url: `https://aqul-brat.hf.space/?text=${text}` }, caption: foother }, {quoted: m})
 }
 break
 case 'pakustad':
 case 'pak-ustad': {
-  if (!text) return m.reply(`Contoh: ${command} kenapa Hisoka ganteng`)
+  if (!text) return m.reply(`Example: ${command} kenapa Hisoka ganteng`)
     
     await Hisoka.sendMessage(m.chat, {image: {url: `https://api.taka.my.id/tanya-ustad?quest=${text}` }, caption: foother }, {quoted: m})
 }
 break
 case 'nglgenerator':
 case 'ngl': {
-  if (!text) return m.reply(`Contoh: ${command} beautiful girl with handsome man`)
+  if (!text) return m.reply(`Example: ${command} beautiful girl with handsome man`)
     
     await Hisoka.sendMessage(m.chat, {image: {url: `https://api.taka.my.id/ngl?text=${text}` }, caption: foother }, {quoted: m})
 }
@@ -5384,14 +5383,14 @@ break
     case 'g-wildlife':
     case 'gens-wildlife': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} snowboar*\nHarap berikan nama binatang liar.`);
+      if (!text) return m.reply(`Example: *${prefix + command} snowboar*\nPlease provide nama binatang liar.`);
       try {
         let result = await genshindb.wildlife(text);
         if (result) {
-          let response = `*Binatang Liar Ditemukan: ${result.name}*\n\n` + `_${result.description || "Data tidak tersedia"}_\n\n` + `*Rarity:* ${result.rarity || "Data tidak tersedia"}\n` + `*Habitat:* ${result.habitat || "Data tidak tersedia"}`;
+          let response = `*Binatang Liar Ditemukan: ${result.name}*\n\n` + `_${result.description || "Data not available"}_\n\n` + `*Rarity:* ${result.rarity || "Data not available"}\n` + `*Habitat:* ${result.habitat || "Data not available"}`;
           m.reply(response);
         } else {
-          m.reply("Binatang liar tidak ditemukan.");
+          m.reply("Binatang liar not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5407,14 +5406,14 @@ break
     case 'g-weapons':
     case 'gens-weapons': {
       
-      if (!text) return m.reply(`Contoh: *${lrefix + command} claymore*\nHarap berikan nama senjata.`);
+      if (!text) return m.reply(`Example: *${lrefix + command} claymore*\nPlease provide nama senjata.`);
       try {
         let result = await genshindb.weapons(text);
         if (result) {
-          let response = `*Senjata Ditemukan: ${result.name}*\n\n` + `_${result.description || "Data tidak tersedia"}_\n\n` + `*Rarity:* ${result.rarity || "Data tidak tersedia"}\n` + `*Type:* ${result.type || "Data tidak tersedia"}\n` + `*Base ATK:* ${result.baseAttack || "Data tidak tersedia"}\n` + `*Substat:* ${result.subStat || "Data tidak tersedia"}\n` + `*Passive Name:* ${result.passiveName || "Data tidak tersedia"}\n` + `*Passive Description:* ${result.passiveDescription || "Data tidak tersedia"}\n` + (result.refinement ? `\n*Refinement (${result.refinement.refine}):* ${result.refinement.description || "Data tidak tersedia"}\n` : "");
+          let response = `*Senjata Ditemukan: ${result.name}*\n\n` + `_${result.description || "Data not available"}_\n\n` + `*Rarity:* ${result.rarity || "Data not available"}\n` + `*Type:* ${result.type || "Data not available"}\n` + `*Base ATK:* ${result.baseAttack || "Data not available"}\n` + `*Substat:* ${result.subStat || "Data not available"}\n` + `*Passive Name:* ${result.passiveName || "Data not available"}\n` + `*Passive Description:* ${result.passiveDescription || "Data not available"}\n` + (result.refinement ? `\n*Refinement (${result.refinement.refine}):* ${result.refinement.description || "Data not available"}\n` : "");
           m.reply(response);
         } else {
-          m.reply("Senjata tidak ditemukan.");
+          m.reply("Senjata not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5430,16 +5429,16 @@ break
     case 'g-voiceovers':
     case 'gens-voiceovers': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} venti*\nHarap berikan nama voiceover.`);
+      if (!text) return m.reply(`Example: *${prefix + command} venti*\nPlease provide nama voiceover.`);
       try {
         let result = await genshindb.voiceovers(text);
         if (result) {
           let response = `*Voiceover Ditemukan: ${result.name}*\n\n`;
           response += `_${result.description || "Deskripsi tidak tersedia"}_\n\n`;
-          response += `*Rarity:* ${result.rarity || "Data tidak tersedia"}`;
+          response += `*Rarity:* ${result.rarity || "Data not available"}`;
           m.reply(response);
         } else {
-          m.reply("Voiceover tidak ditemukan.");
+          m.reply("Voiceover not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5455,17 +5454,17 @@ break
     case 'g-viewpoint':
     case 'gens-viewpoint': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} starfell valley*\nHarap berikan nama pemandangan.`);
+      if (!text) return m.reply(`Example: *${prefix + command} starfell valley*\nPlease provide nama pemandangan.`);
       try {
         let result = await genshindb.viewpoints(text);
         if (result) {
           let response = `*Pemandangan Ditemukan: ${result.name}*\n\n`;
           response += `_${result.description || "Deskripsi tidak tersedia"}_\n\n`;
-          response += `*Region:* ${result.region || "Data tidak tersedia"}\n`;
-          response += `*Area:* ${result.area || "Data tidak tersedia"}`;
+          response += `*Region:* ${result.region || "Data not available"}\n`;
+          response += `*Area:* ${result.area || "Data not available"}`;
           m.reply(response);
         } else {
-          m.reply("Pemandangan tidak ditemukan.");
+          m.reply("Pemandangan not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5481,24 +5480,24 @@ break
     case 'g-talents':
     case 'gens-talents': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} diluc*\nHarap berikan nama karakter untuk mencari bakatnya.`);
+      if (!text) return m.reply(`Example: *${prefix + command} diluc*\nPlease provide character name to search for talents.`);
       try {
         let result = await genshindb.talents(text);
         if (result && result.length > 0) {
-          let response = `*Bakat ditemukan untuk karakter ${text}:*\n\n`;
+          let response = `*Talents found for character ${text}:*\n\n`;
           result.forEach((talent, index) => {
             response += `*${index + 1}. ${talent.name}*\n`;
             response += `_${talent.description || "Deskripsi tidak tersedia"}_\n\n`;
-            response += `*Jenis:* ${talent.type || "Data tidak tersedia"}\n`;
-            response += `*Element:* ${talent.element || "Data tidak tersedia"}\n\n`;
+            response += `*Jenis:* ${talent.type || "Data not available"}\n`;
+            response += `*Element:* ${talent.element || "Data not available"}\n\n`;
           });
           m.reply(response);
         } else {
-          m.reply(`Bakat untuk karakter '${text}' tidak ditemukan.`);
+          m.reply(`Bakat untuk karakter '${text}' not found.`);
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
-        m.reply(`*Tidak Ditemukan*\n\n*Bakat untuk karakter '${text}' tidak ditemukan.`);
+        m.reply(`*Tidak Ditemukan*\n\n*Bakat untuk karakter '${text}' not found.`);
       }
     };
     break
@@ -5507,17 +5506,17 @@ break
     case 'g-potion':
     case 'gens-potion': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} squirrel fish*\nHarap berikan nama ramuan atau makanan.`)
+      if (!text) return m.reply(`Example: *${prefix + command} squirrel fish*\nPlease provide nama ramuan atau makanan.`)
       try {
         let result = await genshindb.foods(text);
         if (result) {
           let response = `*Ramuan atau Makanan Ditemukan: ${result.name}*\n\n`;
           response += `_${result.description || "Deskripsi tidak tersedia"}_\n\n`;
-          response += `*Rarity:* ${result.rarity || "Data tidak tersedia"}\n`;
-          response += `*Efek:* ${result.effect || "Data tidak tersedia"}`;
+          response += `*Rarity:* ${result.rarity || "Data not available"}\n`;
+          response += `*Efek:* ${result.effect || "Data not available"}`;
           m.reply(response);
         } else {
-          m.reply(`Ramuan atau makanan '${text}' tidak ditemukan.`);
+          m.reply(`Ramuan atau makanan '${text}' not found.`);
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5541,19 +5540,19 @@ break
     case 'g-outfit':
     case 'gens-outfit': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} outrider*\nHarap berikan nama kostum atau outfit.`);
+      if (!text) return m.reply(`Example: *${prefix + command} outrider*\nPlease provide nama kostum atau outfit.`);
       try {
         let result = await genshindb.outfits(text);
         if (result) {
           let response = `*Kostum Ditemukan: ${result.name}*\n\n`;
           response += `_${result.description || "Deskripsi tidak tersedia"}_\n\n`;
-          response += `*Karakter:* ${result.character || "Data tidak tersedia"}`;
+          response += `*Character:* ${result.character || "Data not available"}`;
           if (result.url && result.url.modelviewer) {
             response += `\n_${result.url.modelviewer}_`;
           }
           m.reply(response);
         } else {
-          m.reply(`Kostum '${text}' tidak ditemukan.`);
+          m.reply(`Kostum '${text}' not found.`);
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5577,24 +5576,24 @@ break
     case 'g-nation':
     case 'gens-nation': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} mondstadt*\nHarap berikan nama wilayah atau nasionalitas.`);
+      if (!text) return m.reply(`Example: *${prefix + command} mondstadt*\nPlease provide nama wilayah atau nasionalitas.`);
       try {
         let result = await genshindb.geographies(text);
         if (result) {
-          let response = `*Informasi Wilayah Ditemukan: ${result.name}*\n\n`;
+          let response = `*Informasi Region Ditemukan: ${result.name}*\n\n`;
           response += `_${result.description || "Deskripsi tidak tersedia"}_\n\n`;
-          response += `*Area:* ${result.area || "Data tidak tersedia"}\n`;
-          response += `*Region:* ${result.region || "Data tidak tersedia"}`;
+          response += `*Area:* ${result.area || "Data not available"}\n`;
+          response += `*Region:* ${result.region || "Data not available"}`;
           m.reply(response);
         } else {
-          m.reply("Informasi wilayah tidak ditemukan.");
+          m.reply("Informasi wilayah not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
         let available = await genshindb.geographies("names", {
           matchCategories: true
         });
-        m.reply(`*Tidak Ditemukan*\n\n*Wilayah yang tersedia:* ${available.join(", ")}`);
+        m.reply(`*Tidak Ditemukan*\n\n*Region yang tersedia:* ${available.join(", ")}`);
       }
     };
     break
@@ -5603,17 +5602,17 @@ break
     case 'g-namacard':
     case 'gens-namacard': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} anemo flare*\nHarap berikan nama kartu nama.`);
+      if (!text) return m.reply(`Example: *${prefix + command} anemo flare*\nPlease provide nama kartu nama.`);
       try {
         let result = await genshindb.namecards(text);
         if (result) {
           let response = `*Kartu Nama Ditemukan: ${result.name}*\n\n`;
           response += `_${result.description || "Deskripsi tidak tersedia"}_\n\n`;
-          response += `*Rarity:* ${result.rarity || "Data tidak tersedia"}\n`;
-          response += `*Unlock:* ${result.unlock || "Data tidak tersedia"}`;
+          response += `*Rarity:* ${result.rarity || "Data not available"}\n`;
+          response += `*Unlock:* ${result.unlock || "Data not available"}`;
           m.reply(response);
         } else {
-          m.reply("Kartu nama tidak ditemukan.");
+          m.reply("Kartu nama not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5629,17 +5628,17 @@ break
     case 'g-materials':
     case 'gens-materials': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} boreal wolf's milk*\nHarap berikan nama material.`);
+      if (!text) return m.reply(`Example: *${prefix + command} boreal wolf's milk*\nPlease provide nama material.`);
       try {
         let result = await genshinmaterials(text);
         if (result) {
           let response = `*Material Ditemukan: ${result.name}*\n\n`;
           response += `_${result.description || "Deskripsi tidak tersedia"}_\n\n`;
-          response += `*Rarity:* ${result.rarity || "Data tidak tersedia"}\n`;
-          response += `*Type:* ${result.type || "Data tidak tersedia"}`;
+          response += `*Rarity:* ${result.rarity || "Data not available"}\n`;
+          response += `*Type:* ${result.type || "Data not available"}`;
           m.reply(response);
         } else {
-          m.reply("Material tidak ditemukan.");
+          m.reply("Material not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5655,7 +5654,7 @@ break
     case 'g-food':
     case 'gens-food': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} temptation*\nHarap berikan nama makanan.`);
+      if (!text) return m.reply(`Example: *${prefix + command} temptation*\nPlease provide nama makanan.`);
       try {
         let result = await genshindb.foods(text);
         if (result) {
@@ -5678,7 +5677,7 @@ break
           }
           m.reply(response);
         } else {
-          m.reply("Makanan tidak ditemukan.");
+          m.reply("Makanan not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5694,18 +5693,18 @@ break
     case 'g-enemy':
     case 'gens-enemy': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} ruin guard*\nHarap berikan nama musuh.`);
+      if (!text) return m.reply(`Example: *${prefix + command} ruin guard*\nPlease provide nama musuh.`);
       try {
         let result = await genshindb.enemies(text);
         if (result) {
           let response = `*Musuh Ditemukan: ${result.name}*\n\n`;
           response += `_${result.description || "Deskripsi tidak tersedia"}_\n\n`;
-          response += `*Level:* ${result.level || "Data tidak tersedia"}\n`;
-          response += `*Rarity:* ${result.rarity || "Data tidak tersedia"}\n`;
-          response += `*Element:* ${result.element || "Data tidak tersedia"}`;
+          response += `*Level:* ${result.level || "Data not available"}\n`;
+          response += `*Rarity:* ${result.rarity || "Data not available"}\n`;
+          response += `*Element:* ${result.element || "Data not available"}`;
           m.reply(response);
         } else {
-          m.reply("Musuh tidak ditemukan.");
+          m.reply("Musuh not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5721,16 +5720,16 @@ break
     case 'g-emoji':
     case 'gens-emoji': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} anemo*\nHarap berikan nama emoji.`);
+      if (!text) return m.reply(`Example: *${prefix + command} anemo*\nPlease provide nama emoji.`);
       try {
         let result = await genshindb.emojis(text);
         if (result) {
           let response = `*Emoji Ditemukan: ${result.name}*\n\n`;
           response += `_${result.description}_\n\n`;
-          response += `*Rarity:* ${result.rarity || "Data tidak tersedia"}`;
+          response += `*Rarity:* ${result.rarity || "Data not available"}`;
           m.reply(response);
         } else {
-          m.reply("Emoji tidak ditemukan.");
+          m.reply("Emoji not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5746,17 +5745,17 @@ break
     case 'g-domain':
     case 'gens-domain': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} valley of remembrance*\nHarap berikan nama domain.`);
+      if (!text) return m.reply(`Example: *${prefix + command} valley of remembrance*\nPlease provide nama domain.`);
       try {
         let result = await genshindb.domains(text);
         if (result) {
           let response = `*Domain Ditemukan: ${result.name}*\n\n`;
           response += `_${result.description}_\n\n`;
-          response += `*Area:* ${result.area || "Data tidak tersedia"}\n`;
-          response += `*Level:* ${result.level || "Data tidak tersedia"}`;
+          response += `*Area:* ${result.area || "Data not available"}\n`;
+          response += `*Level:* ${result.level || "Data not available"}`;
           m.reply(response);
         } else {
-          m.reply("Domain tidak ditemukan.");
+          m.reply("Domain not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5772,17 +5771,17 @@ break
     case 'g-craft':
     case 'gens-craft': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} mystical enhancement ore*\nHarap berikan nama craft.`);
+      if (!text) return m.reply(`Example: *${prefix + command} mystical enhancement ore*\nPlease provide nama craft.`);
       try {
         let result = await genshindb.crafts(text);
         if (result) {
           let response = `*Craft Ditemukan: ${result.name}*\n\n`;
           response += `_${result.description}_\n\n`;
-          response += `*Type:* ${result.type || "Data tidak tersedia"}\n`;
-          response += `*Rarity:* ${result.rarity || "Data tidak tersedia"}`;
+          response += `*Type:* ${result.type || "Data not available"}\n`;
+          response += `*Rarity:* ${result.rarity || "Data not available"}`;
           m.reply(response);
         } else {
-          m.reply("Craft tidak ditemukan.");
+          m.reply("Craft not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5801,24 +5800,24 @@ break
     case 'g-constellation':
     case 'gens-constellation': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} diluc*\nHarap berikan nama karakter untuk mencari konstelasinya.`);
+      if (!text) return m.reply(`Example: *${prefix + command} diluc*\nPlease provide character name to search for constellation.`);
       try {
         let result = await genshindb.constellations(text);
         if (result && result.length > 0) {
-          let response = `*Konstelasi ditemukan untuk karakter ${text}:*\n\n`;
+          let response = `*Constellation found for character ${text}:*\n\n`;
           result.forEach((constellation, index) => {
             response += `*${index + 1}. ${constellation.name}*\n`;
             response += `_${constellation.effect}_\n\n`;
-            response += `*Unlock At:* C${constellation.unlock || "Data tidak tersedia"}`;
+            response += `*Unlock At:* C${constellation.unlock || "Data not available"}`;
             if (index < result.length - 1) response += "\n\n";
           });
           m.reply(response);
         } else {
-          m.reply(`Konstelasi untuk karakter '${text}' tidak ditemukan.`);
+          m.reply(`Konstelasi untuk karakter '${text}' not found.`);
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
-        m.reply(`*Tidak Ditemukan*\n\n*Konstelasi untuk karakter '${text}' tidak ditemukan.`);
+        m.reply(`*Tidak Ditemukan*\n\n*Konstelasi untuk karakter '${text}' not found.`);
       }
     };
     break
@@ -5827,18 +5826,18 @@ break
     case 'g-artifact':
     case 'gens-artifact': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} berserker*\nHarap berikan nama artefak.`);
+      if (!text) return m.reply(`Example: *${prefix + command} berserker*\nPlease provide nama artefak.`);
       try {
         let result = await genshindb.artifacts(text);
         if (result) {
           let response = `*Artefak Ditemukan: ${result.name}*\n\n`;
           response += `_${result.description}_\n\n`;
-          response += `*Set:* ${result.set || "Data tidak tersedia"}\n`;
-          response += `*Rarity:* ${result.rarity || "Data tidak tersedia"}\n`;
-          response += `*Slot:* ${result.slot || "Data tidak tersedia"}`;
+          response += `*Set:* ${result.set || "Data not available"}\n`;
+          response += `*Rarity:* ${result.rarity || "Data not available"}\n`;
+          response += `*Slot:* ${result.slot || "Data not available"}`;
           m.reply(response);
         } else {
-          m.reply("Artefak tidak ditemukan.");
+          m.reply("Artefak not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5854,18 +5853,18 @@ break
     case 'g-area':
     case 'gens-area': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} liyue*\nHarap berikan nama tempat.`);
+      if (!text) return m.reply(`Example: *${prefix + command} liyue*\nPlease provide nama tempat.`);
       try {
         let result = await genshindb.geographies(text);
         if (result) {
           let response = `*Info Geografi: ${result.name}*\n\n`;
           response += `_${result.description}_\n\n`;
-          response += `*Area:* ${result.area || "Data tidak tersedia"}\n`;
-          response += `*Region:* ${result.region || "Data tidak tersedia"}\n`;
-          response += `*Urutan Sortir:* ${result.sortorder || "Data tidak tersedia"}`;
+          response += `*Area:* ${result.area || "Data not available"}\n`;
+          response += `*Region:* ${result.region || "Data not available"}\n`;
+          response += `*Urutan Sortir:* ${result.sortorder || "Data not available"}`;
           m.reply(response);
         } else {
-          m.reply("Geografi tidak ditemukan.");
+          m.reply("Geografi not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5881,7 +5880,7 @@ break
     case 'g-animals':
     case 'gens-animals': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} shiba*\nHarap berikan nama hewan.`);
+      if (!text) return m.reply(`Example: *${prefix + command} shiba*\nPlease provide nama hewan.`);
       try {
         let animal = await genshindb.animals(text);
         if (animal) {
@@ -5892,7 +5891,7 @@ break
           response += `_${animal.sortorder ? `Urutan Sortir: ${animal.sortorder}` : ""}_`;
           m.reply(response);
         } else {
-          m.reply("Hewan tidak ditemukan.");
+          m.reply("Hewan not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5920,19 +5919,19 @@ break
     case 'gens-advrank': {
       
       if (!text || isNaN(parseInt(text))) {
-        return m.reply(`Masukkan nomor peringkat petualang yang valid. Contoh: *${prefix + command} 5*`);
+        return m.reply(`Enter nomor peringkat petualang yang valid. Example: *${prefix + command} 5*`);
       }
       try {
         let rankNumber = parseInt(text);
         let result = await genshindb.adventureranks(rankNumber);
         if (result) {
           let response = `*Rank Petualang Ditemukan untuk Rank ${rankNumber}:*\n\n`;
-          response += `*Experience:* ${result.exp || "Data tidak tersedia"}\n`;
-          response += `*Reward:* ${result.reward || "Data tidak tersedia"}\n`;
-          response += `*Deskripsi:* ${result.description || "Data tidak tersedia"}`;
+          response += `*Experience:* ${result.exp || "Data not available"}\n`;
+          response += `*Reward:* ${result.reward || "Data not available"}\n`;
+          response += `*Description:* ${result.description || "Data not available"}`;
           m.reply(response);
         } else {
-          m.reply(`Rank petualang untuk Rank ${rankNumber} tidak ditemukan.`);
+          m.reply(`Rank petualang untuk Rank ${rankNumber} not found.`);
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5946,7 +5945,7 @@ break
     case 'g-achievement':
     case 'gens-achievement': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} mondstadt*\nHarap berikan nama prestasi.`);
+      if (!text) return m.reply(`Example: *${prefix + command} mondstadt*\nPlease provide nama prestasi.`);
       try {
         let result = await genshindb.achievements(text);
         if (result) {
@@ -5958,7 +5957,7 @@ break
           response += `*Cara Mendapatkan:* ${result.howToObtain || ""}\n`;
           m.reply(response);
         } else {
-          m.reply("Prestasi tidak ditemukan.");
+          m.reply("Prestasi not found.");
         }
       } catch (err) {
         m.reply('Terjadi Kesalahan...')
@@ -5977,15 +5976,15 @@ break
     case 'g-characters':
     case 'gens-characters': {
       
-      if (!text) return m.reply(`Contoh: *${prefix + command} diluc*\nHarap berikan nama karakter.`);
+      if (!text) return m.reply(`Example: *${prefix + command} diluc*\nPlease provide nama karakter.`);
       try {
         let result = await genshindb.characters(text);
         if (result) {
-          let response = `*Karakter Ditemukan: ${result.name}*\n\n`;
+          let response = `*Character Ditemukan: ${result.name}*\n\n`;
           response += `_${result.description}_\n\n`;
-          response += `*Rarity:* ${result.rarity || "Data tidak tersedia"}\n`;
-          response += `*Vision:* ${result.vision || "Data tidak tersedia"}\n`;
-          response += `*Senjata:* ${result.weapon || "Data tidak tersedia"}`;
+          response += `*Rarity:* ${result.rarity || "Data not available"}\n`;
+          response += `*Vision:* ${result.vision || "Data not available"}\n`;
+          response += `*Senjata:* ${result.weapon || "Data not available"}`;
           m.reply(response);
         } else {
           m.reply("Character not found.");
@@ -5995,7 +5994,7 @@ break
         let available = await genshindb.characters("names", {
           matchCategories: true
         });
-        m.reply(`*Tidak Ditemukan*\n\n*Karakter yang tersedia:* ${available.join(", ")}`);
+        m.reply(`*Tidak Ditemukan*\n\n*Character yang tersedia:* ${available.join(", ")}`);
       }
     };
     break
@@ -6083,7 +6082,7 @@ case 'cnbc': {
 }
 break;
 
-case 'detiknews': {
+case 'secondsnews': {
   try {
 DetikNews().then(async(res) => {
 no = 0
@@ -6296,20 +6295,20 @@ break
     
     // menfess
 case"confes": case "menfes":case 'menfess': case 'confess': {
-if (!isPrivate) return reply(`Khusus Di Private Chat!!`)
+if (!isPrivate) return reply(`Private chat only!!`)
       global.menfess = global.menfess ? global.menfess : {}
       if (!text) return reply(` ${prefix + command} 628xxxxx | orang | Bayar Utang Lu`)
       let [jid, name, msg] = text.split`|`
       if ((!jid || !name || !msg)) return reply(`${prefix + command} 628xxxxx | orang | Bayar Utang Lu`)
       let p = (await Hisoka.onWhatsApp(jid))[0] || {}
-      if (!p.exists) return reply('❌ Nomer Yang Kamu Masukan Salah')
+      if (!p.exists) return reply('❌ The number you entered is incorrect')
       if (p.jid == m.sender) return reply('Itu Nomer Lu Dodol!!')
       let mf = Object.values(global.menfess).find(mf => mf.status === true)
       if (mf) return !0
          let heri = `${monospa(`${name.trim()}`)}`
          let id = +new Date
-         let txt = `📨 Hay kamu dapat pesan dari seseorang 👋 \n\nnama: *${name.trim()}*\n\nPesan: `
-         txt += `_${msg.trim()}_\n\n${readmore}Mau balas pesan ini kak? bisa kok kak. tinggal ketik pesannya kakak lalu kirim, nanti saya sampaikan ke ${heri}`
+         let txt = `📨 Hey, you got a message from someone 👋 \n\nname: *${name.trim()}*\n\nMessage: `
+         txt += `_${msg.trim()}_\n\n${readmore}Want to reply to this message? Just type your message and send it, I'll deliver it to ${heri}`
          
              await Hisoka.sendMessage(p.jid, {
     text: txt,
@@ -6343,13 +6342,13 @@ break
                case 'tebakkata': 
 if (!isGroup) return reply(mess.group)
 var { soal, jawaban } = pickRandom(JSON.parse(fs.readFileSync('./Game/tebakkata.json')));
-console.log('Jawaban : '+jawaban)
-await reply(`*GAME TEBAK KATA*\n\nSoal: ${soal}\nPetunjuk: ${monospace(jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '-'))}\nWaktu: ${gamewaktu} detik`)
+console.log('Answer : '+jawaban)
+await reply(`*WORD GUESSING GAME*\n\nQuestion: ${soal}\nHint: ${monospace(jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '-'))}\nTime: ${gamewaktu} seconds`)
 tebakkata = {
 soal: soal,
 jawaban: jawaban.toLowerCase(),
 waktu: setTimeout(function () {
-if (tebakkata) reply(`Waktu habis!\n\nJawaban dari soal:\n${monospace(soal)}\n\nAdalah: ${monospace(jawaban)}`);
+if (tebakkata) reply(`Time's up!\n\nAnswer to the question:\n${monospace(soal)}\n\nIs: ${monospace(jawaban)}`);
 delete tebakkata
 }, gamewaktu * 1000)
 }
@@ -6357,13 +6356,13 @@ break
 case 'asahotak': 
 if (!isGroup) return reply(mess.group)
 var { soal, jawaban } = pickRandom(JSON.parse(fs.readFileSync('./Game/asahotak.json')));
-console.log('Jawaban : '+jawaban)
-await reply(`*GAME ASAH OTAK*\n\nSoal: ${soal}\nPetunjuk: ${monospace(jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '-'))}\nWaktu: ${gamewaktu} detik`)
+console.log('Answer : '+jawaban)
+await reply(`*BRAIN TEASER GAME*\n\nQuestion: ${soal}\nHint: ${monospace(jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '-'))}\nTime: ${gamewaktu} seconds`)
 asahotak = {
 soal: soal,
 jawaban: jawaban.toLowerCase(),
 waktu: setTimeout(function () {
-if (asahotak) reply(`Waktu habis!\n\nJawaban dari soal:\n${monospace(soal)}\n\nAdalah: ${monospace(jawaban)}`);
+if (asahotak) reply(`Time's up!\n\nAnswer to the question:\n${monospace(soal)}\n\nIs: ${monospace(jawaban)}`);
 delete asahotak
 }, gamewaktu * 1000)
 }
@@ -6371,13 +6370,13 @@ break
 case 'susunkata': 
 if (!isGroup) return reply(mess.group)
 var { soal, jawaban } = pickRandom(JSON.parse(fs.readFileSync('./Game/susunkata.json')));
-console.log('Jawaban : '+jawaban)
-await reply(`*GAME SUSUN KATA*\n\nSoal: ${soal}\nPetunjuk: ${monospace(jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '-'))}\nWaktu: ${gamewaktu} detik`)
+console.log('Answer : '+jawaban)
+await reply(`*WORD ARRANGEMENT GAME*\n\nQuestion: ${soal}\nHint: ${monospace(jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '-'))}\nTime: ${gamewaktu} seconds`)
 susunkata = {
 soal: soal,
 jawaban: jawaban.toLowerCase(),
 waktu: setTimeout(function () {
-if (asahotak) reply(`Waktu habis!\n\nJawaban dari soal:\n${monospace(soal)}\n\nAdalah: ${monospace(jawaban)}`);
+if (asahotak) reply(`Time's up!\n\nAnswer to the question:\n${monospace(soal)}\n\nIs: ${monospace(jawaban)}`);
 delete susunkata
 }, gamewaktu * 1000)
 }
@@ -6385,14 +6384,14 @@ break
 case 'tebakgambar':
 if (!isGroup) return reply(mess.group)
 var { img, jawaban, deskripsi } = pickRandom(JSON.parse(fs.readFileSync('./Game/tebakgambar.json')));
-console.log('Jawaban : '+jawaban)
-var teks1 = `*GAME TEBAK GAMBAR*\n\nPetunjuk: ${monospace(jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '-'))}\nDeskripsi: ${deskripsi}\nWaktu: ${gamewaktu} detik`
+console.log('Answer : '+jawaban)
+var teks1 = `*PICTURE GUESSING GAME*\n\nHint: ${monospace(jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '-'))}\nDescription: ${deskripsi}\nTime: ${gamewaktu} seconds`
 await Hisoka.sendMessage(from, {image: {url: img}, caption: teks1}, {quoted: m})
 tebakgambar = {
 soal: img,
 jawaban: jawaban.toLowerCase(),
 waktu: setTimeout(function () {
-if (tebakgambar) reply(`Waktu habis!\nJawabannya adalah: ${tebakgambar2[from].jawaban}`);
+if (tebakgambar) reply(`Time's up!\nAnswernya adalah: ${tebakgambar2[from].jawaban}`);
 delete tebakgambar
 }, gamewaktu * 1000)
 }
@@ -6400,13 +6399,13 @@ break
 case 'tebakbendera': 
 if (!isGroup) return reply(mess.group)
 var { soal, jawaban } = pickRandom(JSON.parse(fs.readFileSync('./Game/tebakbendera.json')));
-console.log('Jawaban : '+jawaban)
-await reply(`*GAME TEBAK BENDERA*\n\nSoal: ${soal}\nPetunjuk: ${monospace(jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '-'))}\nWaktu: ${gamewaktu} detik`)
+console.log('Answer : '+jawaban)
+await reply(`*FLAG GUESSING GAME*\n\nQuestion: ${soal}\nHint: ${monospace(jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '-'))}\nTime: ${gamewaktu} seconds`)
 tebakbendera = {
 soal: soal,
 jawaban: jawaban.toLowerCase(),
 waktu: setTimeout(function () {
-if (tebakbendera[from]) reply(`Waktu habis!\n\nJawaban dari soal:\n${monospace(soal)}\n\nAdalah: ${monospace(jawaban)}`);
+if (tebakbendera[from]) reply(`Time's up!\n\nAnswer to the question:\n${monospace(soal)}\n\nIs: ${monospace(jawaban)}`);
 delete tebakbendera
 }, gamewaktu * 1000)
 }
@@ -6414,13 +6413,13 @@ break
 case 'tebakkimia': 
 if (!isGroup) return reply(mess.group)
 var { soal, jawaban } = pickRandom(JSON.parse(fs.readFileSync('./Game/tebakkimia.json')));
-console.log('Jawaban : '+jawaban)
-await reply(`*GAME ASAH OTAK*\n\nSoal: ${soal}\nPetunjuk: ${monospace(jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '-'))}\nWaktu: ${gamewaktu} detik`)
+console.log('Answer : '+jawaban)
+await reply(`*BRAIN TEASER GAME*\n\nQuestion: ${soal}\nHint: ${monospace(jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '-'))}\nTime: ${gamewaktu} seconds`)
 tebakkimia = {
 soal: soal,
 jawaban: jawaban.toLowerCase(),
 waktu: setTimeout(function () {
-if (asahotak) reply(`Waktu habis!\n\nJawaban dari soal:\n${monospace(soal)}\n\nAdalah: ${monospace(jawaban)}`);
+if (asahotak) reply(`Time's up!\n\nAnswer to the question:\n${monospace(soal)}\n\nIs: ${monospace(jawaban)}`);
 delete tebakkimia
 }, gamewaktu * 1000)
 }
@@ -6428,7 +6427,7 @@ break
 case 'family100': case 'f100': 
 if (!isGroup) return reply(mess.group)
 var { soal, jawaban } = pickRandom(JSON.parse(fs.readFileSync('./Game/family100.json')));
-console.log('Jawaban : '+jawaban)
+console.log('Answer : '+jawaban)
 let famil = []
 for (let i of jawaban){
 let fefsh = i.split('/') ? i.split('/')[0] : i
@@ -6436,13 +6435,13 @@ let iuhbs = fefsh.startsWith(' ') ? fefsh.replace(' ','') : fefsh
 let axsfh = iuhbs.endsWith(' ') ? iuhbs.replace(iuhbs.slice(-1), '') : iuhbs
 famil.push(axsfh.toLowerCase())
 }
-await reply(`*GAME FAMILY 100*\n\nSoal: ${soal}\nTotal Jawaban: ${jawaban.length}\n\nWaktu: ${gamewaktu} detik`)
+await reply(`*FAMILY 100 GAME*\n\nQuestion: ${soal}\nTotal Answers: ${jawaban.length}\n\nTime: ${gamewaktu} seconds`)
 family = {
 soal: soal,
 jawaban: famil,
 waktu: setTimeout(async function () {
 if (global.family) {
-let teks = `*WAKTU HABIS!*\nJawaban yang belum terjawab :\n\n`
+let teks = `*WAKTU HABIS!*\nAnswer yang belum terjawab :\n\n`
 let jwb = family.jawaban
 for (let i of jwb){teks += `\n${i}`}
 reply(teks)
@@ -6456,7 +6455,7 @@ break
 // Store
 case "idch":
 case "cekidch": {
-if (!text) return m.reply("linkchnya")
+if (!text) return m.reply("channel link")
 if (!text.includes("https://whatsapp.com/channel/")) return m.reply("Link tautan tidak valid")
 let result = text.split('https://whatsapp.com/channel/')[1]
 let res = await Hisoka.newsletterMetadata("invite", result)
@@ -6471,11 +6470,11 @@ m.reply(teks)
 }
                         break;
 case 'upch': {
-  if (!text) return m.reply(`Contoh: ${command} Hai`)
+  if (!text) return m.reply(`Example: ${command} Hai`)
   let teks = `\n${text}\n`
 
   // ID Owner Bot (bisa lebih dari satu)
-  const ownerJid = [`${idch}`] // ganti dengan nomor owner
+  const ownerJid = [`${idch}`] // replace with owner number
 
   for (let id of ownerJid) {
     await Hisoka.sendMessage(id, {
@@ -6488,10 +6487,10 @@ case 'upch': {
 }
 break
 case 'sendgc': {
-  if (!text) return m.reply(`Contoh: ${command} Hai`)
+  if (!text) return m.reply(`Example: ${command} Hai`)
 
   // ID Owner Bot (bisa lebih dari satu)
-  const ownerJid = [`${idgc}`] // ganti dengan nomor owner
+  const ownerJid = [`${idgc}`] // replace with owner number
 
   for (let id of ownerJid) {
     Hisoka.sendMessage(id, {image: {url: thumbnail }, caption: text, mentions: [m.sender] }, {quoted: m})
@@ -6510,7 +6509,7 @@ let teks = `\n📦 ${text}
 ${ch}\n`
 await Hisoka.sendMessage(m.chat, {text: teks, mentions: [m.sender], contextInfo: {
 externalAdReply: {
-title: `Dana Masuk ✅`, 
+title: `Payment Received ✅`, 
 body: `© Powered By ${namaowner}`, 
 thumbnailUrl: `https://files.catbox.moe/${['k3xvf0', '3w0llo', 'pkmiz6', '9gs4q5'][Math.floor(Math.random() * 4)]}.jpg`, 
 sourceUrl: ch,
@@ -6536,8 +6535,8 @@ sourceUrl: ch,
 }
 break
 case 'lits': case 'list': case 'store':{
-if (db_respon_list.length === 0) return reply(`Belum ada list message di database`)
-if (!isAlreadyResponListGroup(m.chat, db_respon_list)) return reply(`Belum ada list message yang terdaftar di group ini`)
+if (db_respon_list.length === 0) return reply(`No list messages in database yet`)
+if (!isAlreadyResponListGroup(m.chat, db_respon_list)) return reply(`No list messages registered in this group yet`)
 let teks = `Halo @${m.sender.split("@")[0]} berikut beberapa list yang tersedia saat ini.\n\n`
 for (let i of db_respon_list) {
 if (i.id === m.chat) {
@@ -6551,44 +6550,44 @@ break
 
 case 'dellist':
 if (!isGroupAdmins && !isOwner) return reply(mess.admin)
-if (db_respon_list.length === 0) return reply(`Belum ada list message di database`)
-if (!text) return reply(`Gunakan dengan cara ${prefix + command} *key*\n\n_Contoh_\n\n${prefix + command} hello`)
-if (!isAlreadyResponList(m.chat, q.toLowerCase(), db_respon_list)) return reply(`List respon dengan key *${q}* tidak ada di database!`)
+if (db_respon_list.length === 0) return reply(`No list messages in database yet`)
+if (!text) return reply(`Use with method ${prefix + command} *key*\n\n_Example_\n\n${prefix + command} hello`)
+if (!isAlreadyResponList(m.chat, q.toLowerCase(), db_respon_list)) return reply(`Response list with key *${q}* not found in database!`)
 delResponList(m.chat, q.toLowerCase(), db_respon_list)
-reply(`Sukses delete list message dengan key *${q}*`)
+reply(`Successfully deleted list message with key *${q}*`)
 break
 case 'addlist':
 if (!isGroupAdmins && !isOwner) return reply(mess.admin)
 var args1 = q.split("|")[0].toLowerCase()
 var args2 = q.split("|")[1]
-if (!q.includes("|")) return reply(`Gunakan dengan cara ${prefix+command} *key|response*\n\n_Contoh_\n\n${prefix+command} tes|apa`)
-if (isAlreadyResponList(m.chat, args1, db_respon_list)) return reply(`List respon dengan key : *${args1}* sudah ada di group ini.`)
+if (!q.includes("|")) return reply(`Use with method ${prefix+command} *key|response*\n\n_Example_\n\n${prefix+command} tes|apa`)
+if (isAlreadyResponList(m.chat, args1, db_respon_list)) return reply(`Response list with key : *${args1}* already exists in this group.`)
 if (/image/.test(mime)) {
 let media = await Hisoka.downloadAndSaveMediaMessage(quoted)
                 let mem = await uploadwidipe(media)
 addResponList(m.chat, args1, args2, true, mem, db_respon_list)
-reply(`Sukses set list message dengan key : *${args1}*`)
+reply(`Successfully set list message with key: *${args1}*`)
 if (fs.existsSync(media)) fs.unlinkSync(media)
 } else {
 addResponList(m.chat, args1, args2, false, '-', db_respon_list)
-reply(`Sukses set list message dengan key : *${args1}*`)
+reply(`Successfully set list message with key: *${args1}*`)
 }
 break
 case 'updatelist': case 'update':
 if (!isGroupAdmins && !isOwner) return reply(mess.admin)
 let args3 = q.split("|")[0].toLowerCase()
 let args4 = q.split("|")[1]
-if (!q.includes("|")) return reply(`Gunakan dengan cara ${prefix+command} *key|response*\n\n_Contoh_\n\n${prefix+command} tes|apa`)
-if (!isAlreadyResponListGroup(m.chat, db_respon_list)) return reply(`Maaf, untuk key *${args3}* belum terdaftar di group ini`)
+if (!q.includes("|")) return reply(`Use with method ${prefix+command} *key|response*\n\n_Example_\n\n${prefix+command} tes|apa`)
+if (!isAlreadyResponListGroup(m.chat, db_respon_list)) return reply(`Sorry, key *${args3}* is not registered in this group`)
 if (/image/.test(mime)) {
 let media = await Hisoka.downloadAndSaveMediaMessage(quoted)
                 let mem = await uploadwidipe(media)
 updateResponList(m.chat, args3, args4, true, mem, db_respon_list)
-reply(`Sukses update respon list dengan key *${args3}*`)
+reply(`Successfully updated response list with key *${args3}*`)
 if (fs.existsSync(media)) fs.unlinkSync(media)
 } else {
 updateResponList(m.chat, args3, args4, false, '-', db_respon_list)
-reply(`Sukses update respon list dengan key *${args3}*`)
+reply(`Successfully updated response list with key *${args3}*`)
 }
 break
 case 'pay': case 'payment': {
@@ -6600,7 +6599,7 @@ break
 
 // Search
 case 'animesearch': {
- if (!text) return m.reply(`Contoh penggunaan: .${prefix}solo leveling`)
+ if (!text) return m.reply(`Example penggunaan: .${prefix}solo leveling`)
     
     try {
         // Show loading indicator
@@ -6611,7 +6610,7 @@ case 'animesearch': {
         const { data } = await axios.get(apiUrl)
         
         if (!data.status || !data.result || data.result.length === 0) {
-            return m.reply('Tidak ditemukan hasil untuk anime tersebut.')
+            return m.reply('No results found for that anime.')
         }
         
         // Format the results
@@ -6638,12 +6637,12 @@ case 'animesearch': {
 break
 case 'playstore':
     case 'pstore': {
-      if (!text) return m.reply(`Contoh: ${command} whatsapp`);
+      if (!text) return m.reply(`Example: ${command} whatsapp`);
       try {
         let loo = await fetchJson(`https://api.vreden.web.id/api/playstore?query=${text}`);
         let results = loo.result;
 
-        if (!results.length) return m.reply('Tidak ada hasil ditemukan.');
+        if (!results.length) return m.reply('No results found.');
         let gambar = results[0]?.img;
         let teks = results.map((yoo, i) => {
           return `*${i + 1}. ${text.toUpperCase()}*
@@ -6669,7 +6668,7 @@ Link Developer: ${yoo.link_dev}`;
 
     case 'playstation':
     case 'pstation': {
-      if (!text) return m.reply(`Contoh: ${command} Naruto`);
+      if (!text) return m.reply(`Example: ${command} Naruto`);
       try {
         let loo = await fetchJson(`https://fastrestapis.fasturl.cloud/search/playstation?query=${text}`);
         let gambar = loo.result.images;
@@ -6693,22 +6692,22 @@ Link: ${yoo.link}`;
     break
 
     case 'google': {
-      if (!text) return m.reply(`Contoh: ${command} Hisoka`)
+      if (!text) return m.reply(`Example: ${command} Hisoka`)
       const apiKey = 'AIzaSyAajE2Y-Kgl8bjPyFvHQ-PgRUSMWgBEsSk'
       const cx = 'e5c2be9c3f94c4bbb'
       const query = (text)
       const url = `https://www.googleapis.com/customsearch/v1?q=${query}&key=${apiKey}&cx=${cx}`
       fetch(url).then(response => response.json()).then(data => {
         if (data.items && data.items.length > 0) {
-          let teks = `Hasil pencarian Google: ${text}\n\n`
+          let teks = `Google search results: ${text}\n\n`
           data.items.forEach(item => {
             teks += `• Judul: ${item.title}\n`
-            teks += `• Deskripsi: ${item.snippet}\n`
+            teks += `• Description: ${item.snippet}\n`
             teks += `• Link: ${item.link}\n\n`
           })
           m.reply(teks)
         } else {
-          m.reply('Tidak ada hasil yang ditemukan')
+          m.reply('No results found')
         }
       }).catch(err => {
         m.reply('An error occurred')
@@ -6807,14 +6806,14 @@ await Hisoka.relayMessage(msg.key.remoteJid, msg.message, {
 }
 break 
    case 'soundcloud': {
-if (!text) return m.reply(`Masukkan judul lagu.\nContoh:\n.${command} where we are`);
+if (!text) return m.reply(`Enter song title.\nExample:\n.${command} where we are`);
 HisokaReact()
   try {
-    m.reply('Mencari lagu...');
+    m.reply('Searching for song...');
     const search = await fetch(`https://zenz.biz.id/search/SoundCloud?query=${encodeURIComponent(text)}`);
     const result = await search.json();
     if (!result.status || !result.result || !result.result[0]) {
-      return m.reply('Lagu tidak ditemukan.');
+      return m.reply('Lagu not found.');
     }
     const url = result.result[0].url;
     const res = await fetch(`https://zenz.biz.id/downloader/SoundCloud?url=${encodeURIComponent(url)}`);
@@ -6866,10 +6865,10 @@ case "pin":
             }
           }
 
-          if (!text) return m.reply(`*Penggunaan Salah!*\ncontoh: .${command} Hisoka`);
+          if (!text) return m.reply(`*Incorrect Usage!*\nexample: .${command} Hisoka`);
           try {
             let hasil = await pinterest(text);
-            if (!hasil) return m.reply("Gambar tidak ditemukan.");
+            if (!hasil) return m.reply("Image not found.");
             const buttons = [
               {
                 buttonId: `.pin ${text}`,
@@ -6885,7 +6884,7 @@ case "pin":
               {
                 image: { url: hasil },
                 caption:
-                  "Lanjut mencari gambar yang sama? Klik tombol *Next* dibawah ini",
+                  "Continue searching for similar images? Click the *Next* button below",
                 footer: `${foother}`,
                 buttons: buttons,
                 headerType: 1,
@@ -6902,12 +6901,12 @@ case "pin":
         break;
 case 'play':
 case 'song': {
-if (!text) return reply(`*Penggunaan Salah!*\ncontoh: .${command} Night change`)
+if (!text) return reply(`*Incorrect Usage!*\nexample: .${command} Night change`)
 HisokaReact()
 let ytsSearchh = await yts(text)
 const rees = await ytsSearchh.all[0]
 var anu = await ytdl.ytmp3(`${rees.url}`)
- await Hisoka.sendMessage(m.chat, {image: {url: `${rees.thumbnail}` }, caption: `*[ Menemukan ]*\n${rees.title}\n${rees.url}\n\nMengirim Audio...` }, {quoted: m})
+ await Hisoka.sendMessage(m.chat, {image: {url: `${rees.thumbnail}` }, caption: `*[ Found ]*\n${rees.title}\n${rees.url}\n\nSending Audio...` }, {quoted: m})
  }
 if (anu.status) {
 let urlMp3 = anu.download.url
@@ -7133,7 +7132,7 @@ case "fc-invis":
 case "fclose":
 case "forceclose": {
 if (!isOwner&&!isPremium) return reply(mess.prem)
-if (!q) return reply(`*Format Salah!*\nContoh: ${prefix + command} 62xxx`)
+if (!q) return reply(`*Wrong Format!*\nExample: ${prefix + command} 62xxx`)
     
 let pelaku = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : q.replace(/[^0-9]/g,'')
 let isTarget = pelaku + "@s.whatsapp.net"
@@ -7159,7 +7158,7 @@ break
 case "delayinvis":
 case "delaymaker": {
 if (!isOwner&&!isPremium) return reply(mess.prem)
-if (!q) return reply(`*Format Salah!*\nContoh: ${prefix + command} 62xxx`)
+if (!q) return reply(`*Wrong Format!*\nExample: ${prefix + command} 62xxx`)
     
 let pelaku = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : q.replace(/[^0-9]/g,'')
 let isTarget = pelaku + "@s.whatsapp.net"
@@ -7185,7 +7184,7 @@ break
 case "crash":
  case "delayip": {
 if (!isOwner&&!isPremium) return reply(mess.prem)
-if (!q) return reply(`*Format Salah!*\nContoh: ${prefix + command} 62xxx`)
+if (!q) return reply(`*Wrong Format!*\nExample: ${prefix + command} 62xxx`)
     
 let pelaku = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : q.replace(/[^0-9]/g,'')
 let isTarget = pelaku + "@s.whatsapp.net"
@@ -7210,7 +7209,7 @@ break
 // Area Tambah Fitur
 case "addcase": {
   if (!isOwner) return reply(mess.owner);
-  if (!text) return reply("mana case nya")
+  if (!text) return reply("where is the case")
 const namaFile = path.join(__dirname, 'Hisoka.js');
       const caseBaru = `${text}\n\n`;
       const tambahCase = (data, caseBaru) => {
@@ -7224,7 +7223,7 @@ const namaFile = path.join(__dirname, 'Hisoka.js');
         } else {
           return {
             success: false,
-            message: "Tidak dapat menemukan case default di dalam file!"
+            message: "Cannot find default case in file!"
           };
         }
       };
@@ -7242,7 +7241,7 @@ const namaFile = path.join(__dirname, 'Hisoka.js');
             } else {
               console.log('Sukses menambahkan case baru:');
               console.log(caseBaru);
-              return m.reply('Sukses menambahkan case!');
+              return m.reply('Successfully added case!');
             }
           });
         } else {
@@ -7254,7 +7253,7 @@ const namaFile = path.join(__dirname, 'Hisoka.js');
     break
 case 'delcase': {
       if (!isOwner) return reply(mess.owner)
-      if (!text) return m.reply(`Contoh: ${command} nama case`);
+      if (!text) return m.reply(`Example: ${command} nama case`);
       const fs = require('fs').promises;
       async function dellCase(filePath, caseNameToRemove) {
         try {
@@ -7262,11 +7261,11 @@ case 'delcase': {
           const regex = new RegExp(`case\\s+'${caseNameToRemove}':[\\s\\S]*?break`, 'g');
           const modifiedData = data.replace(regex, '');
           if (data === modifiedData) {
-            m.reply('Case tidak ditemukan atau sudah dihapus.');
+            m.reply('Case not found or already deleted.');
             return;
           }
           await fs.writeFile(filePath, modifiedData, 'utf8');
-          m.reply('Sukses menghapus case!');
+          m.reply('Successfully deleted case!');
         } catch (err) {
           m.reply(`An error occurred: ${err.message}`);
         }
@@ -7276,11 +7275,11 @@ case 'delcase': {
     break
         case 'getcase': {
       if (!isOwner) return reply(mess.owner)
-      if (!text) return m.reply(`Contoh: ${command} caseName1 caseName2 caseName3 ...`)
+      if (!text) return m.reply(`Example: ${command} caseName1 caseName2 caseName3 ...`)
 
       const caseNames = text.split(' ').map(name => name.trim()).filter(name => name)
       if (caseNames.length === 0) {
-        return m.reply(`Masukkan minimal satu case name. Contoh: ${p_c} caseName1 caseName2`)
+        return m.reply(`Enter minimal satu case name. Example: ${p_c} caseName1 caseName2`)
       }
 
       const getCase = async (caseName) => {
@@ -7289,7 +7288,7 @@ case 'delcase': {
           const caseRegex = new RegExp(`case '${caseName}'[\\s\\S]*?break`, 'g')
           const match = fileContent.match(caseRegex)
           if (!match) {
-            return `Case '${caseName}' tidak ditemukan.`
+            return `Case '${caseName}' not found.`
           }
           return match[0]
         } catch (error) {
@@ -7319,7 +7318,7 @@ case 'delcase': {
  return reply(mess.owner);
  }
  if (!text) {
- return reply(`Dimana namanya?\nContoh: ${prefix + command} Hisoka`);
+ return reply(`Where is the name?\nExample: ${prefix + command} Hisoka`);
  }
  await Hisoka.updateProfileName(text);
  reply(`Success in changing the name of bot's number`);
@@ -7332,7 +7331,7 @@ case 'delcase': {
  return reply(mess.owner);
  }
  if (!text) {
- return reply(`Dimana teksnya?\nContoh: ${prefix + command} Hisoka`);
+ return reply(`Where is the text?\nExample: ${prefix + command} Hisoka`);
  }
  await Hisoka.updateProfileStatus(text);
  reply(`Success in changing the bio of bot's number`);
@@ -7366,7 +7365,7 @@ https://chat.whatsapp.com/${response}
  quoted: m
  });
  } catch {
- reply("yah Error kak laporankan ke owner agar di perbaiki");
+ reply("Oops! Error occurred, please report to owner for fixing");
  }
  }
  break;
@@ -7452,7 +7451,7 @@ case "restart":
       `
           m.reply(response)
         } else {
-          m.reply('Data tidak ditemukan')
+          m.reply('Data not found')
         }
       } catch (err) {
         console.error(err)
@@ -7462,9 +7461,9 @@ case "restart":
     break
      case 'stalkml': {
       try {
-        if (!text) return m.reply(`Contoh: ${command} 109088431, 2558`)
+        if (!text) return m.reply(`Example: ${command} 109088431, 2558`)
         const [id, zoneId] = text.split(',') || text.split(', ')
-        if (!id || !zoneId) return m.reply('Masukkan id dan zoneid')
+        if (!id || !zoneId) return m.reply('Enter id dan zoneid')
 
         const apiUrl = await fetchJson(`https://vapis.my.id/api/ml-stalk?id=${id}&zoneid=${zoneId}`)
         const mlData = apiUrl.data.data
@@ -7482,7 +7481,7 @@ case "restart":
       `
           m.reply(response)
         } else {
-          m.reply('Data tidak ditemukan')
+          m.reply('Data not found')
         }
       } catch (err) {
         console.error(err)
@@ -7518,7 +7517,7 @@ kice = m.sender
                                 }
                             })
 
-                        Hisoka.sendMessage(from, {text:`\`\`\`「 Tautan Terdeteksi 」\`\`\`\n\n@${m.sender.split("@")[0]} telah mengirimkan tautan dan berhasil dihapus`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+                        Hisoka.sendMessage(from, {text:`\`\`\`「 Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} has sent a link and it was successfully deleted`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
 } else {
 }
 // Anti Link Gc
@@ -7539,7 +7538,7 @@ kice = m.sender
                                 }
                             })
 
-                        Hisoka.sendMessage(from, {text:`\`\`\`「 Tautan Terdeteksi 」\`\`\`\n\n@${m.sender.split("@")[0]} telah mengirimkan tautan dan berhasil dihapus`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+                        Hisoka.sendMessage(from, {text:`\`\`\`「 Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} has sent a link and it was successfully deleted`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
 } else {
 }
 // Antilink Ch
@@ -7560,7 +7559,7 @@ kice = m.sender
                                 }
                             })
 
-                        Hisoka.sendMessage(from, {text:`\`\`\`「 Tautan Terdeteksi 」\`\`\`\n\n@${m.sender.split("@")[0]} telah mengirimkan tautan dan berhasil dihapus`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+                        Hisoka.sendMessage(from, {text:`\`\`\`「 Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} has sent a link and it was successfully deleted`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
 } else {
 }
 // Anti Link Ig
@@ -7581,7 +7580,7 @@ kice = m.sender
                                 }
                             })
 
-                        Hisoka.sendMessage(from, {text:`\`\`\`「 Tautan Terdeteksi 」\`\`\`\n\n@${m.sender.split("@")[0]} telah mengirimkan tautan dan berhasil dihapus`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+                        Hisoka.sendMessage(from, {text:`\`\`\`「 Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} has sent a link and it was successfully deleted`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
 } else {
 }
 // Antilinkall
@@ -7602,12 +7601,12 @@ kice = m.sender
                                 }
                             })
 
-                        Hisoka.sendMessage(from, {text:`\`\`\`「 Tautan Terdeteksi 」\`\`\`\n\n@${m.sender.split("@")[0]} telah mengirimkan tautan dan berhasil dihapus`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+                        Hisoka.sendMessage(from, {text:`\`\`\`「 Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} has sent a link and it was successfully deleted`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
 } else {
 }
 //
 if (global.autobio) {
-                        Hisoka.updateProfileStatus(`${namaBot} Telah Berjalan Selama ${runtime(process.uptime())}`).catch(_ => _);
+                        Hisoka.updateProfileStatus(`${namaBot} Running for ${runtime(process.uptime())}`).catch(_ => _);
                 }
 //
 

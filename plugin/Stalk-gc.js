@@ -2,7 +2,7 @@
 const regex = /chat\.whatsapp\.com\/([0-9A-Za-z]{20,24})/i
 
 let handler = async (m, { Hisoka, text }) => {
-  if (!text) return m.reply('📌 Example: .stalkgrup https://chat.whatsapp.com/xxxxx\n')
+  if (!text) return m.reply('📌 Example: .stalkgc https://chat.whatsapp.com/xxxxx\n')
 
   const match = text.match(regex)
   if (!match) return m.reply('❌ Invalid link. Format should be like:\nhttps://chat.whatsapp.com/xxxxx')
@@ -32,6 +32,6 @@ let handler = async (m, { Hisoka, text }) => {
 
 handler.command = ['stalkgc']
 handler.tags = ['group']
-handler.help = ['stalkgrup <linkgrup>']
+handler.help = ['stalkgc <grouplink>']
 
 module.exports = handler

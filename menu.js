@@ -15,15 +15,15 @@ global.menu = `
 │✎.menufun
 │✎.menuother
 │✎.menunsfw
-│✎.menuprimbon
+│✎.menufortune
 │✎.menuquotes
-│✎.menucecan
+│✎.menugallery
 │✎.menupush
 │✎.menuislam
 │✎.menuanime
 │✎.menumaker
 │✎.menugenshin
-│✎.menuberita
+│✎.menunews
 │✎.menurandomvid
 │✎.menumenfess
 │✎.menugame
@@ -344,36 +344,36 @@ global.allmenu = `
 │✎.lewdneko
 │✎.cum
 ╰─────────────☉
-╭──☉ *P R I M B O N* 
-│✎.artinama
-│✎.artimimpi
-│✎.ramaljodoh
-│✎.ramaljodohbali
-│✎.ramalcinta
-│✎.cocoknama
-│✎.pasangan
-│✎.suamiistri
-│✎.jadiannikah
-│✎.sifatusaha
-│✎.rezeki
-│✎.pekerjaan
-│✎.nasib
-│✎.penyakit
+╭──☉ *F O R T U N E* 
+│✎.namemeaning
+│✎.dreammeaning
+│✎.loveforecast
+│✎.balineseloveforecast
+│✎.lovecompatibility
+│✎.namecompatibility
+│✎.couple
+│✎.marriagecouple
+│✎.relationshipdestiny
+│✎.businessnature
+│✎.fortune
+│✎.career
+│✎.destiny
+│✎.illness
 │✎.tarot
 │✎.fengshui
-│✎.haribaik
-│✎.harisangar
-│✎.harisial
-│✎.nagahari
-│✎.arahrezeki
-│✎.peruntungan
-│✎.weton
-│✎.karakter
-│✎.keberuntungan
-│✎.memancing
-│✎.masabubur
-│✎.zodiak
-│✎.shio
+│✎.goodday
+│✎.badday
+│✎.unluckyday
+│✎.dragonday
+│✎.fortunedirection
+│✎.luck
+│✎.javanesedate
+│✎.character
+│✎.luckiness
+│✎.fishing
+│✎.fertiletime
+│✎.zodiac
+│✎.chinesezodiac
 ╰─────────────☉
 ╭──☉ *Q U O T E S* 
 │✎.uniquefact
@@ -830,52 +830,42 @@ global.menurandom = `
 `
 global.menufun = `
 ╔──☉ *F U N* 
-│✎.gantengcek
-│✎.cantikcek
-│✎.sangecek
-│✎.cekkhodam
-│✎.jodoh
+│✎.handsomecheck
+│✎.beautifulcheck
+│✎.hornycheck
+│✎.checkaura
+│✎.soulmate
 │✎.couple
-│✎.kapankah
+│✎.when
 │✎.gay
-│✎.goblok
-│✎.janda
-│✎.perawan
-│✎.babi
-│✎.tolol
-│✎.pekok
-│✎.jancok
-│✎.pinter
-│✎.asu
-│✎.bodoh
-│✎.lesbi
-│✎.bajingan
-│✎.anjing
-│✎.anjg
-│✎.anjj
-│✎.anj
-│✎.ngentod
-│✎.ngentot
-│✎.monyet
-│✎.mastah
+│✎.stupid
+│✎.widow
+│✎.virgin
+│✎.pig
+│✎.dumb
+│✎.idiot
+│✎.fool
+│✎.smart
+│✎.dog
+│✎.silly
+│✎.lesbian
+│✎.bastard
+│✎.noob
 │✎.newbie
-│✎.bangsat
-│✎.ʙangke
-│✎.sange
-│✎.sangean
-│✎.dakjal
+│✎.scumbag
+│✎.corpse
 │✎.horny
-│✎.wibu
-│✎.puki
-│✎.puqi
+│✎.hornylevel
+│✎.devil
+│✎.horny
+│✎.weeb
+│✎.annoying
 │✎.peak
-│✎.pantex
-│✎.pantek
-│✎.setan
-│✎.iblis
-│✎.cacat
-│✎.yatim
-│✎.piatu
+│✎.devil
+│✎.satan
+│✎.disabled
+│✎.orphan
+│✎.lonely
 ╚─────────────☉
 `
 global.menuother = `
@@ -950,7 +940,7 @@ global.menunsfw = `
 │✎.cum
 ╚─────────────☉
 `
-global.menuprimbon = `
+global.menufortune = `
 ╔──☉ *F O R T U N E* 
 │✎.namemeaning
 │✎.dreammeaning
@@ -997,7 +987,7 @@ global.menuquotes = `
 │✎.islamicquotes
 ╚─────────────☉
 `
-global.menucecan = `╔──☉ *G A L L E R Y* 
+global.menugallery = `╔──☉ *G A L L E R Y* 
 │✎.hijabgirl
 │✎.jennie
 │✎.jisoo
@@ -1153,7 +1143,7 @@ global.menugenshin = `
 │✎.gens-characters
 ╚─────────────☉
 `
-global.menuberita = `
+global.menunews = `
 ╔──☉ *N E W S* 
 │✎.fajar
 │✎.cnn

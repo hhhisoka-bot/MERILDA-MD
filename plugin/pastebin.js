@@ -4,7 +4,10 @@ const axios = require('axios')
 let handler = async (m, { Hisoka, text, args, command }) => {
   if (!text) return m.reply(`📌 Example:\n${command} This is example text to upload to Pastebin`)
 
-  const api_dev_key = 'h9WMT2Mn9QW-qDhvUSc-KObqAYcjI0he' // Ganti dengan API key dari akun Pastebin kamu
+  const api_dev_key = process.env.PASTEBIN_API_KEY || '' // Replace with your Pastebin account API key
+  if (!api_dev_key) {
+    return m.reply('❌ Pastebin API key not configured. Please set PASTEBIN_API_KEY environment variable.')
+  }
   const api_paste_code = text.trim()
   const api_paste_name = `Paste from ${m.pushName || 'User'}`
   
