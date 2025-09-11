@@ -105,7 +105,7 @@ module.exports = Hisoka = async (Hisoka, m, chatUpdate, store) => {
         const isBotGroupAdmins = isGroup ? groupAdmins.includes(botNumber) : false;
         const isBotAdmins = isGroup ? groupAdmins.includes(botNumber) : false;
         const isAdmins = isGroup ? groupAdmins.includes(m.sender) : false;
-        const qkontak = {
+        const qcontacts = {
 key: {
 participant: `13135550002@s.whatsapp.net`,
 ...(botNumber ? {
@@ -344,7 +344,7 @@ mediaType: 1,
 previewType: 1, 
 sourceUrl: "https://Hisoka-Dev", 
 }}
-}, {quoted: qkontak })
+}, {quoted: qcontacts })
 }
 //
 const reply = (teks) => {
@@ -1512,7 +1512,7 @@ for (let i of premium) {
 teks += `\n* ${i.split("@")[0]}
 * *Tag :* @${i.split("@")[0]}\n`
 }
-Hisoka.sendMessage(m.chat, {text: teks, mentions: premium}, {quoted: qkontak})
+Hisoka.sendMessage(m.chat, {text: teks, mentions: premium}, {quoted: qcontacts})
 }
 break
 case "addprem": {
@@ -1624,7 +1624,7 @@ await m.reply('Auto typing successfully deactivated.')
 }}
 
 break               
-case 'autosholat': {
+case 'autoprayer': case 'autosholat': {
 Hisoka.autoshalat = Hisoka.autoshalat ? Hisoka.autoshalat : {}
 
  if (!isOwner) return reply(mess.owner)
@@ -2652,7 +2652,7 @@ case "ugly": {
   }
 }
 break
-case "sedih": {
+case "sad": case "sedih": {
   let q = m.quoted ? m.quoted : m;
   let mime = (q.msg || q).mimetype || "";
   
@@ -2725,7 +2725,7 @@ case "sedih": {
   }
 }
 break
-case "senyum": {
+case "smile": case "senyum": {
   let q = m.quoted ? m.quoted : m;
   let mime = (q.msg || q).mimetype || "";
   
@@ -3355,7 +3355,7 @@ case 'mediafire':
         })
 
       } catch (err) {
-        m.reply('Terjadi kesalahan: ' + err)
+        m.reply('An error occurred: ' + err)
       }
     }
 
@@ -3378,12 +3378,12 @@ break
 
 case 'getpastebin': 
 case 'getpb': {
- if (!text) return reply(`🔗 Enter link pastebin, contoh:\n.getpb https://pastebin.com/raw/abc123`);
+ if (!text) return reply(`🔗 Enter pastebin link, example:\n.getpb https://pastebin.com/raw/abc123`);
 
  try {
  const res = await fetch(`https://api.nekorinn.my.id/tools/getpastebin?url=${encodeURIComponent(q)}`);
  const json = await res.json();
- if (!json.status) return reply(`⚠️ Gagal ambil data dari Pastebin.`);
+ if (!json.status) return reply(`⚠️ Failed to get data from Pastebin.`);
 
  let content = json.result.content
  .split('\n')
@@ -3440,10 +3440,10 @@ case 'sendchat': {
 if (!l) l = ''
 if (!r) r = ''
   let teks = `📢 *PESAN BARU BUAT ANDA*\n\n`
-  teks += `👤 *Pengirim:* @${m.sender.split('@')[0]}\n`
-  teks += `💬 *Pesan:* ${l}\n`
+  teks += `👤 *Sender:* @${m.sender.split('@')[0]}\n`
+  teks += `💬 *Message:* ${l}\n`
 
-  // ID Owner Bot (bisa lebih dari satu)
+  // Bot Owner ID (can be more than one)
   const ownerJid = [`${r}@s.whatsapp.net`] // replace with owner number
 
   for (let id of ownerJid) {
@@ -3476,7 +3476,7 @@ case 'upch': {
   if (!text) return m.reply(`Example: ${command} Hai`)
   let teks = `\n${text}\n`
 
-  // ID Owner Bot (bisa lebih dari satu)
+  // Bot Owner ID (can be more than one)
   const ownerJid = [`${idch}`] // replace with owner number
 
   for (let id of ownerJid) {
@@ -4612,7 +4612,7 @@ if (!text) return reply(`Example : ${prefix + command} 6, 12, 2020`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.tanggal_jadian_pernikahan(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Date Pernikahan :* ${anu.message.tanggal}\n• *characteristics :* ${anu.message.characteristics}`)
+reply(`• *Wedding Date :* ${anu.message.tanggal}\n• *characteristics :* ${anu.message.characteristics}`)
 }
 break
 case 'businessnature': case 'sifatusaha': {
@@ -4636,7 +4636,7 @@ if (!text) return reply(`Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.pekerjaan_weton_lahir(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Birth :* ${anu.message.hari_lahir}\n• *Pekerjaan :* ${anu.message.pekerjaan}\n• *Note :* ${anu.message.catatan}`)
+reply(`• *Birth :* ${anu.message.hari_lahir}\n• *Occupation :* ${anu.message.pekerjaan}\n• *Note :* ${anu.message.catatan}`)
 }
 break
 case 'ramalannasib': case 'ramalnasib': case 'nasib': {
@@ -4668,10 +4668,10 @@ if (!text) return `Example : ${prefix + command} Dika, 1, 2005\n\nNote : ${prefi
 let [nama, gender, tahun] = text.split`,`
 let anu = await primbon.perhitungan_feng_shui(nama, gender, tahun)
 if (anu.status == false) return reply(anu.message)
-reply(`• *Name :* ${anu.message.nama}\n• *Birth :* ${anu.message.tahun_lahir}\n• *Gender :* ${anu.message.jenis_kelamin}\n• *Angka Kua :* ${anu.message.angka_kua}\n• *Kelompok :* ${anu.message.kelompok}\n• *Character :* ${anu.message.karakter}\n• *Sektor Baik :* ${anu.message.sektor_baik}\n• *Sektor Buruk :* ${anu.message.sektor_buruk}`)
+reply(`• *Name :* ${anu.message.nama}\n• *Birth :* ${anu.message.tahun_lahir}\n• *Gender :* ${anu.message.jenis_kelamin}\n• *Kua Number :* ${anu.message.angka_kua}\n• *Group :* ${anu.message.kelompok}\n• *Character :* ${anu.message.karakter}\n• *Good Sector :* ${anu.message.sektor_baik}\n• *Bad Sector :* ${anu.message.sektor_buruk}`)
 }
 break
-case 'haribaik': {
+case 'goodday': case 'haribaik': {
 if (!text) return reply(`Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.petung_hari_baik(tgl, bln, thn)
@@ -4679,7 +4679,7 @@ if (anu.status == false) return reply(anu.message)
 reply(`• *Birth :* ${anu.message.tgl_lahir}\n• *Kala Tinantang :* ${anu.message.kala_tinantang}\n• *Info :* ${anu.message.info}\n• *Note :* ${anu.message.catatan}`)
 }
 break
-case 'harisangar': case 'taliwangke': {
+case 'badday': case 'harisangar': case 'taliwangke': {
 if (!text) return reply(`Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.hari_sangar_taliwangke(tgl, bln, thn)
@@ -4687,7 +4687,7 @@ if (anu.status == false) return reply(anu.message)
 reply(`• *Birth :* ${anu.message.tgl_lahir}\n• *Result :* ${anu.message.result}\n• *Info :* ${anu.message.info}\n• *Note :* ${anu.message.catatan}`)
 }
 break
-case 'harinaas': case 'harisial': {
+case 'unluckyday': case 'harinaas': case 'harisial': {
 if (!text) return reply(`Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.primbon_hari_naas(tgl, bln, thn)
@@ -4904,7 +4904,7 @@ case 'dilan':
     break
     
     // Push
-    case "pushkontak": {
+    case "pushcontacts": {
 if (!isOwner) return reply(mess.owner)
 if (!text) return m.reply("groupid|message")
 if (!text.split("|")) return m.reply("groupid|message")
@@ -4932,7 +4932,7 @@ await Hisoka.sendMessage(jidawal, {text: `*Push Contact Successful ✅*\nTotal m
 }
 break
 
-case "pushkontak2": {
+case "pushcontacts2": {
 if (!isOwner) return reply(mess.owner)
 if (!isGroup) return reply(mess.group)
 if (!text) return m.reply("message")
@@ -4940,7 +4940,7 @@ const teks = text
 const jidawal = m.chat
 const data = await Hisoka.groupMetadata(m.chat)
 const halls = await data.participants.filter(v => v.id.endsWith('.net')).map(v => v.id)
-await m.reply(`Memproses *pushkontak*`)
+await m.reply(`Memproses *pushcontacts*`)
 for (let mem of halls) {
 if (mem !== botNumber && mem.split("@")[0] !== global.owner) {
 const vcard = 'BEGIN:VCARD\n'
@@ -4957,7 +4957,7 @@ await sleep(10000)
 await Hisoka.sendMessage(jidawal, {text: `*Push Contact Successful ✅*\nTotal members successfully sent messages: ${halls.length}`}, {quoted: m})
 }
 break
-case "savekontak": {
+case "savecontacts": {
 if (!isOwner) return reply(mess.owner)
 if (!text) return m.reply("group id")
 let res = await Hisoka.groupMetadata(m.chat)
@@ -4984,14 +4984,14 @@ m.reply(err.toString())
 } finally {
 if (m.chat !== m.sender) await m.reply(`*Successfully created contact file ✅*
 Contact file has been sent to private chat
-Total *${halls.length}* kontak`)
+Total *${halls.length}* contacts`)
 await Hisoka.sendMessage(m.sender, { document: fs.readFileSync("./lib/database/contacts.vcf"), fileName: "contacts.vcf", caption: `Contact file successfully created ✅\nTotal *${halls.length}* contacts`, mimetype: "text/vcard", }, { quoted: m })
 contacts.splice(0, contacts.length)
 await fs.writeFileSync("./lib/database/contacts.json", JSON.stringify(contacts))
 await fs.writeFileSync("./lib/database/contacts.vcf", "")
 }}
 break
-case "savekontak2": {
+case "savecontacts2": {
 if (!isOwner) return reply(mess.owner)
 if (!isGroup) return reply(mess.group)
 let res = await groupMetadata
@@ -5018,7 +5018,7 @@ m.reply(err.toString())
 } finally {
 if (m.chat !== m.sender) await m.reply(`*Successfully created contact file ✅*
 Contact file has been sent to private chat
-Total *${halls.length}* kontak`)
+Total *${halls.length}* contacts`)
 await Hisoka.sendMessage(m.sender, { document: fs.readFileSync("./lib/database/contacts.vcf"), fileName: "contacts.vcf", caption: `Contact file successfully created ✅\nTotal *${halls.length}* contacts`, mimetype: "text/vcard", }, { quoted: m })
 contacts.splice(0, contacts.length)
 await fs.writeFileSync("./lib/database/contacts.json", JSON.stringify(contacts))
@@ -5027,9 +5027,9 @@ await fs.writeFileSync("./lib/database/contacts.vcf", "")
 break
 
 // ============Islam
-case 'jadwal-sholat':
+case 'prayertime': case 'jadwal-sholat':
     case 'jadwalsholat': {
-      if (!text) return m.reply('Mau kota mana?')
+      if (!text) return m.reply('Which city?')
       try {
         const {
           jadwalSholat
@@ -5038,8 +5038,8 @@ case 'jadwal-sholat':
         if (jadwal.error) return m.reply(jadwal.error)
 
         const jdwl = `
-*JADWAL SHOLAT UNTUK HARI INI*
-Tanggal: ${jadwal.tanggal}
+*PRAYER SCHEDULE FOR TODAY*
+Date: ${jadwal.tanggal}
 - Subuh: ${jadwal.subuh}
 - Dhuha: ${jadwal.duha}
 - Dzuhur: ${jadwal.dzuhur}
@@ -5051,7 +5051,7 @@ Tanggal: ${jadwal.tanggal}
         m.reply(jdwl)
       } catch (err) {
         console.error(err)
-        m.reply('Terjadi kesalahan: ' + err)
+        m.reply('An error occurred: ' + err)
       }
     }
     break
@@ -5062,7 +5062,7 @@ Tanggal: ${jadwal.tanggal}
         let ye = jir.data
 
         let tks = '*ASMAUL HUSNA*\n\n' + ye.map((item) => {
-          return `Urutan: ${item.index}\nLatin: ${item.latin}\nArab: ${item.arabic}\nTerjemahan ID: ${item.translation_id}\nTerjemahan EN: ${item.translation_en}\n`
+          return `Urutan: ${item.index}\nLatin: ${item.latin}\nArab: ${item.arabic}\nIndonesian Translation: ${item.translation_id}\nEnglish Translation: ${item.translation_en}\n`
         }).join('\n')
 
         m.reply(tks)
@@ -5127,7 +5127,7 @@ Tanggal: ${jadwal.tanggal}
         }
       } catch (err) {
         console.error(err)
-        m.reply('Terjadi kesalahan: ' + err)
+        m.reply('An error occurred: ' + err)
       }
     }
     break
@@ -6339,7 +6339,7 @@ break
 
 // Game
    
-               case 'tebakkata': 
+               case 'guessword': case 'tebakkata': 
 if (!isGroup) return reply(mess.group)
 var { soal, jawaban } = pickRandom(JSON.parse(fs.readFileSync('./Game/tebakkata.json')));
 console.log('Answer : '+jawaban)
@@ -6353,7 +6353,7 @@ delete tebakkata
 }, gamewaktu * 1000)
 }
 break 
-case 'asahotak': 
+case 'brainteaser': case 'asahotak': 
 if (!isGroup) return reply(mess.group)
 var { soal, jawaban } = pickRandom(JSON.parse(fs.readFileSync('./Game/asahotak.json')));
 console.log('Answer : '+jawaban)
@@ -6367,7 +6367,7 @@ delete asahotak
 }, gamewaktu * 1000)
 }
 break           
-case 'susunkata': 
+case 'arrangeword': case 'susunkata': 
 if (!isGroup) return reply(mess.group)
 var { soal, jawaban } = pickRandom(JSON.parse(fs.readFileSync('./Game/susunkata.json')));
 console.log('Answer : '+jawaban)
@@ -6381,7 +6381,7 @@ delete susunkata
 }, gamewaktu * 1000)
 }
 break           
-case 'tebakgambar':
+case 'guesspicture': case 'tebakgambar':
 if (!isGroup) return reply(mess.group)
 var { img, jawaban, deskripsi } = pickRandom(JSON.parse(fs.readFileSync('./Game/tebakgambar.json')));
 console.log('Answer : '+jawaban)
@@ -6391,12 +6391,12 @@ tebakgambar = {
 soal: img,
 jawaban: jawaban.toLowerCase(),
 waktu: setTimeout(function () {
-if (tebakgambar) reply(`Time's up!\nAnswernya adalah: ${tebakgambar2[from].jawaban}`);
+if (tebakgambar) reply(`Time's up!\nThe answer is: ${tebakgambar2[from].jawaban}`);
 delete tebakgambar
 }, gamewaktu * 1000)
 }
 break
-case 'tebakbendera': 
+case 'guessflag': case 'tebakbendera': 
 if (!isGroup) return reply(mess.group)
 var { soal, jawaban } = pickRandom(JSON.parse(fs.readFileSync('./Game/tebakbendera.json')));
 console.log('Answer : '+jawaban)
@@ -6410,7 +6410,7 @@ delete tebakbendera
 }, gamewaktu * 1000)
 }
 break
-case 'tebakkimia': 
+case 'guesschemistry': case 'tebakkimia': 
 if (!isGroup) return reply(mess.group)
 var { soal, jawaban } = pickRandom(JSON.parse(fs.readFileSync('./Game/tebakkimia.json')));
 console.log('Answer : '+jawaban)
@@ -6424,7 +6424,7 @@ delete tebakkimia
 }, gamewaktu * 1000)
 }
 break        
-case 'family100': case 'f100': 
+case 'family': case 'family100': case 'f100': 
 if (!isGroup) return reply(mess.group)
 var { soal, jawaban } = pickRandom(JSON.parse(fs.readFileSync('./Game/family100.json')));
 console.log('Answer : '+jawaban)
@@ -6473,7 +6473,7 @@ case 'upch': {
   if (!text) return m.reply(`Example: ${command} Hai`)
   let teks = `\n${text}\n`
 
-  // ID Owner Bot (bisa lebih dari satu)
+  // Bot Owner ID (can be more than one)
   const ownerJid = [`${idch}`] // replace with owner number
 
   for (let id of ownerJid) {
@@ -6489,7 +6489,7 @@ break
 case 'sendgc': {
   if (!text) return m.reply(`Example: ${command} Hai`)
 
-  // ID Owner Bot (bisa lebih dari satu)
+  // Bot Owner ID (can be more than one)
   const ownerJid = [`${idgc}`] // replace with owner number
 
   for (let id of ownerJid) {
