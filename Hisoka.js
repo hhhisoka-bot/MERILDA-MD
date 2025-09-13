@@ -876,9 +876,7 @@ let panduan = `
 - Auto AI
 - Fast Response
 - Node.js 23 Only
-- Ram Panel Harus Di atas 2GB
-
-`
+-`
 
 const url = `${global.thumbnail}`
 async function image(url) {
